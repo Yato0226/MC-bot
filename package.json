@@ -1,0 +1,23 @@
+{
+  "name": "1bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npx npm-force-resolutions"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@miner-org/mineflayer-baritone": "^1.0.1",
+    "mineflayer": "^4.0.0",
+    "npm-force-resolutions": "^0.0.10"
+  },
+  "resolutions": {
+    "axios": "^1.0.0"
+  }
+}
