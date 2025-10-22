@@ -124,3 +124,6 @@ bot.on('chat', (username, message) => {
 
 bot.on('error', err => console.log(err))
 bot.on('end', () => console.log('Disconnected'))
+if (bot.on('end', () => exit)) {
+  rl.close()
+}
