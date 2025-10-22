@@ -3,6 +3,7 @@ const mineflayer = require('mineflayer')
 const baritone = require('@miner-org/mineflayer-baritone').loader
 const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
 const GoalFollow = goals.GoalFollow;
+const mineflayerViewer = require('prismarine-viewer').mineflayer
 const readline = require('readline')
 
 let currentHuntInterval = null;
@@ -19,19 +20,19 @@ const bot = mineflayer.createBot({
   version: '1.21.8'  // Minecraft version
 })
 
-const mcData = require('minecraft-data')(bot.version); // Import minecraft-data after bot creation
+const mcData = require('minecraft-data')(bot.version); 
 
 bot.loadPlugin(baritone)
-bot.loadPlugin(pathfinder) // Load the pathfinder plugin
+bot.loadPlugin(pathfinder) 
 
 bot.on('spawn', () => {
   console.log('Bot spawned!')
+  mineflayerViewer(bot, { port: 3007, firstPerson: false }) // Initialize the viewer
 //  bot.chat('Hello!') // The bot says "hellohello" when it spawns
 
-  rl.on('line', (line) => {
-    bot.chat(line)
-  })
-
+        rl.on('line', (line) => {
+          bot.chat(`${line}`)
+        })
   rl.on('close', () => {
     bot.end()
   })
@@ -39,21 +40,22 @@ bot.on('spawn', () => {
 
 
 bot.on('chat', (username, message) => {
-  if (username !== 'Luize26') return // Only listen to Luize26
+  //if (username !== 'Luize26') return // Only listen to Luize26
+  if (username === bot.username) return // Ignore messages from itself // this will respond to everyone
   console.log(`${username}: ${message}`)
 
   if (message === 'hi bot') {
-    bot.chat('hello there!')
+    console.log('hello there!')
   } else if (message.startsWith('follow ')) {
     const targetName = message.substring('follow '.length)
     const target = bot.players[targetName] ? bot.players[targetName].entity : bot.entities.find(e => e.name === targetName)
 
     if (!target || !target.entity) {
-        bot.chat(`I can't see ${targetName}.`);
+        console.log(`I can't see ${targetName}.`);
         return;
     }
 
-    bot.chat(`Following ${targetName}`);
+    console.log(`Following ${targetName}`);
 
     const movements = new Movements(bot, mcData);
     bot.pathfinder.setMovements(movements);
@@ -64,27 +66,34 @@ bot.on('chat', (username, message) => {
     const targetName = message.substring('hunt '.length)
     const target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
 
-    if (target) {
-      bot.chat(`Hunting ${targetName}`)
-      // Replaced bot.baritone.follow with bot.ashfinder.goto as 'follow' is not in the provided API reference.
-      // Note: 'goto' navigates to a static goal. For continuous following of a moving target,
-      // a more complex logic involving repeated calls to 'goto' with updated target positions might be needed.
-      bot.ashfinder.goto(target.position)
-
-      const attackInterval = setInterval(() => {
-        const distance = bot.entity.position.distanceTo(target.position)
-        if (distance < 3) { // Attack when close enough
-          bot.attack(target)
-        }
-        if (target.isValid === false) { // Stop hunting if target is dead
-          clearInterval(attackInterval)
-          bot.chat(`Finished hunting ${targetName}`)
-          bot.ashfinder.stop()
-        }
-      }, 1000) // Check every second
-    } else {
-      bot.chat(`Could not find mob ${targetName}`)
+    if (!target) {
+      console.log(`Could not find mob ${targetName}`)
+      return
     }
+
+    console.log(`Hunting ${targetName}`)
+
+    const movements = new Movements(bot, mcData);
+    bot.pathfinder.setMovements(movements);
+
+    // Set a goal to move towards the target
+    bot.pathfinder.setGoal(new goals.GoalNear(target.position.x, target.position.y, target.position.z, 1), true);
+
+    if (currentHuntInterval) {
+      clearInterval(currentHuntInterval)
+    }
+
+    currentHuntInterval = setInterval(() => {
+      const distance = bot.entity.position.distanceTo(target.position)
+      if (distance < 3) { // Attack when close enough
+        bot.attack(target)
+      }
+              if (!target.isValid) { // Stop hunting if target is dead
+                clearInterval(currentHuntInterval)
+                console.log(`Finished hunting ${targetName}`)
+                bot.pathfinder.stop() // Stop pathfinding
+                currentHuntInterval = null
+              }    }, 1000) // Check every second
   } else if (message === 'chop') {
     const treeBlock = bot.findBlock({
       matching: (block) => block.name.includes('log'),
@@ -92,18 +101,24 @@ bot.on('chat', (username, message) => {
     })
 
     if (treeBlock) {
-      bot.chat('Chopping nearest tree...')
+      console.log('Chopping nearest tree...')
       bot.ashfinder.goto(treeBlock.position, () => {
         bot.dig(treeBlock, () => {
-          bot.chat('Finished chopping tree.')
+          console.log('Finished chopping tree.')
         })
       })
     } else {
-      bot.chat('No trees found nearby.')
+      console.log('No trees found nearby.')
     }
   } else if (message === 'stop') {
-    bot.chat('Stopping current action.')
-    bot.ashfinder.stop()
+    console.log('Stopping current action.')
+    bot.ashfinder.stop() // Stop ashfinder (baritone)
+    bot.pathfinder.stop() // Stop mineflayer-pathfinder
+
+    if (currentHuntInterval) {
+      clearInterval(currentHuntInterval)
+      currentHuntInterval = null
+    }
   }
 })
 
