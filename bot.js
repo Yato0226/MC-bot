@@ -1,12 +1,17 @@
 require('dotenv').config()
 const mineflayer = require('mineflayer')
 const baritone = require('@miner-org/mineflayer-baritone').loader
-const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
-const GoalFollow = goals.GoalFollow;
+const { pathfinder, Movements, goals } = require('mineflayer-pathfinder')
+const GoalFollow = goals.GoalFollow
 const mineflayerViewer = require('prismarine-viewer').mineflayer
+const minecraftHawkEye = require('minecrafthawkeye')
+const toolPlugin = require('mineflayer-tool').plugin
+const pvp = require('mineflayer-pvp').plugin
+const inventoryViewer = require('mineflayer-web-inventory')
+const armorManager = require('mineflayer-armor-manager')
+const collectBlock = require('mineflayer-collectblock').plugin
 const readline = require('readline')
-
-let currentHuntInterval = null;
+const chalk = require('chalk')
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -14,116 +19,138 @@ const rl = readline.createInterface({
 })
 
 const bot = mineflayer.createBot({
-  host: process.env.MC_HOST, // Minecraft server host
-  port: 25565,       // Minecraft server port
-  username: 'Bloop',   // Bot's username
-  version: '1.21.8'  // Minecraft version
+  host: process.env.MC_HOST,
+  port: 25565,
+  username: 'Bloop',
+  version: '1.21.8'
 })
 
-const mcData = require('minecraft-data')(bot.version); 
+const mcData = require('minecraft-data')(bot.version)
 
 bot.loadPlugin(baritone)
-bot.loadPlugin(pathfinder) 
+bot.loadPlugin(pathfinder)
+bot.loadPlugin(minecraftHawkEye.default || minecraftHawkEye)
+bot.loadPlugin(toolPlugin)
+bot.loadPlugin(pvp)
+bot.loadPlugin(armorManager)
+bot.loadPlugin(collectBlock)
+inventoryViewer(bot)
 
+// --- Custom Log System ---
+function logSystem(msg) {
+  console.log(chalk.default.gray(`[SYSTEM] ${msg}`))
+}
+
+function logChat(user, msg) {
+  console.log(chalk.default.cyan(`[CHAT] ${user}: `) + chalk.default.white(msg))
+}
+
+function logAction(msg) {
+  console.log(chalk.default.green(`[ACTION] ${msg}`))
+}
+
+function logError(msg) {
+  console.log(chalk.default.red(`[ERROR] ${msg}`))
+}
+
+// --- Bot Events ---
 bot.on('spawn', () => {
-  console.log('Bot spawned!')
-  mineflayerViewer(bot, { port: 3007, firstPerson: false }) // Initialize the viewer
-//  bot.chat('Hello!') // The bot says "hellohello" when it spawns
-
-        rl.on('line', (line) => {
-          bot.chat(`${line}`)
-        })
-  rl.on('close', () => {
-    bot.end()
-  })
+  logSystem('Bot spawned!')
+  mineflayerViewer(bot, { port: 3007, firstPerson: false })
+  bot.armorManager.equipAll()
 })
 
-
-bot.on('chat', (username, message) => {
-  //if (username !== 'Luize26') return // Only listen to Luize26
-  if (username === bot.username) return // Ignore messages from itself // this will respond to everyone
-  console.log(`${username}: ${message}`)
+bot.on('chat', async (username, message) => {
+  if (username === bot.username) return
+  logChat(username, message)
 
   if (message === 'hi bot') {
-    console.log('hello there!')
+    bot.chat('hello there!')
   } else if (message.startsWith('follow ')) {
     const targetName = message.substring('follow '.length)
-    const target = bot.players[targetName] ? bot.players[targetName].entity : bot.entities.find(e => e.name === targetName)
+    const target = bot.players[targetName]?.entity || bot.entities.find(e => e.name === targetName)
+    if (!target) return logError(`Can\'t see ${targetName}.`)
 
-    if (!target || !target.entity) {
-        console.log(`I can't see ${targetName}.`);
-        return;
-    }
-
-    console.log(`Following ${targetName}`);
-
-    const movements = new Movements(bot, mcData);
-    bot.pathfinder.setMovements(movements);
-
-    const followGoal = new GoalFollow(target.entity, 3);
-    bot.pathfinder.setGoal(followGoal, true);
+    logAction(`Following ${targetName}`)
+    const movements = new Movements(bot, mcData)
+    bot.pathfinder.setMovements(movements)
+    bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
   } else if (message.startsWith('hunt ')) {
     const targetName = message.substring('hunt '.length)
     const target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
+    if (!target) return logError(`Mob ${targetName} not found.`)
 
-    if (!target) {
-      console.log(`Could not find mob ${targetName}`)
-      return
-    }
-
-    console.log(`Hunting ${targetName}`)
-
-    const movements = new Movements(bot, mcData);
-    bot.pathfinder.setMovements(movements);
-
-    // Set a goal to move towards the target
-    bot.pathfinder.setGoal(new goals.GoalNear(target.position.x, target.position.y, target.position.z, 1), true);
-
-    if (currentHuntInterval) {
-      clearInterval(currentHuntInterval)
-    }
-
-    currentHuntInterval = setInterval(() => {
-      const distance = bot.entity.position.distanceTo(target.position)
-      if (distance < 3) { // Attack when close enough
-        bot.attack(target)
-      }
-              if (!target.isValid) { // Stop hunting if target is dead
-                clearInterval(currentHuntInterval)
-                console.log(`Finished hunting ${targetName}`)
-                bot.pathfinder.stop() // Stop pathfinding
-                currentHuntInterval = null
-              }    }, 1000) // Check every second
+    logAction(`Hunting ${targetName}`)
+    bot.pvp.attack(target)
   } else if (message === 'chop') {
     const treeBlock = bot.findBlock({
-      matching: (block) => block.name.includes('log'),
+      matching: block => block.name.includes('log'),
       maxDistance: 64
     })
+    if (!treeBlock) return logError('No trees nearby.')
 
-    if (treeBlock) {
-      console.log('Chopping nearest tree...')
-      bot.ashfinder.goto(treeBlock.position, () => {
-        bot.dig(treeBlock, () => {
-          console.log('Finished chopping tree.')
-        })
-      })
-    } else {
-      console.log('No trees found nearby.')
+    logAction('Chopping nearest tree...')
+    try {
+      await bot.collectBlock.collect(treeBlock)
+      logAction('Finished chopping tree.')
+    } catch (err) {
+      logError(err.message)
     }
   } else if (message === 'stop') {
-    console.log('Stopping current action.')
-    bot.ashfinder.stop() // Stop ashfinder (baritone)
-    bot.pathfinder.stop() // Stop mineflayer-pathfinder
-
-    if (currentHuntInterval) {
-      clearInterval(currentHuntInterval)
-      currentHuntInterval = null
-    }
+    logAction('Stopping all actions...')
+    bot.ashfinder?.stop?.()
+    bot.pathfinder.stop()
+    bot.pvp.stop()
   }
 })
 
-bot.on('error', err => console.log(err))
-bot.on('end', () => console.log('Disconnected'))
-if (bot.on('end', () => exit)) {
+bot.on('error', err => logError(err))
+bot.on('end', () => {
+  logSystem('Disconnected.')
   rl.close()
-}
+  process.exit(0)
+})
+
+// --- Terminal Commands ---
+logSystem('Type commands below. Examples: follow <player>, chop, stop, quit')
+
+rl.on('line', async (input) => {
+  const [cmd, ...args] = input.trim().split(/\s+/)
+
+  switch (cmd) {
+    case 'say':
+      bot.chat(args.join(' '))
+      break
+    case 'follow': {
+      const name = args[0]
+      if (!name) return logError('Usage: follow <player>')
+      const target = bot.players[name]?.entity
+      if (!target) return logError(`Cannot see ${name}.`)
+      const movements = new Movements(bot, mcData)
+      bot.pathfinder.setMovements(movements)
+      bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
+      logAction(`Following ${name}`)
+      break
+    }
+    case 'chop': {
+      const tree = bot.findBlock({ matching: b => b.name.includes('log'), maxDistance: 64 })
+      if (!tree) return logError('No trees nearby.')
+      logAction('Chopping tree...')
+      await bot.collectBlock.collect(tree)
+      break
+    }
+    case 'stop':
+      bot.pathfinder.stop()
+      bot.pvp.stop()
+      bot.ashfinder?.stop?.()
+      logAction('Stopped.')
+      break
+    case 'quit':
+    case 'exit':
+      rl.close()
+      bot.end()
+      break
+    default:
+      logError(`Unknown command: ${cmd}`)
+  }
+})
