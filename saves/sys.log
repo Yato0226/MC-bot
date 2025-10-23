@@ -30,3 +30,17 @@
 [2025-10-23T01:35:20.659Z] Prismarine viewer web server running on *:3007
 [2025-10-23T01:35:47.585Z] TERMINAL COMMAND: status
 [2025-10-23T01:35:47.585Z] 0m[SYSTEM] Health: 20.0/20 | Food: 20.0/20 | Saturation: 5.009m
+[2025-10-23T01:45:34.181Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T01:45:35.188Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T01:45:36.446Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-23T01:45:36.447Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-23T01:45:36.449Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-23T01:45:41.468Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T01:45:45.805Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T01:45:45.923Z] Prismarine viewer web server running on *:3007
+[2025-10-23T01:45:53.418Z] TERMINAL COMMAND: exit

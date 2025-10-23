@@ -4,6 +4,7 @@ A versatile Minecraft bot built with Mineflayer, featuring various functionaliti
 
 ## Features
 
+-   **Auto-Reconnect:** Automatically reconnects to the server if the connection is lost.
 -   **Player Following:** Follows specified players using `mineflayer-pathfinder`.
 -   **Advanced Hunting:** Hunts players or mobs using melee (`mineflayer-pvp`) or ranged attacks (`minecrafthawkeye`) if a bow is available.
 -   **Resource Collection:** Chops trees using `mineflayer-collectblock`.

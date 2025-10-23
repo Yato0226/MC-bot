@@ -51,23 +51,102 @@ const rl = readline.createInterface({
   output: process.stdout
 })
 
-const bot = mineflayer.createBot({
-  host: process.env.MC_HOST,
-  port: 25565,
-  username: 'Bloop',
-  version: '1.21.8'
-})
+let bot; // Declare bot in a scope accessible by the functions
+let isIntentionalExit = false;
 
-const mcData = require('minecraft-data')(bot.version)
+function startBot() {
+  isIntentionalExit = false; // Reset flag on new bot creation
+  bot = mineflayer.createBot({
+    host: process.env.MC_HOST,
+    port: 25565,
+    username: 'Bloop',
+    version: '1.21.8'
+  })
 
-bot.loadPlugin(baritone)
-bot.loadPlugin(pathfinder)
-bot.loadPlugin(minecraftHawkEye.default || minecraftHawkEye)
-bot.loadPlugin(toolPlugin)
-bot.loadPlugin(pvp)
-bot.loadPlugin(armorManager)
-bot.loadPlugin(collectBlock)
-inventoryViewer(bot)
+  const mcData = require('minecraft-data')(bot.version)
+
+  bot.loadPlugin(baritone)
+  bot.loadPlugin(pathfinder)
+  bot.loadPlugin(minecraftHawkEye.default || minecraftHawkEye)
+  bot.loadPlugin(toolPlugin)
+  bot.loadPlugin(pvp)
+  bot.loadPlugin(armorManager)
+  bot.loadPlugin(collectBlock)
+  inventoryViewer(bot)
+
+  // --- Bot Events ---
+  bot.on('spawn', () => {
+    logSystem('Bot spawned!')
+    mineflayerViewer(bot, { port: 3007, firstPerson: false })
+    bot.armorManager.equipAll()
+  })
+
+  bot.on('chat', async (username, message) => {
+    if (username === bot.username) return
+    logChat(username, message)
+
+    if (message === 'hi bot') {
+      bot.chat('hello there!')
+    } else if (message.startsWith('follow ')) {
+      const targetName = message.substring('follow '.length)
+      const target = bot.players[targetName]?.entity || bot.entities.find(e => e.name === targetName)
+      if (!target) return logError(`Can\'t see ${targetName}.`)
+
+      logAction(`Following ${targetName}`)
+      const movements = new Movements(bot, mcData)
+      bot.pathfinder.setMovements(movements)
+      bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
+      } else if (message.startsWith('hunt ') || message.startsWith('kill ')) {
+        const prefix = message.startsWith('hunt ') ? 'hunt ' : 'kill ';
+        const targetName = message.substring(prefix.length)
+        let target = bot.players[targetName]?.entity
+        if (!target) {
+          target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
+        }
+        if (!target) return logError(`Could not find player or mob named ${targetName}.`)
+
+        const bow = bot.inventory.findInventoryItem('bow')
+        if (bow) {
+          logAction(`Attacking ${targetName} with a bow!`)
+          bot.hawkEye.autoAttack(target, 'bow')
+        } else {
+          logAction(`Attacking ${targetName} with melee.`)
+          bot.pvp.attack(target)
+        }
+    } else if (message === 'chop') {
+      const treeBlock = bot.findBlock({
+        matching: block => block.name.includes('log'),
+        maxDistance: 64
+      })
+      if (!treeBlock) return logError('No trees nearby.')
+
+      logAction('Chopping nearest tree...')
+      try {
+        await bot.collectBlock.collect(treeBlock)
+        logAction('Finished chopping tree.')
+      } catch (err) {
+        logError(err.message)
+      }
+    } else if (message === 'stop') {
+      logAction('Stopping all actions...')
+      bot.ashfinder?.stop?.()
+      bot.pathfinder.stop()
+      bot.pvp.stop()
+    }
+  })
+
+  bot.on('error', err => logError(err))
+  bot.on('end', (reason) => {
+    if (isIntentionalExit) {
+      logSystem('Exiting now.');
+      rl.close();
+      process.exit(0);
+    } else {
+      logSystem(`Disconnected: ${reason}. Reconnecting in 5 seconds...`)
+      setTimeout(startBot, 5000)
+    }
+  })
+}
 
 // --- File System for Saved Locations ---
 const locationsFilePath = path.join(__dirname, 'saves', 'locations.json')
@@ -102,74 +181,6 @@ function logAction (msg) {
 function logError (msg) {
   console.error(chalk.default.red(`[ERROR] ${msg}`))
 }
-
-// --- Bot Events ---
-bot.on('spawn', () => {
-  logSystem('Bot spawned!')
-  mineflayerViewer(bot, { port: 3007, firstPerson: false })
-  bot.armorManager.equipAll()
-})
-
-bot.on('chat', async (username, message) => {
-  if (username === bot.username) return
-  logChat(username, message)
-
-  if (message === 'hi bot') {
-    bot.chat('hello there!')
-  } else if (message.startsWith('follow ')) {
-    const targetName = message.substring('follow '.length)
-    const target = bot.players[targetName]?.entity || bot.entities.find(e => e.name === targetName)
-    if (!target) return logError(`Can\'t see ${targetName}.`)
-
-    logAction(`Following ${targetName}`)
-    const movements = new Movements(bot, mcData)
-    bot.pathfinder.setMovements(movements)
-    bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
-    } else if (message.startsWith('hunt ') || message.startsWith('kill ')) {
-      const prefix = message.startsWith('hunt ') ? 'hunt ' : 'kill ';
-      const targetName = message.substring(prefix.length)
-      let target = bot.players[targetName]?.entity
-      if (!target) {
-        target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
-      }
-      if (!target) return logError(`Could not find player or mob named ${targetName}.`)
-
-      const bow = bot.inventory.findInventoryItem('bow')
-      if (bow) {
-        logAction(`Attacking ${targetName} with a bow!`)
-        bot.hawkEye.autoAttack(target, 'bow')
-      } else {
-        logAction(`Attacking ${targetName} with melee.`)
-        bot.pvp.attack(target)
-      }
-  } else if (message === 'chop') {
-    const treeBlock = bot.findBlock({
-      matching: block => block.name.includes('log'),
-      maxDistance: 64
-    })
-    if (!treeBlock) return logError('No trees nearby.')
-
-    logAction('Chopping nearest tree...')
-    try {
-      await bot.collectBlock.collect(treeBlock)
-      logAction('Finished chopping tree.')
-    } catch (err) {
-      logError(err.message)
-    }
-  } else if (message === 'stop') {
-    logAction('Stopping all actions...')
-    bot.ashfinder?.stop?.()
-    bot.pathfinder.stop()
-    bot.pvp.stop()
-  }
-})
-
-bot.on('error', err => logError(err))
-bot.on('end', () => {
-  logSystem('Disconnected.')
-  rl.close()
-  process.exit(0)
-})
 
 // --- Terminal Commands ---
 logSystem('Type commands below. Examples: follow <player>, chop, stop, quit')
@@ -270,10 +281,13 @@ rl.on('line', async (input) => {
     }
     case 'quit':
     case 'exit':
-      rl.close()
+      isIntentionalExit = true;
       bot.end()
       break
     default:
       logError(`Unknown command: ${cmd}`)
   }
 })
+
+// Initial bot creation
+startBot()
