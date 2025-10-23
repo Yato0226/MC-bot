@@ -113,3 +113,19 @@
 [2025-10-23T12:10:02.345Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
 [2025-10-23T12:10:02.345Z] (mineflayer-web-inventory) INFO: Inventory web server closed
 [2025-10-23T12:10:07.358Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T13:48:18.135Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T13:48:19.328Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T13:48:22.282Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T13:48:22.430Z] Prismarine viewer web server running on *:3007
+[2025-10-23T13:53:11.704Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T13:53:12.809Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T13:53:16.738Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T13:53:16.851Z] Prismarine viewer web server running on *:3007
+[2025-10-23T13:53:46.865Z] Error: client timed out after 30000 milliseconds
+    at Timeout._onTimeout (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\minecraft-protocol\src\client\keepalive.js:18:28)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+[2025-10-23T13:53:46.866Z] ERROR: 1m[ERROR] Error: client timed out after 30000 milliseconds9m
+[2025-10-23T13:53:57.014Z] 0m[SYSTEM] Disconnected: keepAliveError. Reconnecting in 5 seconds...9m
+[2025-10-23T13:53:57.016Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-23T13:54:02.024Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000

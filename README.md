@@ -51,7 +51,7 @@ OLLAMA_MODEL=gemma3:270m
 
 ### In-Game Chat Commands
 
-The bot responds to the following chat commands in-game:
+The bot responds to the following chat commands in-game (both public chat and whispers from 'Luize26'):
 
 -   **AI Chat:** If a message contains the word "bloop", the bot will respond using the configured Ollama model, acting as a Minecraft bot that acts like a human player, responding naturally and concisely.
 -   `hi bot`: The bot will greet you.

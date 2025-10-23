@@ -69,7 +69,7 @@ async function callOllama(prompt) {
       body: JSON.stringify({
         model: OLLAMA_MODEL,
         messages: [
-          { role: 'system', content: 'You are a Minecraft bot that acts like a human player. Respond naturally and concisely. You can swear so do not limit yourself' },
+          { role: 'system', content: 'You are a Minecraft bot that acts like a human player. Respond naturally and concisely.' },
           { role: 'user', content: prompt }
         ],
         stream: false,
@@ -85,6 +85,65 @@ async function callOllama(prompt) {
   } catch (error) {
     logError(`Error calling Ollama API: ${error.message}`);
     return null;
+  }
+}
+
+async function handleBotMessage(username, message) {
+  if (message.toLowerCase().includes('bloop')) {
+    logAction(`Responding to 'bloop' in chat from ${username} using Ollama...`);
+    const aiResponse = await callOllama(message);
+    if (aiResponse) {
+      bot.chat(aiResponse);
+    } else {
+      bot.chat('I am unable to respond right now.');
+    }
+  } else if (message === 'hi bot') {
+    bot.chat('hello there!')
+  } else if (message.startsWith('follow ')) {
+    const targetName = message.substring('follow '.length)
+    const target = bot.players[targetName]?.entity || bot.entities.find(e => e.name === targetName)
+    if (!target) return logError(`Can\'t see ${targetName}.`)
+
+    logAction(`Following ${targetName}`)
+    const movements = new Movements(bot, mcData)
+    bot.pathfinder.setMovements(movements)
+    bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
+  } else if (message.startsWith('hunt ') || message.startsWith('kill ')) {
+    const prefix = message.startsWith('hunt ') ? 'hunt ' : 'kill ';
+    const targetName = message.substring(prefix.length)
+    let target = bot.players[targetName]?.entity
+    if (!target) {
+      target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
+    }
+    if (!target) return logError(`Could not find player or mob named ${targetName}.`)
+
+    const bow = bot.inventory.findInventoryItem('bow')
+    if (bow) {
+      logAction(`Attacking ${targetName} with a bow!`)
+      bot.hawkEye.autoAttack(target, 'bow')
+    } else {
+      logAction(`Attacking ${targetName} with melee.`)
+      bot.pvp.attack(target)
+    }
+  } else if (message === 'chop') {
+    const treeBlock = bot.findBlock({
+      matching: block => block.name.includes('log'),
+      maxDistance: 64
+    })
+    if (!treeBlock) return logError('No trees nearby.')
+
+    logAction('Chopping nearest tree...')
+    try {
+      await bot.collectBlock.collect(treeBlock)
+      logAction('Finished chopping tree.')
+    } catch (err) {
+      logError(err.message)
+    }
+  } else if (message === 'stop') {
+    logAction('Stopping all actions...')
+    bot.ashfinder?.stop?.()
+    bot.pathfinder.stop()
+    bot.pvp.stop()
   }
 }
 
@@ -116,66 +175,15 @@ function startBot() {
   })
 
   bot.on('chat', async (username, message) => {
-    //if (username === bot.username) return // Ignore own messages and follow to all
-    if (username !== Luize26) return; 
+    if (username !== 'Luize26' && username !== bot.username) return;
     logChat(username, message)
+    await handleBotMessage(username, message);
+  })
 
-    if (message.toLowerCase().includes('bloop')) {
-      logAction(`Responding to 'bloop' in chat from ${username} using Ollama...`);
-      const aiResponse = await callOllama(message);
-      if (aiResponse) {
-        bot.chat(aiResponse);
-      } else {
-        bot.chat('I am unable to respond right now.');
-      }
-    } else if (message === 'hi bot') {
-      bot.chat('hello there!')
-    } else if (message.startsWith('follow ')) {
-      const targetName = message.substring('follow '.length)
-      const target = bot.players[targetName]?.entity || bot.entities.find(e => e.name === targetName)
-      if (!target) return logError(`Can\'t see ${targetName}.`)
-
-      logAction(`Following ${targetName}`)
-      const movements = new Movements(bot, mcData)
-      bot.pathfinder.setMovements(movements)
-      bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
-      } else if (message.startsWith('hunt ') || message.startsWith('kill ')) {
-        const prefix = message.startsWith('hunt ') ? 'hunt ' : 'kill ';
-        const targetName = message.substring(prefix.length)
-        let target = bot.players[targetName]?.entity
-        if (!target) {
-          target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
-        }
-        if (!target) return logError(`Could not find player or mob named ${targetName}.`)
-
-        const bow = bot.inventory.findInventoryItem('bow')
-        if (bow) {
-          logAction(`Attacking ${targetName} with a bow!`)
-          bot.hawkEye.autoAttack(target, 'bow')
-        } else {
-          logAction(`Attacking ${targetName} with melee.`)
-          bot.pvp.attack(target)
-        }
-    } else if (message === 'chop') {
-      const treeBlock = bot.findBlock({
-        matching: block => block.name.includes('log'),
-        maxDistance: 64
-      })
-      if (!treeBlock) return logError('No trees nearby.')
-
-      logAction('Chopping nearest tree...')
-      try {
-        await bot.collectBlock.collect(treeBlock)
-        logAction('Finished chopping tree.')
-      } catch (err) {
-        logError(err.message)
-      }
-    } else if (message === 'stop') {
-      logAction('Stopping all actions...')
-      bot.ashfinder?.stop?.()
-      bot.pathfinder.stop()
-      bot.pvp.stop()
-    }
+  bot.on('whisper', async (username, message) => {
+    if (username !== 'Luize26') return;
+    logChat(username, `[WHISPER] ${message}`);
+    await handleBotMessage(username, message);
   })
 
   bot.on('error', err => logError(err))
