@@ -44,3 +44,72 @@
 [2025-10-23T01:45:45.805Z] 0m[SYSTEM] Bot spawned!9m
 [2025-10-23T01:45:45.923Z] Prismarine viewer web server running on *:3007
 [2025-10-23T01:45:53.418Z] TERMINAL COMMAND: exit
+[2025-10-23T11:41:22.150Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T11:41:23.582Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T11:41:26.123Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T11:41:26.278Z] Prismarine viewer web server running on *:3007
+[2025-10-23T11:44:10.406Z] 6m[CHAT] Luize26: 9m7mbloop9m
+[2025-10-23T11:44:10.407Z] 0m[SYSTEM] Detected name, generating AI response...9m
+[2025-10-23T11:45:07.199Z] 6m[CHAT] Luize26: 9m7mbloop say about yourself9m
+[2025-10-23T11:45:07.199Z] 0m[SYSTEM] Detected name, generating AI response...9m
+[2025-10-23T11:46:42.190Z] 6m[CHAT] Luize26: 9m7mtanga sa mc lng nakakakabasa9m
+[2025-10-23T11:46:46.016Z] 6m[CHAT] Luize26: 9m7mpero good idea9m
+[2025-10-23T11:53:18.049Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T11:53:19.091Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T11:53:22.169Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T11:53:22.267Z] Prismarine viewer web server running on *:3007
+[2025-10-23T11:54:40.679Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T11:54:41.726Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T11:54:44.044Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T11:54:44.152Z] Prismarine viewer web server running on *:3007
+[2025-10-23T11:59:50.595Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T11:59:51.678Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T11:59:54.648Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T11:59:54.791Z] Prismarine viewer web server running on *:3007
+[2025-10-23T12:00:51.896Z] Error: client timed out after 30000 milliseconds
+    at Timeout._onTimeout (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\minecraft-protocol\src\client\keepalive.js:18:28)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+[2025-10-23T12:00:51.897Z] ERROR: 1m[ERROR] Error: client timed out after 30000 milliseconds9m
+[2025-10-23T12:01:17.760Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T12:01:18.795Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T12:01:24.269Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T12:01:24.387Z] Prismarine viewer web server running on *:3007
+[2025-10-23T12:01:54.392Z] Error: client timed out after 30000 milliseconds
+    at Timeout._onTimeout (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\minecraft-protocol\src\client\keepalive.js:18:28)
+    at listOnTimeout (node:internal/timers:588:17)
+    at process.processTimers (node:internal/timers:523:7)
+[2025-10-23T12:01:54.395Z] ERROR: 1m[ERROR] Error: client timed out after 30000 milliseconds9m
+[2025-10-23T12:01:55.817Z] 0m[SYSTEM] Disconnected: keepAliveError. Reconnecting in 5 seconds...9m
+[2025-10-23T12:01:55.819Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-23T12:02:00.840Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T12:07:01.282Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T12:07:02.544Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T12:07:05.831Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T12:07:05.937Z] Prismarine viewer web server running on *:3007
+[2025-10-23T12:08:16.233Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-23T12:08:16.236Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-23T12:08:16.238Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-23T12:08:16.237Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-23T12:08:21.296Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T12:08:46.722Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-23T12:08:47.789Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-23T12:08:50.129Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-23T12:08:50.244Z] Prismarine viewer web server running on *:3007
+[2025-10-23T12:09:01.727Z] [DEBUG] Raw Chat - Username: Luize26, Message: .
+[2025-10-23T12:09:01.728Z] 6m[CHAT] Luize26: 9m7m.9m
+[2025-10-23T12:10:02.343Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-23T12:10:02.343Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-23T12:10:02.345Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-23T12:10:02.345Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-23T12:10:07.358Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000

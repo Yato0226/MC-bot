@@ -25,7 +25,7 @@ A versatile Minecraft bot built with Mineflayer, featuring various functionaliti
     ```
 2.  **Install dependencies:**
     ```bash
-    npm install
+    npm install @miner-org/mineflayer-baritone chalk dotenv minecrafthawkeye mineflayer mineflayer-armor-manager mineflayer-collectblock mineflayer-pathfinder mineflayer-pvp mineflayer-statemachine mineflayer-tool mineflayer-web-inventory prismarine-viewer node-fetch@2
     ```
 
 ## Configuration

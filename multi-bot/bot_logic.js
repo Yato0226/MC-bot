@@ -102,8 +102,29 @@ function setupBotLogic(bot, botName) {
     })
 
     bot.on('chat', async (username, message) => {
-        if (username === bot.username) return
-        logChat(botName, username, message)
+        let isDiscordMessage = false;
+        if (username.includes('[Discord')) {
+            isDiscordMessage = true;
+            const match = message.match(/^(\S+) >> (.*)/);
+            if (match) {
+                const realUsername = match[1];
+                const realMessage = match[2];
+                logChat(botName, `Discord/${realUsername}`, realMessage);
+                username = realUsername;
+                message = realMessage;
+            } else {
+                return; // Ignore system messages from DiscordSRV
+            }
+        } else {
+            if (username === bot.username) return;
+            logChat(botName, username, message);
+        }
+
+        // Now, process the potentially overwritten message
+        if (message.toLowerCase().includes('bloop')) {
+            logSystem(botName, 'Detected name, generating AI response...');
+            // This part needs an implementation for AI response
+        }
 
         if (message === 'hi bot') {
             bot.chat('hello there!')
