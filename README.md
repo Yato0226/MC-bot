@@ -1,9 +1,6 @@
-# Minecraft Bot
-
-A versatile Minecraft bot built with Mineflayer, featuring various functionalities for automation and interaction within the game.
-
 ## Features
 
+-   **AI Chat (Ollama):** Responds to chat messages containing "bloop" using the configured Ollama LLM (Gemma 3:270m).
 -   **Auto-Reconnect:** Automatically reconnects to the server if the connection is lost.
 -   **Player Following:** Follows specified players using `mineflayer-pathfinder`.
 -   **Advanced Hunting:** Hunts players or mobs using melee (`mineflayer-pvp`) or ranged attacks (`minecrafthawkeye`) if a bow is available.
@@ -34,6 +31,9 @@ Create a `.env` file in the project root with the following content:
 
 ```
 MC_HOST=your_minecraft_server_ip
+OLLAMA_HOST=http://localhost
+OLLAMA_PORT=11434
+OLLAMA_MODEL=gemma3:270m
 ```
 
 ## Usage
@@ -53,6 +53,7 @@ MC_HOST=your_minecraft_server_ip
 
 The bot responds to the following chat commands in-game:
 
+-   **AI Chat:** If a message contains the word "bloop", the bot will respond using the configured Ollama model, acting as a Minecraft bot that acts like a human player, responding naturally and concisely.
 -   `hi bot`: The bot will greet you.
 -   `follow <player_name>`: The bot will follow the specified player.
 -   `hunt <name>` or `kill <name>`: Hunts the specified player or mob. Uses a bow for ranged attacks if available, otherwise uses melee.
@@ -93,6 +94,7 @@ This project relies on several `mineflayer` plugins and other Node.js packages:
 -   `minecrafthawkeye`: For advanced combat targeting.
 -   `dotenv`: To manage environment variables.
 -   `chalk`: For colored console output.
+-   `node-fetch`: For making HTTP requests (used for Ollama API).
 
 ## Contributing
 

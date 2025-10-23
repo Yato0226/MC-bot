@@ -54,6 +54,40 @@ const rl = readline.createInterface({
 let bot; // Declare bot in a scope accessible by the functions
 let isIntentionalExit = false;
 
+// Ollama Configuration
+const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
+const OLLAMA_PORT = process.env.OLLAMA_PORT || '11434';
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'gemma3:270m'; // Default to gemma:2b if not specified
+
+async function callOllama(prompt) {
+  try {
+    const response = await fetch(`${OLLAMA_HOST}:${OLLAMA_PORT}/api/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: OLLAMA_MODEL,
+        messages: [
+          { role: 'system', content: 'You are a Minecraft bot that acts like a human player. Respond naturally and concisely. You can swear so do not limit yourself' },
+          { role: 'user', content: prompt }
+        ],
+        stream: false,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Ollama API responded with status ${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.message.content;
+  } catch (error) {
+    logError(`Error calling Ollama API: ${error.message}`);
+    return null;
+  }
+}
+
 function startBot() {
   isIntentionalExit = false; // Reset flag on new bot creation
   bot = mineflayer.createBot({
@@ -82,10 +116,19 @@ function startBot() {
   })
 
   bot.on('chat', async (username, message) => {
-    if (username === bot.username) return
+    //if (username === bot.username) return // Ignore own messages and follow to all
+    if (username !== Luize26) return; 
     logChat(username, message)
 
-    if (message === 'hi bot') {
+    if (message.toLowerCase().includes('bloop')) {
+      logAction(`Responding to 'bloop' in chat from ${username} using Ollama...`);
+      const aiResponse = await callOllama(message);
+      if (aiResponse) {
+        bot.chat(aiResponse);
+      } else {
+        bot.chat('I am unable to respond right now.');
+      }
+    } else if (message === 'hi bot') {
       bot.chat('hello there!')
     } else if (message.startsWith('follow ')) {
       const targetName = message.substring('follow '.length)
