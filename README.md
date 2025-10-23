@@ -55,28 +55,17 @@ The bot responds to the following chat commands in-game (both public chat and wh
 
 -   **AI Chat:** If a message contains the word "bloop", the bot will respond using the configured Ollama model, acting as a Minecraft bot that acts like a human player, responding naturally and concisely.
 -   `hi bot`: The bot will greet you.
+-   `say <message>`: Makes the bot say `<message>` in-game chat.
 -   `follow <player_name>`: The bot will follow the specified player.
 -   `hunt <name>` or `kill <name>`: Hunts the specified player or mob. Uses a bow for ranged attacks if available, otherwise uses melee.
 -   `chop`: The bot will find and chop the nearest tree.
 -   `stop`: Stops all current actions (pathfinding, PVP, etc.).
-
-### Terminal Commands
-
-Interact with the bot directly from the terminal where it's running:
-
--   `say <message>`: Makes the bot say `<message>` in-game chat.
--   `follow <player_name>`: The bot will follow the specified player.
--   `chop`: The bot will find and chop the nearest tree.
--   `stop`: Stops all current actions (pathfinding, PVP, etc.).
 -   `status`: Displays the bot's current health, food, and saturation levels.
--   `quit` or `exit`: Disconnects the bot and closes the terminal interface.
-
-### Location Management Commands
-
 -   `save <name>`: Saves the bot's current position as a named location.
 -   `goto <name>` or `goto <x> <y> <z>`: Navigates to a saved location by name or to the specified coordinates.
 -   `list`: Displays all saved locations.
 -   `delete <name>`: Deletes a saved location.
+-   `quit` or `exit`: Disconnects the bot and closes the terminal interface (only callable by 'Luize26').
 
 ## Dependencies
 

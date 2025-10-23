@@ -53,11 +53,16 @@ const rl = readline.createInterface({
 
 let bot; // Declare bot in a scope accessible by the functions
 let isIntentionalExit = false;
+let viewerInstance = null; // To store the prismarine-viewer instance
+let webInventoryInstance = null; // To store the mineflayer-web-inventory instance
 
 // Ollama Configuration
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
 const OLLAMA_PORT = process.env.OLLAMA_PORT || '11434';
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'gemma3:270m'; // Default to gemma:2b if not specified
+
+// mcData needs to be accessible globally for handleBotMessage
+let mcData;
 
 async function callOllama(prompt) {
   try {
@@ -89,61 +94,159 @@ async function callOllama(prompt) {
 }
 
 async function handleBotMessage(username, message) {
-  if (message.toLowerCase().includes('bloop')) {
-    logAction(`Responding to 'bloop' in chat from ${username} using Ollama...`);
-    const aiResponse = await callOllama(message);
-    if (aiResponse) {
-      bot.chat(aiResponse);
-    } else {
-      bot.chat('I am unable to respond right now.');
-    }
-  } else if (message === 'hi bot') {
-    bot.chat('hello there!')
-  } else if (message.startsWith('follow ')) {
-    const targetName = message.substring('follow '.length)
-    const target = bot.players[targetName]?.entity || bot.entities.find(e => e.name === targetName)
-    if (!target) return logError(`Can\'t see ${targetName}.`)
+  const [cmd, ...args] = message.trim().split(/\s+/);
 
-    logAction(`Following ${targetName}`)
-    const movements = new Movements(bot, mcData)
-    bot.pathfinder.setMovements(movements)
-    bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
-  } else if (message.startsWith('hunt ') || message.startsWith('kill ')) {
-    const prefix = message.startsWith('hunt ') ? 'hunt ' : 'kill ';
-    const targetName = message.substring(prefix.length)
-    let target = bot.players[targetName]?.entity
-    if (!target) {
-      target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
-    }
-    if (!target) return logError(`Could not find player or mob named ${targetName}.`)
+  switch (cmd.toLowerCase()) {
+    case 'hi':
+      if (args[0] && args[0].toLowerCase() === 'bot') {
+        bot.chat('hello there!');
+      }
+      break;
+    case 'say':
+      const messageToSay = args.join(' ');
+      bot.chat(messageToSay);
+      logAction(`Bot saying: "${messageToSay}"`);
+      break;
+    case 'follow': {
+      const name = args[0];
+      if (!name) return logError('Usage: follow <player>');
+      const target = bot.players[name]?.entity || bot.entities.find(e => e.name === name);
+      if (!target) return logError(`Cannot see ${name}.`);
 
-    const bow = bot.inventory.findInventoryItem('bow')
-    if (bow) {
-      logAction(`Attacking ${targetName} with a bow!`)
-      bot.hawkEye.autoAttack(target, 'bow')
-    } else {
-      logAction(`Attacking ${targetName} with melee.`)
-      bot.pvp.attack(target)
+      logAction(`Following ${name}`);
+      const movements = new Movements(bot, mcData);
+      bot.pathfinder.setMovements(movements);
+      bot.pathfinder.setGoal(new GoalFollow(target, 3), true);
+      break;
     }
-  } else if (message === 'chop') {
-    const treeBlock = bot.findBlock({
-      matching: block => block.name.includes('log'),
-      maxDistance: 64
-    })
-    if (!treeBlock) return logError('No trees nearby.')
+    case 'hunt':
+    case 'kill': {
+      const targetName = args[0];
+      let target = bot.players[targetName]?.entity;
+      if (!target) {
+        target = bot.entities.find(e => e.name === targetName && e.type === 'mob');
+      }
+      if (!target) return logError(`Could not find player or mob named ${targetName}.`);
 
-    logAction('Chopping nearest tree...')
-    try {
-      await bot.collectBlock.collect(treeBlock)
-      logAction('Finished chopping tree.')
-    } catch (err) {
-      logError(err.message)
+      const bow = bot.inventory.findInventoryItem('bow');
+      if (bow) {
+        logAction(`Attacking ${targetName} with a bow!`);
+        bot.hawkEye.autoAttack(target, 'bow');
+      } else {
+        logAction(`Attacking ${targetName} with melee.`);
+        bot.pvp.attack(target);
+      }
+      break;
     }
-  } else if (message === 'stop') {
-    logAction('Stopping all actions...')
-    bot.ashfinder?.stop?.()
-    bot.pathfinder.stop()
-    bot.pvp.stop()
+    case 'chop': {
+      const treeBlock = bot.findBlock({
+        matching: block => block.name.includes('log'),
+        maxDistance: 64
+      });
+      if (!treeBlock) return logError('No trees nearby.');
+
+      logAction('Chopping nearest tree...');
+      try {
+        await bot.collectBlock.collect(treeBlock);
+        logAction('Finished chopping tree.');
+      } catch (err) {
+        logError(err.message);
+      }
+      break;
+    }
+    case 'stop':
+      logAction('Stopping all actions...');
+      bot.ashfinder?.stop?.();
+      bot.pathfinder.stop();
+      bot.pvp.stop();
+      break;
+    case 'goto': {
+      const locations = await loadLocations();
+      const name = args[0];
+      let goal;
+
+      if (locations[name]) {
+        const { x, y, z } = locations[name];
+        goal = new goals.GoalExact(x, y, z);
+        logAction(`Going to saved location "${name}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`);
+      } else {
+        const x = parseInt(args[0]);
+        const y = parseInt(args[1]);
+        const z = parseInt(args[2]);
+        if (isNaN(x) || isNaN(y) || isNaN(z)) {
+          return logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+        }
+        goal = new goals.GoalExact(x, y, z);
+        logAction(`Going to ${x}, ${y}, ${z}`);
+      }
+      bot.ashfinder.gotoSmart(goal);
+      break;
+    }
+    case 'save': {
+      const name = args[0];
+      if (!name) return logError('Usage: save <name>');
+      const locations = await loadLocations();
+      const pos = bot.entity.position;
+      locations[name] = { x: pos.x, y: pos.y, z: pos.z };
+      await saveLocations(locations);
+      logAction(`Location "${name}" saved at ${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)}`);
+      break;
+    }
+    case 'list': {
+      const locations = await loadLocations();
+      const names = Object.keys(locations);
+      if (names.length === 0) {
+        logSystem('No locations saved.');
+        break;
+      }
+      logSystem('Saved locations:');
+      for (const locName of names) {
+        const { x, y, z } = locations[locName];
+        console.log(`  - ${locName}: ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`);
+      }
+      break;
+    }
+    case 'delete': {
+      const name = args[0];
+      if (!name) return logError('Usage: delete <name>');
+      const locations = await loadLocations();
+      if (!locations[name]) {
+        return logError(`Location "${name}" not found.`);
+      }
+      delete locations[name];
+      await saveLocations(locations);
+      logAction(`Location "${name}" deleted.`);
+      break;
+    }
+    case 'status': {
+      logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
+      break;
+    }
+    case 'quit':
+    case 'exit':
+      if (username === 'Luize26') {
+        logAction('Received quit/exit command via chat/whisper. Exiting...');
+        isIntentionalExit = true;
+        bot.end();
+      } else {
+        logError('Only Luize26 can issue quit/exit commands via chat/whisper.');
+      }
+      break;
+    default:
+      // If no command matched, check for 'bloop' for AI response
+      if (message.toLowerCase().includes('bloop')) {
+        logAction(`Responding to 'bloop' in chat from ${username} using Ollama (Host: ${OLLAMA_HOST}, Port: ${OLLAMA_PORT}, Model: ${OLLAMA_MODEL})...`);
+        const aiResponse = await callOllama(message);
+        if (aiResponse) {
+          bot.chat(aiResponse);
+        } else {
+          logError('Ollama API call failed or returned no response. Check Ollama server and model.');
+          bot.chat('I am unable to respond right now.');
+        }
+      } else {
+        logError(`Unknown in-game command or AI trigger: ${message}`);
+      }
+      break;
   }
 }
 
@@ -156,7 +259,7 @@ function startBot() {
     version: '1.21.8'
   })
 
-  const mcData = require('minecraft-data')(bot.version)
+  mcData = require('minecraft-data')(bot.version) // Assign to global mcData
 
   bot.loadPlugin(baritone)
   bot.loadPlugin(pathfinder)
@@ -165,17 +268,63 @@ function startBot() {
   bot.loadPlugin(pvp)
   bot.loadPlugin(armorManager)
   bot.loadPlugin(collectBlock)
-  inventoryViewer(bot)
+
+  // Initialize web inventory viewer only once, with port hopping
+  if (!webInventoryInstance) {
+    const startPort = 3000;
+    const maxPortAttempts = 5;
+    for (let i = 0; i < maxPortAttempts; i++) {
+      const port = startPort + i;
+      try {
+        webInventoryInstance = inventoryViewer(bot, { port: port });
+        logSystem(`Inventory web server running on *:${port}`);
+        break; // Successfully started, exit loop
+      } catch (err) {
+        if (err.code === 'EADDRINUSE') {
+          logError(`Port ${port} is in use for web inventory. Trying next port...`);
+          if (i === maxPortAttempts - 1) {
+            logError('All attempts to find a free port for web inventory failed.');
+            webInventoryInstance = null; // Ensure webInventoryInstance is null if all attempts fail
+          }
+        } else {
+          throw err; // Re-throw other errors
+        }
+      }
+    }
+  }
 
   // --- Bot Events ---
   bot.on('spawn', () => {
     logSystem('Bot spawned!')
-    mineflayerViewer(bot, { port: 3007, firstPerson: false })
+    // Initialize prismarine-viewer only once, with port hopping
+    if (!viewerInstance) {
+      const startPort = 3008;
+      const maxPortAttempts = 5;
+      for (let i = 0; i < maxPortAttempts; i++) {
+        const port = startPort + i;
+        try {
+          viewerInstance = mineflayerViewer(bot, { port: port, firstPerson: false });
+          logSystem(`Prismarine viewer web server running on *:${port}`);
+          break; // Successfully started, exit loop
+        } catch (err) {
+          if (err.code === 'EADDRINUSE') {
+            logError(`Port ${port} is in use. Trying next port...`);
+            if (i === maxPortAttempts - 1) {
+              logError('All attempts to find a free port for prismarine-viewer failed.');
+              viewerInstance = null; // Ensure viewerInstance is null if all attempts fail
+            }
+          } else {
+            throw err; // Re-throw other errors
+          }
+        }
+      }
+    }
     bot.armorManager.equipAll()
   })
 
   bot.on('chat', async (username, message) => {
-    if (username !== 'Luize26' && username !== bot.username) return;
+    if (username === bot.username) return; // Ignore own messages
+    //if (username !== 'Luize26' && username !== bot.username) return;
     logChat(username, message)
     await handleBotMessage(username, message);
   })
@@ -190,10 +339,28 @@ function startBot() {
   bot.on('end', (reason) => {
     if (isIntentionalExit) {
       logSystem('Exiting now.');
+      // Close web servers on intentional exit
+      if (viewerInstance && viewerInstance.close) {
+        viewerInstance.close();
+        viewerInstance = null;
+      }
+      if (webInventoryInstance && webInventoryInstance.close) {
+        webInventoryInstance.close();
+        webInventoryInstance = null;
+      }
       rl.close();
       process.exit(0);
     } else {
       logSystem(`Disconnected: ${reason}. Reconnecting in 5 seconds...`)
+      // Attempt to close web servers on unexpected disconnect before reconnecting
+      if (viewerInstance && viewerInstance.close) {
+        viewerInstance.close();
+        viewerInstance = null;
+      }
+      if (webInventoryInstance && webInventoryInstance.close) {
+        webInventoryInstance.close();
+        webInventoryInstance = null;
+      }
       setTimeout(startBot, 5000)
     }
   })
@@ -295,9 +462,9 @@ rl.on('line', async (input) => {
         break
       }
       logSystem('Saved locations:')
-      for (const name of names) {
-        const { x, y, z } = locations[name]
-        console.log(`  - ${name}: ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`)
+      for (const locName of names) {
+        const { x, y, z } = locations[locName]
+        console.log(`  - ${locName}: ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`)
       }
       break
     }
@@ -310,35 +477,35 @@ rl.on('line', async (input) => {
       }
       delete locations[name]
       await saveLocations(locations)
-      logAction(`Location "${name}" deleted.`)
-      break
+      logAction(`Location "${name}" deleted.`);
+      break;
     }
     case 'chop': {
-      const tree = bot.findBlock({ matching: b => b.name.includes('log'), maxDistance: 64 })
-      if (!tree) return logError('No trees nearby.')
-      logAction('Chopping tree...')
-      await bot.collectBlock.collect(tree)
-      break
+      const tree = bot.findBlock({ matching: b => b.name.includes('log'), maxDistance: 64 });
+      if (!tree) return logError('No trees nearby.');
+      logAction('Chopping tree...');
+      await bot.collectBlock.collect(tree);
+      break;
     }
     case 'stop':
-      bot.pathfinder.stop()
-      bot.pvp.stop()
-      bot.ashfinder?.stop?.()
-      logAction('Stopped.')
-      break
+      bot.pathfinder.stop();
+      bot.pvp.stop();
+      bot.ashfinder?.stop?.();
+      logAction('Stopped.');
+      break;
     case 'status': {
-      logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`)
-      break
+      logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
+      break;
     }
     case 'quit':
     case 'exit':
       isIntentionalExit = true;
-      bot.end()
-      break
+      bot.end();
+      break;
     default:
-      logError(`Unknown command: ${cmd}`)
+      logError(`Unknown command: ${cmd}`);
   }
-})
+});
 
 // Initial bot creation
-startBot()
+startBot();
