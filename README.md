@@ -42,7 +42,9 @@ MC_HOST=your_minecraft_server_ip
     ```bash
     node bot.js
     ```
-2.  **Access the viewer:** Open your web browser to `http://localhost:3007` to see the bot's perspective.
+2.  **Access the web interfaces:**
+    -   **botA:** Viewer at `http://localhost:3007`, Inventory at `http://localhost:3009`
+    -   **botB:** Viewer at `http://localhost:3008`, Inventory at `http://localhost:3010`
 3.  **Access the web inventory:** The web inventory will be available on a different port, which will be printed to the console when the bot starts.
 
 ## Commands

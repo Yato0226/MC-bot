@@ -90,12 +90,14 @@ function setupBotLogic(bot, botName) {
     bot.loadPlugin(pvp)
     bot.loadPlugin(armorManager)
     bot.loadPlugin(collectBlock)
-    inventoryViewer(bot, { port: botName === 'botA' ? 3008 : 3009 })
+
+    // Start viewers with unique ports
+    mineflayerViewer(bot, { port: botName === 'botA' ? 3007 : 3008, firstPerson: false })
+    inventoryViewer(bot, { port: botName === 'botA' ? 3009 : 3010 })
 
     // --- Bot Events ---
     bot.on('spawn', () => {
         logSystem(botName, 'Bot spawned!')
-        mineflayerViewer(bot, { port: botName === 'botA' ? 3006 : 3007, firstPerson: false })
         bot.armorManager.equipAll()
     })
 
