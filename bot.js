@@ -12,6 +12,39 @@ const armorManager = require('mineflayer-armor-manager')
 const collectBlock = require('mineflayer-collectblock').plugin
 const readline = require('readline')
 const chalk = require('chalk')
+const fs = require('fs').promises
+const path = require('path')
+const util = require('util')
+
+// --- Comprehensive Logging System ---
+const logFilePath = path.join(__dirname, 'saves', 'sys.log');
+const originalConsoleLog = console.log;
+const originalConsoleError = console.error;
+
+function stripAnsi (str) {
+  return str.replace(/[\u001b\u009b][[()#;?]*.{0,2}?[0-9@A-Z\\=a-z~]/g, '');
+}
+
+async function logToFile (message) {
+  const timestamp = new Date().toISOString();
+  const cleanMessage = stripAnsi(util.format.apply(null, message));
+  const logMessage = `[${timestamp}] ${cleanMessage}\n`;
+  try {
+    await fs.appendFile(logFilePath, logMessage);
+  } catch (err) {
+    originalConsoleError('Failed to write to log file:', err);
+  }
+}
+
+console.log = (...args) => {
+  originalConsoleLog.apply(console, args);
+  logToFile(args);
+};
+
+console.error = (...args) => {
+  originalConsoleError.apply(console, args);
+  logToFile(['ERROR:', ...args]);
+};
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -36,21 +69,38 @@ bot.loadPlugin(armorManager)
 bot.loadPlugin(collectBlock)
 inventoryViewer(bot)
 
+// --- File System for Saved Locations ---
+const locationsFilePath = path.join(__dirname, 'saves', 'locations.json')
+
+async function loadLocations () {
+  try {
+    const data = await fs.readFile(locationsFilePath, 'utf8')
+    return JSON.parse(data)
+  } catch (err) {
+    if (err.code === 'ENOENT') return {} // File doesn't exist
+    throw err
+  }
+}
+
+async function saveLocations (locations) {
+  await fs.writeFile(locationsFilePath, JSON.stringify(locations, null, 2))
+}
+
 // --- Custom Log System ---
-function logSystem(msg) {
+function logSystem (msg) {
   console.log(chalk.default.gray(`[SYSTEM] ${msg}`))
 }
 
-function logChat(user, msg) {
+function logChat (user, msg) {
   console.log(chalk.default.cyan(`[CHAT] ${user}: `) + chalk.default.white(msg))
 }
 
-function logAction(msg) {
+function logAction (msg) {
   console.log(chalk.default.green(`[ACTION] ${msg}`))
 }
 
-function logError(msg) {
-  console.log(chalk.default.red(`[ERROR] ${msg}`))
+function logError (msg) {
+  console.error(chalk.default.red(`[ERROR] ${msg}`))
 }
 
 // --- Bot Events ---
@@ -75,13 +125,23 @@ bot.on('chat', async (username, message) => {
     const movements = new Movements(bot, mcData)
     bot.pathfinder.setMovements(movements)
     bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
-  } else if (message.startsWith('hunt ')) {
-    const targetName = message.substring('hunt '.length)
-    const target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
-    if (!target) return logError(`Mob ${targetName} not found.`)
+    } else if (message.startsWith('hunt ') || message.startsWith('kill ')) {
+      const prefix = message.startsWith('hunt ') ? 'hunt ' : 'kill ';
+      const targetName = message.substring(prefix.length)
+      let target = bot.players[targetName]?.entity
+      if (!target) {
+        target = bot.entities.find(e => e.name === targetName && e.type === 'mob')
+      }
+      if (!target) return logError(`Could not find player or mob named ${targetName}.`)
 
-    logAction(`Hunting ${targetName}`)
-    bot.pvp.attack(target)
+      const bow = bot.inventory.findInventoryItem('bow')
+      if (bow) {
+        logAction(`Attacking ${targetName} with a bow!`)
+        bot.hawkEye.autoAttack(target, 'bow')
+      } else {
+        logAction(`Attacking ${targetName} with melee.`)
+        bot.pvp.attack(target)
+      }
   } else if (message === 'chop') {
     const treeBlock = bot.findBlock({
       matching: block => block.name.includes('log'),
@@ -115,6 +175,7 @@ bot.on('end', () => {
 logSystem('Type commands below. Examples: follow <player>, chop, stop, quit')
 
 rl.on('line', async (input) => {
+  logToFile([`TERMINAL COMMAND: ${input}`]);
   const [cmd, ...args] = input.trim().split(/\s+/)
 
   switch (cmd) {
@@ -130,6 +191,64 @@ rl.on('line', async (input) => {
       bot.pathfinder.setMovements(movements)
       bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
       logAction(`Following ${name}`)
+      break
+    }
+    case 'goto': {
+      const locations = await loadLocations()
+      const name = args[0]
+      let goal
+
+      if (locations[name]) {
+        const { x, y, z } = locations[name]
+        goal = new goals.GoalExact(x, y, z)
+        logAction(`Going to saved location "${name}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`)
+      } else {
+        const x = parseInt(args[0])
+        const y = parseInt(args[1])
+        const z = parseInt(args[2])
+        if (isNaN(x) || isNaN(y) || isNaN(z)) {
+          return logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>')
+        }
+        goal = new goals.GoalExact(x, y, z)
+        logAction(`Going to ${x}, ${y}, ${z}`)
+      }
+      bot.ashfinder.gotoSmart(goal)
+      break
+    }
+    case 'save': {
+      const name = args[0]
+      if (!name) return logError('Usage: save <name>')
+      const locations = await loadLocations()
+      const pos = bot.entity.position
+      locations[name] = { x: pos.x, y: pos.y, z: pos.z }
+      await saveLocations(locations)
+      logAction(`Location "${name}" saved at ${pos.x.toFixed(1), pos.y.toFixed(1), pos.z.toFixed(1)}`)
+      break
+    }
+    case 'list': {
+      const locations = await loadLocations()
+      const names = Object.keys(locations)
+      if (names.length === 0) {
+        logSystem('No locations saved.')
+        break
+      }
+      logSystem('Saved locations:')
+      for (const name of names) {
+        const { x, y, z } = locations[name]
+        console.log(`  - ${name}: ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`)
+      }
+      break
+    }
+    case 'delete': {
+      const name = args[0]
+      if (!name) return logError('Usage: delete <name>')
+      const locations = await loadLocations()
+      if (!locations[name]) {
+        return logError(`Location "${name}" not found.`)
+      }
+      delete locations[name]
+      await saveLocations(locations)
+      logAction(`Location "${name}" deleted.`)
       break
     }
     case 'chop': {
