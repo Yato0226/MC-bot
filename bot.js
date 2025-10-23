@@ -264,6 +264,10 @@ rl.on('line', async (input) => {
       bot.ashfinder?.stop?.()
       logAction('Stopped.')
       break
+    case 'status': {
+      logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`)
+      break
+    }
     case 'quit':
     case 'exit':
       rl.close()

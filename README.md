@@ -64,6 +64,7 @@ Interact with the bot directly from the terminal where it's running:
 -   `follow <player_name>`: The bot will follow the specified player.
 -   `chop`: The bot will find and chop the nearest tree.
 -   `stop`: Stops all current actions (pathfinding, PVP, etc.).
+-   `status`: Displays the bot's current health, food, and saturation levels.
 -   `quit` or `exit`: Disconnects the bot and closes the terminal interface.
 
 ### Location Management Commands
