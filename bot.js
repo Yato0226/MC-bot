@@ -58,6 +58,7 @@ let isIntentionalExit = false;
 let viewerInstance = null; // To store the prismarine-viewer instance
 let webInventoryInstance = null; // To store the mineflayer-web-inventory instance
 let pathfinderListenersAttached = false;
+let isAttacking = false;
 
 // Ollama Configuration
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
@@ -134,13 +135,13 @@ async function saveSettings() {
 }
 
 // --- Auto-Eat Feature ---
-let isEating = false;
 const EAT_THRESHOLD = 16; // Eat when food is at 8 hunger icons (16/20)
-
-// --- Auto-Defend Feature ---
+const HEALTH_EAT_THRESHOLD = 15; // Eat when health is below 15 (7.5 hearts)
+const MAX_EAT_RETRIES = 3; // Max retries for eating
 
 async function autoEat() {
-    if (!settings.autoEat || isEating || bot.food >= EAT_THRESHOLD) {
+    // Check if autoEat is enabled, bot is already eating, or food/health is sufficient
+    if (!settings.autoEat || bot.isEating || (bot.food >= EAT_THRESHOLD && bot.health >= HEALTH_EAT_THRESHOLD)) {
         return;
     }
 
@@ -173,24 +174,30 @@ async function autoEat() {
         return;
     }
 
-    isEating = true;
-    logAction('Hunger low, attempting to eat...');
+    logAction('Hunger low or health low, attempting to eat...');
 
-    try {
-        const heldItem = bot.heldItem;
-        logAction(`Equipping and eating ${bestFood.displayName}...`);
-        await bot.equip(bestFood, 'hand');
-        await bot.consume();
-        logAction('Finished eating.');
+    const heldItem = bot.heldItem;
+    let retries = 0;
+    let eatenSuccessfully = false;
 
-        // Re-equip previous item if it existed
-        if (heldItem) {
-            await bot.equip(heldItem, 'hand');
+    while (retries < MAX_EAT_RETRIES && !eatenSuccessfully) {
+        try {
+            logAction(`Equipping and eating ${bestFood.displayName}... (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
+            await bot.equip(bestFood, 'hand');
+            await bot.consume();
+            logAction('Finished eating.');
+            eatenSuccessfully = true;
+        } catch (err) {
+            logError(`Could not eat: ${err.message} (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
+            retries++;
+            // Wait a bit before retrying
+            await new Promise(resolve => setTimeout(resolve, 1000));
         }
-    } catch (err) {
-        logError(`Could not eat: ${err.message}`);
-    } finally {
-        isEating = false;
+    }
+
+    // Re-equip previous item if it existed
+    if (heldItem) {
+        await bot.equip(heldItem, 'hand');
     }
 }
 
@@ -280,7 +287,17 @@ async function callOllama(prompt) {
       body: JSON.stringify({
         model: OLLAMA_MODEL,
         messages: [
-          { role: 'system', content: 'You are a Minecraft bot that acts like a human player. When asked to execute a command, respond with a JSON object containing the command and its arguments. For example, if asked to "hunt sheeps, cows, chickens", respond with { "command": "hunt", "targets": ["sheep", "cow", "chicken"] }. If asked to "goto 10 20 30", respond with { "command": "goto", "x": 10, "y": 20, "z": 30 }. If the command is not recognized or cannot be structured as JSON, respond naturally and concisely.' },
+          { 
+                        role: 'system',
+                        content: 'You are a Minecraft bot. Your task is to convert user requests into structured JSON commands. Your response MUST be a valid JSON object and contain NOTHING else. Do NOT include any conversational text, explanations, or markdown formatting outside of the JSON object itself. \n' +
+                                 'Examples:\n' +
+                                 '- User: "hunt the sheep and the zombie"\n' +
+                                 '- You: { "command": "hunt", "targets": ["sheep", "zombie"] }\n' +
+                                 '- User: "go to -100 64 50"\n' +
+                                 '- You: { "command": "goto", "x": -100, "y": 64, "z": 50 }\n' +
+                                 '- User: "how are you?"\n' +
+                                 '- You: { "command": "chat", "message": "I am a bot, I am doing well!" }\n' +
+                                 'If the request is conversational, use the "chat" command. If a command is not recognized, respond with { "command": "unknown" }.'          },
           { role: 'user', content: prompt }
         ],
         stream: false,
@@ -292,7 +309,9 @@ async function callOllama(prompt) {
     }
 
     const data = await response.json();
-    return data.message.content;
+    // Clean up potential markdown code blocks from the AI response
+    const cleanedContent = data.message.content.replace(/```json\n|```/g, '').trim();
+    return cleanedContent;
   } catch (error) {
     logError(`Error calling Ollama API: ${error.message}`);
     return null;
@@ -388,46 +407,79 @@ async function handleBotMessage(username, message, isWhisper = false) {
     }
     case 'hunt':
     case 'kill': {
+      if (isAttacking) {
+        respond(username, 'I am already attacking something!', isWhisper);
+        break;
+      }
+
       let targetsToHunt = [];
+      // Handles AI commands like "kill the sheep and the zombie"
       if (aiCommand && aiCommand.targets && Array.isArray(aiCommand.targets)) {
         targetsToHunt = aiCommand.targets;
-      } else {
-        targetsToHunt = [args[0]]; // Fallback to single target from original parsing
+      } else if (args.length > 0) {
+        targetsToHunt = args; // Handles manual chat commands like "kill sheep zombie"
+      }
+
+      if (targetsToHunt.length === 0) {
+        logError('Usage: hunt <name> or kill <name>');
+        break;
       }
 
       for (const targetName of targetsToHunt) {
-        if (!targetName) {
-          logError('Usage: hunt <name> or kill <name>');
-          continue;
-        }
+        if (!targetName) continue;
 
-        // Check if the target is a whitelisted player
         if (settings.whitelistedPlayers.includes(targetName)) {
             logAction(`Player ${targetName} is whitelisted. Not attacking.`);
             continue;
         }
 
-        let target = bot.players[targetName]?.entity;
-        if (!target) {
-          target = Object.values(bot.entities).find(e => e.name.toLowerCase() === targetName.toLowerCase() && e.type === 'mob');
-        }
-        if (!target) {
-            logError(`Could not find player or mob named ${targetName}.`);
-            continue;
-        }
+        // This is the corrected search logic you already implemented
+                let target = bot.players[targetName]?.entity;
+                if (!target) {
+                  /*logSystem('--- Debug: Nearby Entities ---');
+                  Object.values(bot.entities).forEach(e => {
+                    logSystem(`Entity: Type=${e.type}, Name=${e.name}, DisplayName=${e.displayName?.toString()}`);
+                  });
+                  logSystem('--- End Debug ---');*/
+                  const lowerCaseTargetName = targetName.toLowerCase();
+                  target = bot.nearestEntity(entity => {                    if (!(entity.type === 'mob' || entity.type === 'player' || entity.type === 'animal')) return false;
+                    const displayName = entity.displayName?.toString().toLowerCase();
+                    const internalName = entity.name?.toLowerCase();
+                    return displayName === lowerCaseTargetName || internalName === lowerCaseTargetName;
+                  });
+                }
 
+        // --- THIS IS THE CRUCIAL NEW PART ---
+        if (!target) {
+          logError(`Could not find a mob named '${targetName}'.`);
+
+          // Get a list of unique mob names the bot can currently see
+          const nearbyMobs = Object.values(bot.entities)
+            .filter(e => e.type === 'mob' && e.displayName)
+            .map(e => e.displayName.toString())
+            .filter((name, index, self) => self.indexOf(name) === index); // Get unique names
+
+          if (nearbyMobs.length > 0) {
+            respond(username, `I can't find a '${targetName}', but I do see: ${mobList}.`, isWhisper);
+          } else {
+            respond(username, `I can't find a '${targetName}'. I don't see any mobs nearby. Get closer.`, isWhisper);
+          }
+          continue; // Move to the next target if there are multiple
+        }
+        // --- END OF NEW PART ---
+
+        logAction(`Found ${target.displayName}. Attacking!`);
+        isAttacking = true; // Set flag when attack starts
         const bow = bot.inventory.findInventoryItem('bow');
         if (bow) {
-          logAction(`Attacking ${targetName} with a bow!`);
           bot.hawkEye.autoAttack(target, 'bow');
         } else {
-          logAction(`Attacking ${targetName} with melee.`);
           bot.pvp.attack(target);
         }
+        // No immediate stop calls here, rely on event listeners
       }
       break;
-    }
-    case 'chop': {
+    }    case 'chop': {
       const treeBlock = bot.findBlock({
         matching: block => block.name.includes('log'),
         maxDistance: 64
@@ -448,6 +500,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
       bot.ashfinder?.stop?.();
       bot.pathfinder.stop();
       bot.pvp.stop();
+      bot.hawkEye.stop();
       break;
     case 'goto': {
       const locations = await loadLocations();
@@ -507,11 +560,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
       }
       delete locations[name];
       await saveLocations(locations);
-      logAction(`Location "${name}" deleted.`);
-      break;
-    }
-    case 'status': {
-      logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
+      respond(username, `Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`, isWhisper);
       break;
     }
     case 'give': {
@@ -547,38 +596,57 @@ async function handleBotMessage(username, message, isWhisper = false) {
       }
       break;
     default: {
-      // Any command not explicitly recognized is sent to the AI for interpretation.
-      // We create a specific prompt based on whether "bloop" is used.
-      const promptForAI = message.toLowerCase().includes('bloop')
-        ? message // If "bloop" is present, send the raw message for full context.
-        : `Execute the command: ${message}`; // If not, explicitly ask the AI to create a command.
+      let promptForAI = message;
+      // If "bloop" is used, strip it to focus the AI on the actual command.
+      if (typeof message === 'string' && message.toLowerCase().startsWith('bloop')) {
+        promptForAI = message.substring(5).trim(); // Remove "bloop "
+      }
+
+      // Do not send empty prompts to the AI
+      if (!promptForAI) {
+        break;
+      }
 
       logAction(`Sending prompt to Ollama: "${promptForAI}"`);
       const aiResponse = await callOllama(promptForAI);
 
-      if (aiResponse) {
-        let commandObject;
-        try {
-          // Attempt to parse the AI's response as a JSON command.
-          commandObject = JSON.parse(aiResponse);
-        } catch (e) {
-          // If parsing fails, it's a natural language response.
-          commandObject = null;
-        }
-
-        // If the AI returned a valid JSON command, execute it.
+              if (aiResponse) {
+                let commandObject;
+                try {
+                  // Basic validation: check if it looks like a JSON object
+                  if (!aiResponse.startsWith('{') || !aiResponse.endsWith('}')) {
+                      throw new Error('AI response is not a valid JSON object (missing curly braces).');
+                  }
+                  commandObject = JSON.parse(aiResponse);
+                } catch (e) {
+                  logError(`AI returned a non-JSON response: ${aiResponse}. Error: ${e.message}`);
+                  respond(username, `I didn't understand that. The AI said: ${aiResponse}`, isWhisper);
+                  break;
+                }
         if (commandObject && typeof commandObject === 'object' && commandObject.command) {
+          // Handle special cases from the new AI prompt
+          if (commandObject.command === 'chat') {
+            logAction('AI returned a chat response.');
+            respond(username, commandObject.message, isWhisper);
+            break;
+          }
+          if (commandObject.command === 'unknown') {
+            logError('AI could not determine a command.');
+            respond(username, "I'm not sure how to do that.", isWhisper);
+            break;
+          }
+
           logAction('AI returned a valid command. Executing...');
-          handleBotMessage(username, commandObject, isWhisper); // Re-run this function with the structured command.
+          // Re-run this function with the structured command.
+          // We use the AI's command object directly as the 'message'.
+          await handleBotMessage(username, commandObject, isWhisper);
         } else {
-          // Otherwise, the AI returned a regular chat message.
-          // This allows the bot to answer questions like "bloop how are you?"
-          logAction('AI returned a natural language response. Relaying to chat...');
-          respond(username, aiResponse, isWhisper);
+          logError(`AI returned invalid or incomplete JSON: ${aiResponse}`);
+          respond(username, 'I received a malformed command from the AI.', isWhisper);
         }
       } else {
         logError('Ollama API call failed or returned no response. Check Ollama server and model.');
-        respond(username, 'I am unable to respond right now.', isWhisper);
+        respond(username, 'I am unable to process AI commands right now.', isWhisper);
       }
       break;
     }
@@ -659,22 +727,16 @@ async function handleBotMessage(username, message, isWhisper = false) {
         }
     }
   });
-  bot.on('entityGone', async (entity) => {
-      if (entity.type === 'mob') {
-          setTimeout(async () => {
-              const items = bot.findBlocks({ matching: (block) => block.name.includes('air'), maxDistance: 16, point: entity.position });
-              for (const item of items) {
-                  const block = bot.blockAt(item);
-                  if (block && block.name !== 'air') {
-                      try {
-                          await bot.collectBlock.collect(block);
-                      } catch (err) {
-                          logError(`Could not collect ${block.name}: ${err.message}`);
-                      }
-                  }
-              }
-          }, 1000);
+
+  bot.on('itemDrop', async (entity) => {
+    if (entity.type === 'item') {
+      logAction(`Collecting dropped item: ${entity.displayName}`);
+      try {
+        await bot.collectBlock.collect(entity);
+      } catch (err) {
+        logError(`Could not collect item ${entity.displayName}: ${err.message}`);
       }
+    }
   });
   bot.on('spawn', () => {
     logSystem('Bot spawned!')
@@ -695,11 +757,15 @@ async function handleBotMessage(username, message, isWhisper = false) {
         
         const movements = new Movements(bot, mcData);
         bot.pathfinder.setMovements(movements);
-        bot.pathfinder.setGoal(newGoal);
+        bot.pathfinder.setGoal(newGoal, true);
       });
 
       bot.ashfinder.on('goal-reach', (goal) => {
-        logAction(`Baritone goal reached: ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}`);
+        if (goal && typeof goal.x === 'number' && typeof goal.y === 'number' && typeof goal.z === 'number') {
+          logAction(`Baritone goal reached: ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}`);
+        } else {
+          logAction('Baritone goal reached!');
+        }
       });
 
       bot.ashfinder.on('goal-reach', () => {
@@ -733,6 +799,18 @@ async function handleBotMessage(username, message, isWhisper = false) {
     }
     bot.armorManager.equipAll()
   })
+
+  // Add listeners to reset isAttacking flag
+  bot.on('stoppedAttacking', () => {
+    isAttacking = false;
+    logAction('PVP attack stopped.');
+  });
+
+  // Assuming minecrafthawkeye also has a 'stoppedAttacking' event
+  bot.on('stoppedAttacking', () => {
+    isAttacking = false;
+    logAction('HawkEye attack stopped.');
+  });
 
   bot.on('chat', async (username, message) => {
     if (username === bot.username) return; // Ignore own messages
@@ -848,9 +926,22 @@ rl.on('line', async (input) => {
         const y = parseInt(args[1])
         const z = parseInt(args[2])
         if (isNaN(x) || isNaN(y) || isNaN(z)) {
-            const aiResponse = await callOllama(`Execute the command: ${input}`); // Use input here
+            const aiResponse = await callOllama(`go to ${input}`); // Use input here
             if (aiResponse) {
-                handleBotMessage(null, aiResponse); // Pass null for username as it's from terminal
+                let commandObject;
+                try {
+                    commandObject = JSON.parse(aiResponse);
+                } catch (e) {
+                    logError(`AI returned a non-JSON response for goto: ${aiResponse}`);
+                    logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+                    return;
+                }
+                if (commandObject && typeof commandObject === 'object' && commandObject.command === 'goto') {
+                    handleBotMessage(null, commandObject); // Pass null for username as it's from terminal
+                } else {
+                    logError(`AI could not interpret goto command: ${input}. Response: ${aiResponse}`);
+                    logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+                }
             } else {
                 logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
             }
@@ -912,7 +1003,7 @@ rl.on('line', async (input) => {
       logAction('Stopped.');
       break;
     case 'status': {
-      logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
+      bot.chat(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
       break;
     }
     case 'autoeat': {
@@ -955,7 +1046,7 @@ rl.on('line', async (input) => {
     }
     case 'setspawn': {
         const bedBlock = bot.findBlock({
-            matching: block => bot.isABed(block),
+            matching: block => block.name.includes('_bed'),
             maxDistance: 32
         });
         if (!bedBlock) return logError('No bed found nearby to set spawn.');
@@ -1026,16 +1117,36 @@ rl.on('line', async (input) => {
       bot.end();
       break;
     default:
-      const aiResponse = await callOllama(`Execute the command: ${input}`); // Use input here
+      const aiResponse = await callOllama(input); // Use input here
       if (aiResponse) {
-          // If AI response is JSON, it means it's a command to be executed
-          if (typeof aiResponse === 'object' && aiResponse !== null && aiResponse.command) {
-            handleBotMessage(null, aiResponse); // Pass null for username as it's from terminal
-          } else {
-            logError(`AI could not interpret command: ${input}. Response: ${aiResponse}`);
-          }
-      } else {
+        let commandObject;
+        try {
+          commandObject = JSON.parse(aiResponse);
+        } catch (e) {
+          logError(`AI returned a non-JSON response: ${aiResponse}`);
           logError(`Unknown command: ${cmd}`);
+          break;
+        }
+
+        if (commandObject && typeof commandObject === 'object' && commandObject.command) {
+          if (commandObject.command === 'chat') {
+            logAction('AI returned a chat response.');
+            logSystem(commandObject.message);
+            break;
+          }
+          if (commandObject.command === 'unknown') {
+            logError('AI could not determine a command.');
+            logError(`Unknown command: ${cmd}`);
+            break;
+          }
+          logAction('AI returned a valid command. Executing...');
+          handleBotMessage(null, commandObject); // Pass null for username as it's from terminal
+        } else {
+          logError(`AI returned invalid or incomplete JSON: ${aiResponse}`);
+          logError(`Unknown command: ${cmd}`);
+        }
+      } else {
+        logError(`Ollama API call failed or returned no response. Unknown command: ${cmd}`);
       }
       break;
   }

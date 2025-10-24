@@ -477,3 +477,1887 @@
 [2025-10-24T09:32:06.918Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
 [2025-10-24T09:32:09.630Z] 2m[ACTION] AI returned a natural language response. Relaying to chat...9m
 [2025-10-24T09:35:51.439Z] TERMINAL COMMAND: quit
+[2025-10-24T09:40:24.423Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:40:25.623Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:40:25.625Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:40:27.760Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:40:27.864Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:40:27.867Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:40:57.628Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
+[2025-10-24T09:40:57.629Z] 2m[ACTION] Sending prompt to Ollama: "goto -193 102 -91"9m
+[2025-10-24T09:40:59.932Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T09:40:59.988Z] Generated 5 waypoints (218.4 blocks)
+[2025-10-24T09:40:59.936Z] 2m[ACTION] Going to AI-specified coordinates -193, 102, -919m
+[2025-10-24T09:40:59.988Z] → Waypoint 1/5: (-34.5, 132, -20.5)
+[2025-10-24T09:40:59.936Z] [AshFinder] Long distance: 218.4 blocks
+[2025-10-24T09:44:19.197Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:44:20.432Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:44:20.433Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:44:22.420Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:44:22.537Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:44:22.539Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:44:40.270Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
+[2025-10-24T09:44:40.271Z] 2m[ACTION] Sending prompt to Ollama: "goto -193 102 -91"9m
+[2025-10-24T09:44:40.909Z] ERROR: 1m[ERROR] AI returned a non-JSON response: Okay, I understand. I will only provide the JSON object and no other information.9m
+[2025-10-24T09:45:05.132Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
+[2025-10-24T09:45:05.132Z] 2m[ACTION] Sending prompt to Ollama: "goto -193 102 -91"9m
+[2025-10-24T09:45:05.595Z] ERROR: 1m[ERROR] AI returned a non-JSON response: Okay, I understand. I will respond only with the JSON object and no other information. Let's begin.9m
+[2025-10-24T09:47:13.365Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:47:14.512Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:47:14.514Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:47:16.645Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:47:16.759Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:47:16.761Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:47:46.281Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
+[2025-10-24T09:47:46.282Z] 2m[ACTION] Sending prompt to Ollama: "goto -193 102 -91"9m
+[2025-10-24T09:47:47.183Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T09:47:47.186Z] 2m[ACTION] Going to AI-specified coordinates -193, 102, -919m
+[2025-10-24T09:47:47.186Z] [AshFinder] Long distance: 178.5 blocks
+[2025-10-24T09:47:47.250Z] → Waypoint 1/5: (-63.5, 106, -46.5)
+[2025-10-24T09:47:47.250Z] Generated 5 waypoints (178.5 blocks)
+[2025-10-24T09:48:22.523Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:48:22.524Z] ✓ Reached waypoint 1
+[2025-10-24T09:48:22.523Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:48:22.525Z] → Waypoint 2/5: (-112.5, 99, -55.5)
+[2025-10-24T09:49:04.035Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:49:04.035Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:50:41.022Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
+[2025-10-24T09:50:41.023Z] 2m[ACTION] Sending prompt to Ollama: "goto -193 102 -91"9m
+[2025-10-24T09:50:41.622Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T09:50:41.623Z] 2m[ACTION] Going to AI-specified coordinates -193, 102, -919m
+[2025-10-24T09:50:41.623Z] [AshFinder] Long distance: 90.8 blocks
+[2025-10-24T09:50:41.624Z] Generated 3 waypoints (90.8 blocks)
+[2025-10-24T09:50:41.624Z] → Waypoint 1/3: (-151.5, 112, -72.5)
+[2025-10-24T09:51:14.102Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:51:14.102Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:51:14.103Z] → Waypoint 2/3: (-192.5, 102, -90.5)
+[2025-10-24T09:51:14.102Z] ✓ Reached waypoint 1
+[2025-10-24T09:51:45.504Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:51:45.504Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:51:45.504Z] ✓ Reached waypoint 2
+[2025-10-24T09:51:45.505Z] → Waypoint 3/3: (-193, 102, -91)
+[2025-10-24T09:52:16.636Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T09:52:16.732Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:52:16.733Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:52:16.734Z] ⚠ Close to goal (0.4 blocks), attempting final approach...
+[2025-10-24T09:52:16.734Z] ✓ Reached waypoint 3
+[2025-10-24T09:52:46.983Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T09:52:47.081Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:52:47.080Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:52:57.811Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop follow me9m
+[2025-10-24T09:52:57.811Z] 2m[ACTION] Sending prompt to Ollama: "follow me"9m
+[2025-10-24T09:52:58.599Z] ERROR: 1m[ERROR] AI returned a non-JSON response: Okay, I understand. I will only respond with the JSON object and nothing else.9m
+[2025-10-24T09:53:12.959Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop follow luize269m
+[2025-10-24T09:53:12.960Z] 2m[ACTION] Sending prompt to Ollama: "follow luize26"9m
+[2025-10-24T09:53:13.400Z] ERROR: 1m[ERROR] Ollama API call failed or returned no response. Check Ollama server and model.9m
+[2025-10-24T09:53:17.335Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T09:53:17.430Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:53:17.430Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:53:29.683Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop follow Luize269m
+[2025-10-24T09:53:29.683Z] 2m[ACTION] Sending prompt to Ollama: "follow Luize26"9m
+[2025-10-24T09:53:30.167Z] ERROR: 1m[ERROR] Ollama API call failed or returned no response. Check Ollama server and model.9m
+[2025-10-24T09:53:47.658Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T09:53:47.781Z] 2m[ACTION] Baritone goal reached!9m
+[2025-10-24T09:53:47.782Z] 2m[ACTION] Mineflayer-pathfinder goal reached!9m
+[2025-10-24T09:54:05.656Z] 6m[CHAT] Luize26: 9m7m[WHISPER] setspawn9m
+[2025-10-24T09:54:05.656Z] 2m[ACTION] Sending prompt to Ollama: "setspawn"9m
+[2025-10-24T09:55:21.312Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:55:22.408Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:55:22.409Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:55:24.508Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:55:24.630Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:55:24.633Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:55:27.197Z] 6m[CHAT] Luize26: 9m7m[WHISPER] setspawn9m
+[2025-10-24T09:55:27.199Z] 2m[ACTION] Sending prompt to Ollama: "setspawn"9m
+[2025-10-24T09:55:27.975Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T09:55:27.975Z] 2m[ACTION] Sending prompt to Ollama: "[object Object]"9m
+[2025-10-24T09:55:27.981Z] ERROR: 1m[ERROR] Error calling Ollama API: Ollama API responded with status 400: Bad Request9m
+[2025-10-24T09:55:27.982Z] ERROR: 1m[ERROR] Ollama API call failed or returned no response. Check Ollama server and model.9m
+[2025-10-24T09:55:57.354Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop9m
+[2025-10-24T09:56:44.251Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop9m
+[2025-10-24T09:57:17.150Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-24T09:57:17.151Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T09:57:24.697Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:57:25.836Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:57:25.838Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:57:27.710Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:57:27.826Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:57:27.828Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:57:36.848Z] TERMINAL COMMAND: setspawn
+[2025-10-24T09:57:37.372Z] 2m[ACTION] Spawn point set at bed.9m
+[2025-10-24T09:58:56.490Z] TERMINAL COMMAND: quit
+[2025-10-24T09:58:58.766Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:58:59.793Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:58:59.795Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:59:01.760Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:59:01.871Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:59:01.873Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:59:30.181Z] TERMINAL COMMAND: setspawn
+[2025-10-24T09:59:30.427Z] 2m[ACTION] Spawn point set at bed.9m
+[2025-10-24T09:59:31.489Z] 6m[CHAT] Luize26: 9m7m[WHISPER] setspawn9m
+[2025-10-24T09:59:31.490Z] 2m[ACTION] Sending prompt to Ollama: "setspawn"9m
+[2025-10-24T09:59:32.299Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T09:59:32.299Z] 2m[ACTION] Sending prompt to Ollama: "[object Object]"9m
+[2025-10-24T09:59:32.305Z] ERROR: 1m[ERROR] Error calling Ollama API: Ollama API responded with status 400: Bad Request9m
+[2025-10-24T09:59:32.305Z] ERROR: 1m[ERROR] Ollama API call failed or returned no response. Check Ollama server and model.9m
+[2025-10-24T10:00:07.654Z] TERMINAL COMMAND: setspawn
+[2025-10-24T10:00:07.703Z] 2m[ACTION] Spawn point set at bed.9m
+[2025-10-24T10:00:20.855Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop9m
+[2025-10-24T10:00:31.126Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-24T10:00:31.126Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T10:00:34.231Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:00:35.312Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:00:35.315Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:00:37.175Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:00:37.284Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:00:37.286Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:00:52.198Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop9m
+[2025-10-24T10:01:30.772Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hey bloop9m
+[2025-10-24T10:01:30.773Z] 2m[ACTION] Sending prompt to Ollama: "hey bloop"9m
+[2025-10-24T10:01:33.054Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T10:02:10.907Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow me9m
+[2025-10-24T10:02:10.908Z] ERROR: 1m[ERROR] Cannot see me.9m
+[2025-10-24T10:02:20.015Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:02:20.015Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:02:47.115Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:02:47.115Z] ERROR: 1m[ERROR] Could not find player or mob named sheep.9m
+[2025-10-24T10:03:10.831Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:03:10.832Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:03:10.898Z] ERROR: 1m[ERROR] Could not collect cave_air: The goal was changed before it could be completed!9m
+[2025-10-24T10:04:02.438Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill Sheep9m
+[2025-10-24T10:04:02.438Z] ERROR: 1m[ERROR] Could not find player or mob named Sheep.9m
+[2025-10-24T10:05:21.979Z] TERMINAL COMMAND: quit
+[2025-10-24T10:05:25.483Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:05:26.582Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:05:26.584Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:05:28.677Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:05:28.786Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:05:28.790Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:05:48.111Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill Sheep9m
+[2025-10-24T10:05:48.113Z] ERROR: 1m[ERROR] Could not find player or mob named Sheep.9m
+[2025-10-24T10:06:51.384Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill minecraft:sheep9m
+[2025-10-24T10:06:51.385Z] ERROR: 1m[ERROR] Could not find player or mob named minecraft:sheep.9m
+[2025-10-24T10:07:21.591Z] TERMINAL COMMAND: quit
+[2025-10-24T10:07:28.759Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:07:29.847Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:07:29.848Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:07:31.754Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:07:31.865Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:07:31.867Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:08:01.171Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:08:01.173Z] ERROR: 1m[ERROR] Could not find player or mob named sheep.9m
+[2025-10-24T10:11:17.965Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T10:11:17.966Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T10:11:23.086Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:11:24.194Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:11:24.196Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:11:26.220Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:11:26.333Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:11:26.336Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:11:54.722Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:11:54.724Z] ERROR: 1m[ERROR] Could not find player or mob named sheep.9m
+[2025-10-24T10:14:47.841Z] TERMINAL COMMAND: quit
+[2025-10-24T10:14:50.065Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:14:51.168Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:14:51.169Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:14:53.274Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:14:53.395Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:14:53.391Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:14:55.759Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:14:55.762Z] ERROR: 1m[ERROR] Could not find a mob named 'sheep'.9m
+[2025-10-24T10:15:24.841Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:15:24.841Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:15:43.221Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:15:43.222Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:15:51.116Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:15:51.116Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:16:03.294Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:16:03.295Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:16:07.303Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:16:07.304Z] ERROR: 1m[ERROR] Could not find a mob named 'sheep'.9m
+[2025-10-24T10:16:12.868Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:16:12.869Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:16:18.113Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill Sheep9m
+[2025-10-24T10:16:18.113Z] ERROR: 1m[ERROR] Could not find a mob named 'Sheep'.9m
+[2025-10-24T10:16:28.893Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill minecraft:sheep9m
+[2025-10-24T10:16:28.893Z] ERROR: 1m[ERROR] Could not find a mob named 'minecraft:sheep'.9m
+[2025-10-24T10:16:46.690Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill Luize269m
+[2025-10-24T10:16:46.691Z] 2m[ACTION] Player Luize26 is whitelisted. Not attacking.9m
+[2025-10-24T10:16:58.958Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill Bee9m
+[2025-10-24T10:16:58.959Z] ERROR: 1m[ERROR] Could not find a mob named 'Bee'.9m
+[2025-10-24T10:17:44.621Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:17:45.722Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:17:45.724Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:17:47.895Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:17:48.006Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:17:48.008Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:17:48.009Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:18:18.501Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:18:18.502Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:18:18.503Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:18:18.503Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:18:18.504Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:18:18.504Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:18:18.504Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:18:18.504Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:18:18.505Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:18:18.505Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:18:18.505Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:18:18.505Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:18:18.506Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:18:18.506Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:18:18.506Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:18:18.506Z] 0m[SYSTEM] Entity: Type=animal, Name=rabbit, DisplayName=Rabbit9m
+[2025-10-24T10:18:18.507Z] 0m[SYSTEM] Entity: Type=animal, Name=donkey, DisplayName=Donkey9m
+[2025-10-24T10:18:18.507Z] 0m[SYSTEM] Entity: Type=animal, Name=rabbit, DisplayName=Rabbit9m
+[2025-10-24T10:18:18.508Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:18:18.508Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:18:18.508Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:18:18.508Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:18:18.509Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:18:18.509Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:18:18.509Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:18:18.510Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:18:18.510Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:18:18.510Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:18:18.511Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:18:18.511Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.511Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.511Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:18:18.512Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:18:18.512Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:18:18.512Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.512Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:18:18.513Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.513Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:18:18.513Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.513Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:18:18.514Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.514Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.514Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.514Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.515Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.515Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.515Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.515Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.516Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.518Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.518Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:18:18.518Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.519Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.520Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.520Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.520Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.520Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.521Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.521Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.521Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.521Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.522Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.522Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.522Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.523Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.523Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.523Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.523Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.524Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.524Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:18:18.524Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.524Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:18:18.525Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.525Z] 0m[SYSTEM] Entity: Type=animal, Name=bee, DisplayName=Bee9m
+[2025-10-24T10:18:18.525Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.526Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.526Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.526Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.527Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.527Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.527Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.527Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.528Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.528Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.528Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.528Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.529Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:18:18.529Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.529Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:18:18.529Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.530Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.530Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.530Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:18:18.531Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.531Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:18:18.531Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.531Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.532Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.532Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.532Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.532Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.533Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.533Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.534Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:18:18.534Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.535Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:18:18.535Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.535Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:18:18.535Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:18:18.536Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:18:18.536Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.537Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.537Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.537Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:18:18.538Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:18:18.538Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:18:18.538Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:18:18.539Z] ERROR: 1m[ERROR] Could not find a mob named 'sheep'.9m
+[2025-10-24T10:19:18.602Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T10:19:18.602Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T10:19:24.339Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:19:25.419Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:19:25.421Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:19:27.366Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:19:27.480Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:19:27.483Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:19:27.482Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:19:59.404Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:19:59.405Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:19:59.406Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:19:59.406Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:19:59.407Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:19:59.407Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:19:59.407Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:19:59.407Z] 0m[SYSTEM] Entity: Type=animal, Name=cow, DisplayName=Cow9m
+[2025-10-24T10:19:59.407Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:19:59.408Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:19:59.408Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:19:59.408Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:19:59.408Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:19:59.409Z] 0m[SYSTEM] Entity: Type=animal, Name=goat, DisplayName=Goat9m
+[2025-10-24T10:19:59.409Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:19:59.409Z] 0m[SYSTEM] Entity: Type=animal, Name=rabbit, DisplayName=Rabbit9m
+[2025-10-24T10:19:59.410Z] 0m[SYSTEM] Entity: Type=animal, Name=donkey, DisplayName=Donkey9m
+[2025-10-24T10:19:59.410Z] 0m[SYSTEM] Entity: Type=animal, Name=rabbit, DisplayName=Rabbit9m
+[2025-10-24T10:19:59.410Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:19:59.410Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:19:59.411Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:19:59.411Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:19:59.411Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:19:59.411Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:19:59.412Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:19:59.412Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:19:59.413Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:19:59.413Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:19:59.413Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:19:59.413Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:19:59.413Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.414Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.414Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:19:59.414Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.414Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.415Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.415Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.415Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.415Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.416Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.416Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.417Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:19:59.418Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.417Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.418Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:19:59.419Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.419Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.419Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:19:59.420Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.420Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.420Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie_villager, DisplayName=Zombie Villager9m
+[2025-10-24T10:19:59.421Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.421Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.421Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.422Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.423Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.423Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.423Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.424Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.424Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.424Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:19:59.424Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.424Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.425Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.425Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.425Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.426Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.426Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.426Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:19:59.426Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.427Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.427Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.428Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.429Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.429Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.431Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.430Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.433Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.434Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.434Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.434Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.434Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.435Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.435Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.435Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.436Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.436Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.436Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.437Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.437Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.437Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.437Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.438Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.438Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.438Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:19:59.438Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.439Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.439Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:19:59.439Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.440Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.440Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.440Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.440Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.441Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.441Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.441Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:19:59.441Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.441Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.442Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:19:59.442Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.442Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:19:59.443Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.443Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.443Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:19:59.443Z] 0m[SYSTEM] Entity: Type=animal, Name=bee, DisplayName=Bee9m
+[2025-10-24T10:19:59.444Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.444Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:19:59.444Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:19:59.444Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:19:59.445Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T10:20:20.817Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:22.068Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:23.316Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:24.565Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:25.815Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:27.065Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:28.317Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:20:29.575Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T10:21:13.270Z] TERMINAL COMMAND: eat
+[2025-10-24T10:21:16.071Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T10:21:16.072Z] 2m[ACTION] Sending prompt to Ollama: "[object Object]"9m
+[2025-10-24T10:21:16.081Z] ERROR: 1m[ERROR] Error calling Ollama API: Ollama API responded with status 400: Bad Request9m
+[2025-10-24T10:21:16.081Z] ERROR: 1m[ERROR] Ollama API call failed or returned no response. Check Ollama server and model.9m
+[2025-10-24T10:22:20.068Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T10:22:20.069Z] 2m[ACTION] Equipping and eating Bread...9m
+[2025-10-24T10:22:21.870Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:22:30.642Z] 6m[CHAT] Luize26: 9m7mstatus9m
+[2025-10-24T10:22:30.642Z] 0m[SYSTEM] Health: 10.0/20 | Food: 17.0/20 | Saturation: 6.009m
+[2025-10-24T10:24:04.075Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T10:24:04.075Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T10:26:41.862Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:26:42.946Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:26:42.947Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:26:45.106Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:26:45.222Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:26:45.219Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:26:45.222Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:26:45.224Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:26:47.729Z] ERROR: 1m[ERROR] Could not eat: Promise timed out. (Attempt 1/3)9m
+[2025-10-24T10:26:48.745Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:26:51.249Z] ERROR: 1m[ERROR] Could not eat: Promise timed out. (Attempt 2/3)9m
+[2025-10-24T10:26:52.252Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:26:54.753Z] ERROR: 1m[ERROR] Could not eat: Promise timed out. (Attempt 3/3)9m
+[2025-10-24T10:27:18.174Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:27:18.175Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:27:18.176Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:27:18.177Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:27:18.179Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:27:18.179Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:27:18.182Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:27:18.182Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:27:18.185Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:27:18.186Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:27:18.189Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:27:18.207Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 1/3)9m
+[2025-10-24T10:27:18.208Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 1/3)9m
+[2025-10-24T10:27:18.208Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 1/3)9m
+[2025-10-24T10:27:18.189Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:27:18.209Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 1/3)9m
+[2025-10-24T10:27:18.209Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 1/3)9m
+[2025-10-24T10:27:18.209Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 1/3)9m
+[2025-10-24T10:27:18.219Z] 6m[CHAT] Luize26: 9m7mstatus9m
+[2025-10-24T10:27:18.221Z] 2m[ACTION] Sending prompt to Ollama: "status"9m
+[2025-10-24T10:27:19.222Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:27:19.223Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:27:19.224Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:27:19.225Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:27:19.226Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:27:19.225Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:27:19.227Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:27:19.226Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:27:19.227Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:27:19.224Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:27:19.228Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:27:20.233Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:27:20.233Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:27:20.234Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:27:20.235Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:27:20.235Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 3/3)9m
+[2025-10-24T10:27:20.235Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:27:20.234Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 3/3)9m
+[2025-10-24T10:27:20.236Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 3/3)9m
+[2025-10-24T10:27:20.236Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:27:20.237Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 3/3)9m
+[2025-10-24T10:27:20.366Z] ERROR: 1m[ERROR] AI returned a non-JSON response: Okay, I understand. I will only respond with JSON objects and nothing else.9m
+[2025-10-24T10:27:21.034Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:27:21.234Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:27:21.235Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 3/3)9m
+[2025-10-24T10:27:48.053Z] TERMINAL COMMAND: status
+[2025-10-24T10:28:35.558Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:28:35.558Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:29:33.267Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill cows, chickens, sheeps9m
+[2025-10-24T10:29:33.269Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.268Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:29:33.268Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.269Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.269Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.268Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.269Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:29:33.269Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.270Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.270Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.270Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:29:33.270Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.271Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.271Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.272Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.272Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.273Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.272Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.271Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.273Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.274Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.273Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.274Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.273Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.274Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.275Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.274Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.275Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.275Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.275Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.276Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.276Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.276Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.274Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.276Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.277Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.277Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.276Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.277Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.278Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.278Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:29:33.278Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.279Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.279Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.279Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.279Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.280Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.280Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.280Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.280Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.281Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.281Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.281Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.282Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.282Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.283Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.282Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.283Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.283Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.281Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.283Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.284Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.284Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.284Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.284Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.285Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.286Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.286Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.286Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.285Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.286Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.287Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.287Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.287Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.287Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.288Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.288Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.288Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.289Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.288Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.289Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.288Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.289Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.289Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.290Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.289Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.290Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.290Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.290Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.291Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.291Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.291Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.291Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.292Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.292Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.291Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.293Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.293Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.293Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.292Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.293Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.294Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.294Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.294Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.294Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.295Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.295Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.294Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.295Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.296Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.296Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.296Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.295Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.297Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.296Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.296Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.297Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.297Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.297Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.298Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.297Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.297Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.298Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.298Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.299Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.298Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.299Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.299Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.299Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.300Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.299Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.300Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:29:33.302Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:29:33.301Z] ERROR: 1m[ERROR] Could not find a mob named 'cows,'.9m
+[2025-10-24T10:29:33.302Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.303Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.302Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.303Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.303Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.303Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.304Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:29:33.304Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:29:33.304Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.305Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.304Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.305Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.305Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.306Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.306Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.306Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.306Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.305Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.307Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.307Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.307Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.308Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.307Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.308Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.308Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.308Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.308Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.309Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.309Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.309Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.309Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.310Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.310Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.310Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.311Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.311Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.311Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.311Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.310Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.311Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.312Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:29:33.312Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.312Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.313Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.313Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.312Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.313Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.313Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.314Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.314Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.314Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.315Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.314Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.315Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.315Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.315Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.315Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.316Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.317Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.316Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.317Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.317Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.316Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.317Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.317Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.318Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.318Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.319Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.319Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.319Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.320Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.320Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.319Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.320Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.320Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.321Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.320Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.321Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.321Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.321Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.322Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.322Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.322Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.323Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.323Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.323Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.324Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.324Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.325Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.323Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.325Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.324Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.325Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.326Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.325Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.326Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.325Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.326Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.327Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.326Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.327Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.327Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.327Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.328Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.328Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.328Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.329Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.329Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.329Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.330Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.330Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.330Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.331Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.330Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.331Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.328Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.331Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.331Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.331Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.332Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.332Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.332Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.333Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.332Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.333Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.332Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.333Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.334Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.333Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.334Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.334Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:29:33.335Z] ERROR: 1m[ERROR] Could not find a mob named 'chickens,'.9m
+[2025-10-24T10:29:33.336Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.336Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.336Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.337Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.336Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.337Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:29:33.337Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.338Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.335Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:29:33.337Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:29:33.338Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.338Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.339Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.339Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:29:33.339Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.339Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.339Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.340Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.340Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.338Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:29:33.340Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.340Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.341Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:29:33.341Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.341Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.342Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.341Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.342Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.341Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.342Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.342Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.342Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.343Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.343Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.344Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.344Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.343Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.344Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.344Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.345Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:29:33.343Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.344Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.345Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.345Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.345Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.346Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.345Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.346Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.346Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.346Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.346Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.347Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.347Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.347Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:29:33.347Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.348Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.347Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.348Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.348Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.349Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.348Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.348Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.349Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.349Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.349Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.350Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.349Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.350Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.350Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.350Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.350Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.350Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.351Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.351Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.351Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.351Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.352Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.352Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.353Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.352Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.352Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.353Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.353Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.353Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.353Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.354Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.354Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.354Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.354Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.355Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.355Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.355Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.355Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.355Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.355Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.354Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.356Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.356Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.357Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.356Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.357Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:29:33.357Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.357Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.358Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.356Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.358Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.358Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.359Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:29:33.358Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.357Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.359Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.359Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.359Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.360Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.360Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.360Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.361Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.360Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.361Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.362Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.361Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.362Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.362Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.362Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:29:33.361Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.363Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.362Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:29:33.363Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.363Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:29:33.363Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:29:33.363Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:29:33.364Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:29:33.364Z] ERROR: 1m[ERROR] Could not find a mob named 'sheeps'.9m
+[2025-10-24T10:29:53.721Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop kill cows, chickens, sheeps9m
+[2025-10-24T10:29:53.721Z] 2m[ACTION] Sending prompt to Ollama: "kill cows, chickens, sheeps"9m
+[2025-10-24T10:29:54.349Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T10:29:54.349Z] 2m[ACTION] Sending prompt to Ollama: "[object Object]"9m
+[2025-10-24T10:29:54.355Z] ERROR: 1m[ERROR] Error calling Ollama API: Ollama API responded with status 400: Bad Request9m
+[2025-10-24T10:29:54.355Z] ERROR: 1m[ERROR] Ollama API call failed or returned no response. Check Ollama server and model.9m
+[2025-10-24T10:30:28.418Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop kill cows, chickens, sheeps9m
+[2025-10-24T10:30:28.419Z] 2m[ACTION] Sending prompt to Ollama: "kill cows, chickens, sheeps"9m
+[2025-10-24T10:30:28.902Z] ERROR: 1m[ERROR] AI returned a non-JSON response: Okay, I understand. I will only respond with JSON objects and nothing else.9m
+[2025-10-24T10:31:28.062Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill llama9m
+[2025-10-24T10:31:28.063Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:31:28.063Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.064Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.065Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.064Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.063Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.064Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.065Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:28.065Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.066Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:28.066Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:28.066Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:28.065Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.067Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:28.067Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:28.067Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.067Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.068Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:28.068Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:28.068Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:28.068Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:28.069Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:28.069Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.069Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.069Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.070Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.070Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.070Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.071Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.071Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.071Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:28.071Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:28.071Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:28.072Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:28.072Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:28.072Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:28.072Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:28.073Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.073Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.073Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.073Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.074Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.074Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.074Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.075Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.076Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.076Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.076Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.077Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.077Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.078Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.078Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.078Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.078Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.079Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.079Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.079Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.079Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.080Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.080Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.080Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.081Z] 0m[SYSTEM] Entity: Type=hostile, Name=witch, DisplayName=Witch9m
+[2025-10-24T10:31:28.081Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.081Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.082Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.083Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.083Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.083Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.083Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:28.084Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.084Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.084Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.084Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.085Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.085Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.085Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.085Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.086Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.086Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.086Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.086Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie_villager, DisplayName=Zombie Villager9m
+[2025-10-24T10:31:28.087Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.087Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.087Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.087Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.088Z] 0m[SYSTEM] Entity: Type=passive, Name=wandering_trader, DisplayName=Wandering Trader9m
+[2025-10-24T10:31:28.088Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:28.088Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:28.088Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.089Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.089Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.090Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:28.089Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.090Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.090Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.091Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:28.090Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.091Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:28.091Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.091Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.092Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.092Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.092Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:28.092Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.092Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.093Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.093Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.093Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.094Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:28.094Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.095Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.095Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.096Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.096Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.097Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.098Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:28.098Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.099Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.099Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.099Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.100Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.100Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.100Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:28.101Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:28.101Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:28.101Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:28.101Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:31:28.102Z] ERROR: 1m[ERROR] Could not find a mob named 'llama'.9m
+[2025-10-24T10:31:37.674Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill trader llama9m
+[2025-10-24T10:31:37.674Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:31:37.675Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.676Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.675Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.675Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.676Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.675Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.677Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:37.676Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.677Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:37.678Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.678Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:37.677Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.680Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.679Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.678Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.679Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:37.680Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.681Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.681Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.682Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:37.682Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.682Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.683Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.683Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.684Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.684Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.685Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:37.686Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:37.685Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:37.686Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.687Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.687Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.687Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.688Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.688Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.688Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.689Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.689Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.690Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.690Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.690Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.690Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.691Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.692Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.692Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.692Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.693Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.693Z] 0m[SYSTEM] Entity: Type=hostile, Name=witch, DisplayName=Witch9m
+[2025-10-24T10:31:37.693Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.694Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.695Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.692Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.695Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.695Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.694Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.696Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.696Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.697Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.697Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.697Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.697Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.698Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.698Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.698Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie_villager, DisplayName=Zombie Villager9m
+[2025-10-24T10:31:37.698Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.698Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.699Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.699Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.699Z] 0m[SYSTEM] Entity: Type=passive, Name=wandering_trader, DisplayName=Wandering Trader9m
+[2025-10-24T10:31:37.700Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:37.700Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:37.700Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.700Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.700Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.701Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.701Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.701Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.701Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.702Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.702Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.702Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.702Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.703Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.703Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.703Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.703Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.703Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.704Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.704Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.704Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.704Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.705Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.705Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.705Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.705Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.706Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.706Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.706Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.706Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.707Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.707Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.707Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.707Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.708Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.708Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.709Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.709Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.709Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.709Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.710Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.710Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.710Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.711Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.711Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.712Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.712Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.713Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.713Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.713Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.713Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.714Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.714Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.714Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.715Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:31:37.715Z] ERROR: 1m[ERROR] Could not find a mob named 'trader'.9m
+[2025-10-24T10:31:37.716Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:31:37.716Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.716Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.716Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.717Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.717Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.717Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.717Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:37.718Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.718Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:37.717Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.718Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.718Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:37.719Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.719Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:37.719Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.720Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.720Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.720Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:37.720Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:37.721Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:37.721Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.721Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.721Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.722Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.722Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.722Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.722Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:37.723Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:37.723Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:37.723Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.723Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.724Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.724Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.724Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.725Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.725Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.725Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.726Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.726Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.726Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.726Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.727Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.727Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.727Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.727Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.728Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.728Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.728Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.728Z] 0m[SYSTEM] Entity: Type=hostile, Name=witch, DisplayName=Witch9m
+[2025-10-24T10:31:37.728Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.729Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.729Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.729Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.729Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.730Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.730Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.730Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.731Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.731Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.731Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.732Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.732Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.732Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.732Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie_villager, DisplayName=Zombie Villager9m
+[2025-10-24T10:31:37.732Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.733Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.733Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.733Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.733Z] 0m[SYSTEM] Entity: Type=passive, Name=wandering_trader, DisplayName=Wandering Trader9m
+[2025-10-24T10:31:37.733Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:37.734Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:37.734Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.734Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.734Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.735Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.735Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.735Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.736Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.736Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.736Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.736Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.737Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.737Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.737Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.737Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.738Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.738Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.738Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.739Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.739Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.738Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:37.739Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.739Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.739Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.740Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.740Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.740Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.741Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.741Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.741Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:37.742Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.742Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.742Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.742Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.743Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.743Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.743Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.743Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.744Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.744Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.744Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.745Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.745Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.745Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.745Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.746Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.746Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:37.746Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:37.747Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.747Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.747Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:37.747Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:37.748Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:37.748Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:31:37.748Z] ERROR: 1m[ERROR] Could not find a mob named 'llama'.9m
+[2025-10-24T10:31:44.486Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill trader_llama9m
+[2025-10-24T10:31:44.486Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:31:44.487Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.488Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.487Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.488Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.488Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.488Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.489Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.489Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:44.489Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.489Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:44.490Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:44.490Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:44.490Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:44.491Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:44.491Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:31:44.491Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:44.492Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:44.492Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:31:44.492Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:44.491Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:31:44.492Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.493Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.493Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.493Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.493Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:44.494Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:44.494Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:31:44.494Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:31:44.495Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:44.494Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:31:44.495Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.496Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.496Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.496Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.496Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.497Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.497Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.495Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.498Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.498Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.498Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.499Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.499Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.500Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.500Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.501Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.501Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.501Z] 0m[SYSTEM] Entity: Type=hostile, Name=witch, DisplayName=Witch9m
+[2025-10-24T10:31:44.501Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.502Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.497Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.502Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.502Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.502Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.503Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:44.503Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.503Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.504Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.505Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.504Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.505Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.505Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.505Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.506Z] 0m[SYSTEM] Entity: Type=passive, Name=wandering_trader, DisplayName=Wandering Trader9m
+[2025-10-24T10:31:44.506Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:44.506Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.507Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:31:44.507Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.507Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.507Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.508Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.508Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:44.508Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.508Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.509Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.509Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.509Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:44.503Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:44.510Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.509Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:44.510Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.510Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.510Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:31:44.511Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.511Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.511Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.512Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.511Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.513Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.513Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.513Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.514Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.514Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.514Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:31:44.515Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.515Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.516Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.516Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.516Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.516Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.513Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.518Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.518Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.517Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.518Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.518Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:31:44.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.519Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:31:44.515Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.520Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.532Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.543Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.542Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.544Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.545Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.545Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:31:44.548Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.548Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.550Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:31:44.550Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:31:44.547Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:31:44.551Z] 2m[ACTION] Found Trader Llama. Attacking!9m
+[2025-10-24T10:33:41.583Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill trader_llama9m
+[2025-10-24T10:33:41.583Z] 0m[SYSTEM] --- Debug: Nearby Entities ---9m
+[2025-10-24T10:33:41.584Z] 0m[SYSTEM] Entity: Type=undefined, Name=undefined, DisplayName=undefined9m
+[2025-10-24T10:33:41.584Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.585Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.584Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.585Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.585Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.585Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.586Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:33:41.586Z] 0m[SYSTEM] Entity: Type=animal, Name=horse, DisplayName=Horse9m
+[2025-10-24T10:33:41.586Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:33:41.586Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:33:41.587Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:33:41.587Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.586Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:33:41.588Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.587Z] 0m[SYSTEM] Entity: Type=animal, Name=pig, DisplayName=Pig9m
+[2025-10-24T10:33:41.588Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:33:41.588Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:33:41.588Z] 0m[SYSTEM] Entity: Type=animal, Name=sheep, DisplayName=Sheep9m
+[2025-10-24T10:33:41.589Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:33:41.589Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:33:41.589Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.590Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.590Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.590Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.590Z] 0m[SYSTEM] Entity: Type=animal, Name=chicken, DisplayName=Chicken9m
+[2025-10-24T10:33:41.591Z] 0m[SYSTEM] Entity: Type=player, Name=player, DisplayName=undefined9m
+[2025-10-24T10:33:41.591Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:33:41.591Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.591Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.592Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.592Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.592Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.592Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.593Z] 0m[SYSTEM] Entity: Type=hostile, Name=enderman, DisplayName=Enderman9m
+[2025-10-24T10:33:41.593Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.593Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.593Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:33:41.593Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.594Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.594Z] 0m[SYSTEM] Entity: Type=passive, Name=wandering_trader, DisplayName=Wandering Trader9m
+[2025-10-24T10:33:41.594Z] 0m[SYSTEM] Entity: Type=animal, Name=trader_llama, DisplayName=Trader Llama9m
+[2025-10-24T10:33:41.594Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.595Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.595Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.595Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.595Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.595Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.596Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.596Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.596Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.596Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.597Z] 0m[SYSTEM] Entity: Type=other, Name=item, DisplayName=Item9m
+[2025-10-24T10:33:41.597Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.597Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:33:41.598Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.598Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.598Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.598Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.599Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.599Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.599Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.599Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.600Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.600Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.600Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.600Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.601Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.601Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.601Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.601Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.602Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.602Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.602Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.602Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.603Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.603Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.603Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.603Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.604Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.604Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.604Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.605Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.605Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:33:41.605Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.605Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.606Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:33:41.606Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.606Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.607Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.607Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.607Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.608Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.608Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.608Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.608Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.609Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.609Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.609Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.609Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.609Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.610Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:33:41.610Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.610Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.610Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.611Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.611Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.611Z] 0m[SYSTEM] Entity: Type=passive, Name=glow_squid, DisplayName=Glow Squid9m
+[2025-10-24T10:33:41.611Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.612Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.612Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.612Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.612Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie_villager, DisplayName=Zombie Villager9m
+[2025-10-24T10:33:41.612Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.613Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.613Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.613Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.614Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.614Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.614Z] 0m[SYSTEM] Entity: Type=hostile, Name=creeper, DisplayName=Creeper9m
+[2025-10-24T10:33:41.614Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.614Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.615Z] 0m[SYSTEM] Entity: Type=hostile, Name=skeleton, DisplayName=Skeleton9m
+[2025-10-24T10:33:41.615Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.615Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.615Z] 0m[SYSTEM] Entity: Type=hostile, Name=zombie, DisplayName=Zombie9m
+[2025-10-24T10:33:41.616Z] 0m[SYSTEM] Entity: Type=ambient, Name=bat, DisplayName=Bat9m
+[2025-10-24T10:33:41.616Z] 0m[SYSTEM] Entity: Type=hostile, Name=spider, DisplayName=Spider9m
+[2025-10-24T10:33:41.616Z] 0m[SYSTEM] --- End Debug ---9m
+[2025-10-24T10:33:41.617Z] 2m[ACTION] Found Trader Llama. Attacking!9m
+[2025-10-24T10:35:59.467Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T10:35:59.467Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T10:37:15.697Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:39:12.190Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:39:13.188Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:39:13.189Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:42:22.765Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:42:23.895Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:42:23.897Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:43:11.492Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T10:43:12.602Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T10:43:12.604Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T10:43:14.746Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T10:43:14.875Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T10:43:14.878Z] Prismarine viewer web server running on *:3008
+[2025-10-24T10:43:44.496Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:43:44.498Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T10:44:34.849Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:44:34.850Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:45:18.134Z] TERMINAL COMMAND: stop
+[2025-10-24T10:45:18.135Z] 2m[ACTION] Stopped.9m
+[2025-10-24T10:45:23.561Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:45:23.561Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:46:03.806Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:03.806Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:03.807Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:03.808Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:46:03.807Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:03.830Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:46:04.815Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:46:04.881Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:46:15.833Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:15.833Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:15.834Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:15.835Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:46:15.834Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:15.859Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:46:16.846Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:46:16.871Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:46:32.051Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:32.052Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:32.052Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:32.054Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:46:32.051Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:32.065Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:46:33.065Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:46:33.114Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:46:58.252Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:46:58.252Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:46:58.308Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:47:11.713Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T10:47:11.714Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T10:47:11.714Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:47:11.715Z] 2m[ACTION] Stopped.9m
+[2025-10-24T10:47:30.835Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:47:30.836Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:47:43.351Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:47:43.352Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:47:43.352Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:47:43.351Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:47:43.413Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:47:44.427Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:47:44.428Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:47:45.437Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:47:45.438Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T10:47:46.009Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:47:46.442Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:47:47.254Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:47:52.456Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:47:52.456Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T10:48:06.408Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:49:44.826Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:49:44.826Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T10:49:48.833Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:50:02.092Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give all items9m
+[2025-10-24T10:50:15.452Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give9m
+[2025-10-24T10:51:10.973Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:51:10.973Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T10:51:15.155Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:51:38.142Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill trader_llama9m
+[2025-10-24T10:51:38.142Z] 2m[ACTION] Found Trader Llama. Attacking!9m
+[2025-10-24T10:51:49.813Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:52:03.153Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T10:52:03.154Z] 2m[ACTION] Stopped.9m
+[2025-10-24T10:52:03.153Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T10:52:03.154Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:52:30.217Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T10:52:30.217Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T10:52:38.109Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:52:50.005Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T10:52:50.005Z] 2m[ACTION] Following Luize269m
+[2025-10-24T10:53:24.678Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill horse9m
+[2025-10-24T10:53:24.678Z] 2m[ACTION] Found Horse. Attacking!9m
+[2025-10-24T10:53:34.522Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:53:53.340Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill rabbit9m
+[2025-10-24T10:53:53.340Z] 2m[ACTION] Found Rabbit. Attacking!9m
+[2025-10-24T10:54:11.487Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:54:27.211Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:54:27.211Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:54:27.212Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T10:54:27.212Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T10:54:27.215Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:54:28.225Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:54:28.225Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T10:54:29.014Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T10:54:29.241Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T10:54:29.242Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 2/3)9m
+[2025-10-24T10:54:30.249Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T10:54:30.249Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 3/3)9m
+[2025-10-24T10:55:48.854Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill pigs9m
+[2025-10-24T10:55:48.854Z] ERROR: 1m[ERROR] Could not find a mob named 'pigs'.9m
+[2025-10-24T10:55:53.676Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill pig9m
+[2025-10-24T10:55:53.676Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-24T10:55:57.794Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-24T10:56:26.387Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T10:56:26.387Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T11:47:18.674Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T11:47:19.853Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T11:47:19.855Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T11:47:20.867Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-24T11:47:20.869Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-24T11:47:20.867Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-24T11:47:22.490Z] TERMINAL COMMAND: 
+[2025-10-24T11:47:55.108Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T11:47:56.280Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T11:47:56.286Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T11:47:58.885Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T11:47:59.049Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T11:47:59.052Z] Prismarine viewer web server running on *:3008
+[2025-10-24T11:48:36.033Z] 6m[CHAT] Kuts: 9m7mtest9m
+[2025-10-24T11:48:36.035Z] 2m[ACTION] Sending prompt to Ollama: "test"9m
+[2025-10-24T11:48:36.832Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:36.833Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:48:47.342Z] 6m[CHAT] Kuts: 9m7ma9m
+[2025-10-24T11:48:47.343Z] 2m[ACTION] Sending prompt to Ollama: "a"9m
+[2025-10-24T11:48:48.046Z] 6m[CHAT] Kuts: 9m7ma9m
+[2025-10-24T11:48:48.047Z] 2m[ACTION] Sending prompt to Ollama: "a"9m
+[2025-10-24T11:48:48.072Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:48.073Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:48:48.223Z] 6m[CHAT] Kuts: 9m7ma9m
+[2025-10-24T11:48:48.223Z] 2m[ACTION] Sending prompt to Ollama: "a"9m
+[2025-10-24T11:48:48.423Z] 6m[CHAT] Kuts: 9m7ma9m
+[2025-10-24T11:48:48.424Z] 2m[ACTION] Sending prompt to Ollama: "a"9m
+[2025-10-24T11:48:48.605Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:48.605Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:48:48.645Z] 6m[CHAT] Kuts: 9m7ma9m
+[2025-10-24T11:48:48.645Z] 2m[ACTION] Sending prompt to Ollama: "a"9m
+[2025-10-24T11:48:48.829Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:48.830Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:48:48.852Z] 6m[CHAT] Kuts: 9m7ma9m
+[2025-10-24T11:48:48.852Z] 2m[ACTION] Sending prompt to Ollama: "a"9m
+[2025-10-24T11:48:49.086Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:49.087Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:48:49.302Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:49.302Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:48:49.517Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:48:49.518Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "Kuts".9m
+[2025-10-24T11:50:37.333Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T11:50:38.465Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T11:50:38.467Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T11:50:41.347Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T11:50:41.465Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T11:50:41.468Z] Prismarine viewer web server running on *:3008
+[2025-10-24T11:52:17.658Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T11:52:17.659Z] 2m[ACTION] Following Luize269m
+[2025-10-24T11:53:59.720Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill sheep9m
+[2025-10-24T11:53:59.721Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T11:54:45.366Z] 6m[CHAT] Luize26: 9m7m[WHISPER] whitelist remove Luize269m
+[2025-10-24T11:54:45.367Z] 2m[ACTION] Sending prompt to Ollama: "whitelist remove Luize26"9m
+[2025-10-24T11:54:48.245Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:54:48.245Z] 2m[ACTION] Found Sheep. Attacking!9m
+[2025-10-24T11:54:48.246Z] ERROR: 1m[ERROR] Could not find a mob named 'zombie'.9m
+[2025-10-24T11:55:12.256Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T11:55:12.256Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T11:55:12.257Z] 2m[ACTION] Stopped.9m
+[2025-10-24T11:55:31.752Z] TERMINAL COMMAND: whitelist remove Luize26
+[2025-10-24T11:55:31.753Z] 0m[SYSTEM] Removed Luize26 from whitelist.9m
+[2025-10-24T11:55:38.286Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T11:55:38.287Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T11:55:38.290Z] 2m[ACTION] Hunger low or health low, attempting to eat...9m
+[2025-10-24T11:55:38.291Z] 2m[ACTION] Equipping and eating Bread... (Attempt 1/3)9m
+[2025-10-24T11:55:38.294Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T11:55:39.300Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T11:55:39.302Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 1/3)9m
+[2025-10-24T11:55:40.301Z] 2m[ACTION] Equipping and eating Bread... (Attempt 2/3)9m
+[2025-10-24T11:55:40.302Z] ERROR: 1m[ERROR] Could not eat: Consuming cancelled due to calling bot.consume() again (Attempt 2/3)9m
+[2025-10-24T11:55:40.717Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T11:55:41.316Z] 2m[ACTION] Equipping and eating Bread... (Attempt 3/3)9m
+[2025-10-24T11:55:41.316Z] ERROR: 1m[ERROR] Could not eat: Food is full (Attempt 3/3)9m
+[2025-10-24T11:55:59.036Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill Luize269m
+[2025-10-24T11:55:59.037Z] 2m[ACTION] Found undefined. Attacking!9m
+[2025-10-24T11:56:18.191Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T11:56:18.191Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T11:58:25.138Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T11:58:26.177Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T11:58:26.178Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T11:58:29.097Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T11:58:29.211Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T11:58:29.214Z] Prismarine viewer web server running on *:3008
+[2025-10-24T11:58:40.990Z] TERMINAL COMMAND: whitelist add Luize26
+[2025-10-24T11:58:40.991Z] 0m[SYSTEM] Added Luize26 to whitelist.9m
+[2025-10-24T11:59:13.333Z] TERMINAL COMMAND: status
+[2025-10-24T11:59:16.846Z] TERMINAL COMMAND: 
+[2025-10-24T11:59:17.738Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-24T11:59:17.747Z] 2m[ACTION] Stopped continuous hunt.9m
+[2025-10-24T11:59:17.749Z] 2m[ACTION] Starting continuous hunt for sheep...9m
+[2025-10-24T11:59:22.752Z] 2m[ACTION] No sheep found nearby. Searching...9m
+[2025-10-24T11:59:26.266Z] 6m[CHAT] Luize26: 9m7mstatus9m
+[2025-10-24T11:59:26.266Z] 2m[ACTION] Sending prompt to Ollama: "status"9m
+[2025-10-24T11:59:26.557Z] 6m[CHAT] Bloop: 9m7mHealth: 20.0/20 | Food: 20.0/20 | Saturation: 5.009m
+[2025-10-24T11:59:26.557Z] 2m[ACTION] Sending prompt to Ollama: "Health: 20.0/20 | Food: 20.0/20 | Saturation: 5.00"9m
+[2025-10-24T11:59:26.977Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:27.238Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:27.239Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:27.244Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:27.533Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:27.534Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:27.762Z] 2m[ACTION] No sheep found nearby. Searching...9m
+[2025-10-24T11:59:27.798Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:28.095Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:28.096Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:28.259Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:28.645Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:28.958Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:28.958Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:29.172Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:29.173Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:29.465Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:29.710Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:29.770Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:29.770Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:30.062Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:30.063Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:30.309Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:30.603Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:30.655Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:30.655Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:30.924Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:30.924Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:31.169Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:31.485Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:31.485Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:31.526Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:31.830Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:31.830Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:32.039Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:32.364Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:32.398Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:32.398Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:32.684Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:32.684Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:32.765Z] 2m[ACTION] No sheep found nearby. Searching...9m
+[2025-10-24T11:59:32.931Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:33.247Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:33.273Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:33.273Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:33.563Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:33.564Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:33.779Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:34.105Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:34.151Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:34.152Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:34.701Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-24T11:59:35.046Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:35.046Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:35.047Z] 6m[CHAT] Bloop: 9m7mI am a bot, I am doing well!9m
+[2025-10-24T11:59:35.047Z] 2m[ACTION] Sending prompt to Ollama: "I am a bot, I am doing well!"9m
+[2025-10-24T11:59:35.051Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-24T11:59:35.052Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-24T12:00:56.664Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T12:01:49.010Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T12:01:50.047Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T12:01:50.050Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T12:01:52.398Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T12:01:52.530Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T12:01:52.533Z] Prismarine viewer web server running on *:3008
+[2025-10-24T12:02:23.981Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T12:02:23.984Z] 2m[ACTION] Following Luize269m
