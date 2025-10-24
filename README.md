@@ -2,6 +2,9 @@
 
 -   **AI Chat (Ollama):** Responds to chat messages containing "bloop" using the configured Ollama LLM (Gemma 3:270m).
 -   **Auto-Reconnect:** Automatically reconnects to the server if the connection is lost.
+-   **Auto-Eat:** Automatically eats when hunger is low.
+-   **Auto-Defend:** Automatically retaliates against any entity that damages the bot.
+-   **Auto-Sleep:** Automatically finds and uses a bed to sleep through the night, prioritizing beds in inventory.
 -   **Player Following:** Follows specified players using `mineflayer-pathfinder`.
 -   **Advanced Hunting:** Hunts players or mobs using melee (`mineflayer-pvp`) or ranged attacks (`minecrafthawkeye`) if a bow is available.
 -   **Resource Collection:** Chops trees using `mineflayer-collectblock`.
@@ -53,8 +56,17 @@ OLLAMA_MODEL=gemma3:270m
 
 The bot responds to the following chat commands in-game (both public chat and whispers from 'Luize26'):
 
--   **AI Chat:** If a message contains the word "bloop", the bot will respond using the configured Ollama model, acting as a Minecraft bot that acts like a human player, responding naturally and concisely.
+-   **AI Command Interpretation:** If a command is not recognized, it will be sent to the Ollama AI for interpretation. For example, `hunt all zombies` will be interpreted by the AI and executed.
+-   **AI Chat:** If a message contains the word "bloop", the bot will respond using the configured Ollama model.
 -   `hi bot`: The bot will greet you.
+### Terminal Commands
+
+Interact with the bot directly from the terminal where it's running. Settings are saved in `saves/settings.json` and persist between restarts.
+
+-   `autoeat <on|off>`: Enables or disables the auto-eat feature.
+-   `autodefend <on|off>`: Enables or disables the auto-defend feature.
+-   `autosleep <on|off>`: Enables or disables the auto-sleep feature.
+-   `setspawn`: Sets the bot's spawn point to the nearest bed.
 -   `say <message>`: Makes the bot say `<message>` in-game chat.
 -   `follow <player_name>`: The bot will follow the specified player.
 -   `hunt <name>` or `kill <name>`: Hunts the specified player or mob. Uses a bow for ranged attacks if available, otherwise uses melee.

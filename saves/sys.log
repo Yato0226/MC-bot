@@ -198,3 +198,173 @@
 [2025-10-23T14:29:56.697Z] 2m[ACTION] Bot saying: "."9m
 [2025-10-23T14:30:52.907Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
 [2025-10-23T14:30:52.908Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T06:10:42.108Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T06:10:43.365Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T06:10:43.367Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T06:10:44.323Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-24T06:10:44.323Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-24T06:10:44.325Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-24T06:10:49.346Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T06:10:49.348Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T06:10:52.360Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T06:10:52.546Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T06:10:52.549Z] Prismarine viewer web server running on *:3008
+[2025-10-24T06:12:06.275Z] TERMINAL COMMAND: \hey bloop
+[2025-10-24T06:12:06.275Z] ERROR: 1m[ERROR] Unknown command: \hey9m
+[2025-10-24T06:12:14.063Z] 6m[CHAT] Luize26: 9m7mhey bloop9m
+[2025-10-24T06:12:14.064Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m
+[2025-10-24T06:13:44.850Z] TERMINAL COMMAND: help
+[2025-10-24T06:13:44.850Z] ERROR: 1m[ERROR] Unknown command: help9m
+[2025-10-24T06:13:46.515Z] TERMINAL COMMAND: /help
+[2025-10-24T06:13:46.515Z] ERROR: 1m[ERROR] Unknown command: /help9m
+[2025-10-24T06:14:51.822Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T06:14:51.823Z] 2m[ACTION] Following Luize269m
+[2025-10-24T06:16:06.520Z] TERMINAL COMMAND: stats
+[2025-10-24T06:16:06.521Z] ERROR: 1m[ERROR] Unknown command: stats9m
+[2025-10-24T06:16:11.156Z] TERMINAL COMMAND: status
+[2025-10-24T06:16:11.156Z] 0m[SYSTEM] Health: 9.5/20 | Food: 17.0/20 | Saturation: 0.009m
+[2025-10-24T06:18:15.196Z] TERMINAL COMMAND: status
+[2025-10-24T06:18:15.196Z] 0m[SYSTEM] Health: 9.5/20 | Food: 6.0/20 | Saturation: 0.009m
+[2025-10-24T06:18:21.436Z] TERMINAL COMMAND: eat
+[2025-10-24T06:18:21.436Z] ERROR: 1m[ERROR] Unknown command: eat9m
+[2025-10-24T06:18:38.413Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T06:18:38.413Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T06:18:48.093Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-24T06:18:48.093Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T06:32:03.116Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T06:32:04.168Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T06:32:04.171Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T06:32:06.239Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T06:32:06.362Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T06:32:06.366Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:32:06.365Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:32:06.367Z] Prismarine viewer web server running on *:3008
+[2025-10-24T06:32:22.760Z] TERMINAL COMMAND: autodefend on
+[2025-10-24T06:32:22.761Z] 0m[SYSTEM] Auto-defend enabled.9m
+[2025-10-24T06:32:34.693Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T06:32:34.695Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:32:34.696Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:32:46.220Z] TERMINAL COMMAND: stop
+[2025-10-24T06:32:46.221Z] 2m[ACTION] Stopped.9m
+[2025-10-24T06:40:11.531Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T06:40:12.639Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T06:40:12.640Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T06:40:14.754Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T06:40:14.858Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T06:40:14.860Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:40:14.860Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:40:14.861Z] Prismarine viewer web server running on *:3008
+[2025-10-24T06:40:45.016Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -181 102 -1069m
+[2025-10-24T06:42:20.784Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T06:42:21.832Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T06:42:21.833Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T06:42:23.858Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T06:42:23.974Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T06:42:23.976Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:42:23.977Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:42:23.978Z] Prismarine viewer web server running on *:3008
+[2025-10-24T06:42:53.272Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -181 102 -1069m
+[2025-10-24T06:42:53.296Z] 2m[ACTION] Going to -181, 102, -1069m
+[2025-10-24T06:42:53.296Z] [AshFinder] Direct path: NaN blocks
+[2025-10-24T06:43:41.566Z] TERMINAL COMMAND: quit
+[2025-10-24T06:43:55.562Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T06:43:56.608Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T06:43:56.609Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T06:43:58.717Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T06:43:58.827Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:43:58.824Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T06:43:58.828Z] Prismarine viewer web server running on *:3008
+[2025-10-24T06:43:58.826Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:44:23.663Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -181 102 -1069m
+[2025-10-24T06:44:23.665Z] 2m[ACTION] Going to -181, 102, -1069m
+[2025-10-24T06:44:23.665Z] [AshFinder] Direct path: 15.7 blocks
+[2025-10-24T06:44:45.544Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T06:44:45.580Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:44:45.580Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:44:46.507Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:44:46.508Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:44:46.509Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:44:46.508Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:44:57.004Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:44:57.004Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:44:57.005Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:44:57.005Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:45:09.534Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:45:09.535Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:45:09.534Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:45:09.535Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:45:10.862Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T06:45:10.862Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T06:46:09.792Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T06:46:09.793Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:46:09.793Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:46:09.940Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T06:46:09.940Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-24T06:46:13.006Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T06:46:13.006Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T06:47:10.015Z] TERMINAL COMMAND: stop
+[2025-10-24T06:47:10.015Z] 2m[ACTION] Stopped.9m
+[2025-10-24T06:48:39.407Z] TERMINAL COMMAND: quit
+[2025-10-24T07:05:11.927Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T07:05:13.036Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T07:05:13.037Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T07:05:15.072Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T07:05:15.233Z] Prismarine viewer web server running on *:3008
+[2025-10-24T07:05:15.229Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T07:05:15.231Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T07:05:15.232Z] 2m[ACTION] Equipping and eating Potato...9m
+[2025-10-24T07:05:17.742Z] ERROR: 1m[ERROR] Could not eat: Promise timed out.9m
+[2025-10-24T07:10:20.985Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T07:10:22.086Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T07:10:22.088Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T07:10:24.257Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T07:10:24.373Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T07:10:24.375Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T07:10:24.376Z] 2m[ACTION] Equipping and eating Potato...9m
+[2025-10-24T07:10:24.377Z] Prismarine viewer web server running on *:3008
+[2025-10-24T07:10:26.892Z] ERROR: 1m[ERROR] Could not eat: Promise timed out.9m
+[2025-10-24T07:11:09.615Z] 6m[CHAT] Luize26: 9m7mhey bloop9m
+[2025-10-24T07:11:37.474Z] TERMINAL COMMAND: hey bloop
+[2025-10-24T07:11:42.444Z] TERMINAL COMMAND: 
+[2025-10-24T07:13:02.061Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T07:13:02.073Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T07:13:02.074Z] 2m[ACTION] Equipping and eating Potato...9m
+[2025-10-24T07:13:03.065Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T07:13:03.861Z] 2m[ACTION] Finished eating.9m
+[2025-10-24T07:13:04.059Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T07:13:04.060Z] 2m[ACTION] Hunger low, attempting to eat...9m
+[2025-10-24T07:13:04.061Z] 2m[ACTION] Equipping and eating Potato...9m
+[2025-10-24T07:13:05.834Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T07:13:05.840Z] 2m[ACTION] Attacked by player! Retaliating.9m
+[2025-10-24T07:13:06.573Z] ERROR: 1m[ERROR] Could not eat: Promise timed out.9m
+[2025-10-24T07:28:28.063Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T07:28:29.190Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T07:28:29.191Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T07:28:31.384Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T07:28:31.506Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T07:28:31.509Z] Prismarine viewer web server running on *:3008
+[2025-10-24T07:29:45.770Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -217 100 -929m
+[2025-10-24T07:29:45.773Z] 2m[ACTION] Going to -217, 100, -929m
+[2025-10-24T07:29:45.774Z] [AshFinder] Long distance: 237.4 blocks
+[2025-10-24T07:29:45.997Z] Generated 5 waypoints (237.4 blocks)
+[2025-10-24T07:29:45.997Z] → Waypoint 1/5: (-43.5, 131, -19.5)
+[2025-10-24T07:30:23.822Z] ✓ Reached waypoint 1
+[2025-10-24T07:30:23.822Z] → Waypoint 2/5: (-77.5, 102, -20.5)
+[2025-10-24T07:30:47.571Z] ✓ Reached waypoint 2
+[2025-10-24T07:30:47.572Z] → Waypoint 3/5: (-130.5, 104, -55.5)
+[2025-10-24T07:31:34.925Z] ✓ Reached waypoint 3
+[2025-10-24T07:31:34.925Z] → Waypoint 4/5: (-159.5, 110, -88.5)
+[2025-10-24T07:32:25.192Z] ✓ Reached waypoint 4
+[2025-10-24T07:32:25.192Z] → Waypoint 5/5: (-217, 100, -92)
+[2025-10-24T07:34:57.694Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T07:34:57.694Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T07:35:37.466Z] 6m[CHAT] Luize26: 9m7m[WHISPER] whitelist Luize269m
+[2025-10-24T07:36:07.394Z] TERMINAL COMMAND: whitelist add luize26
+[2025-10-24T07:36:07.394Z] 0m[SYSTEM] Added luize26 to whitelist.9m
+[2025-10-24T07:36:35.669Z] 6m[CHAT] Luize26: 9m7mhey bloop9m
+[2025-10-24T07:36:35.670Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m

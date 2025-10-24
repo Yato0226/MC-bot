@@ -1,0 +1,8 @@
+{
+  "autoEat": true,
+  "autoDefend": true,
+  "autoSleep": true,
+  "whitelistedPlayers": [
+    "luize26"
+  ]
+}

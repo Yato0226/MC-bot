@@ -1,7 +1,9 @@
 require('dotenv').config()
 const mineflayer = require('mineflayer')
 const baritone = require('@miner-org/mineflayer-baritone').loader
-const { pathfinder, Movements, goals } = require('mineflayer-pathfinder')
+const { pathfinder, Movements } = require('mineflayer-pathfinder')
+const { goals } = require('@miner-org/mineflayer-baritone')
+const { Vec3 } = require('vec3')
 const GoalFollow = goals.GoalFollow
 const mineflayerViewer = require('prismarine-viewer').mineflayer
 const minecraftHawkEye = require('minecrafthawkeye')
@@ -64,6 +66,207 @@ const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'gemma3:270m'; // Default to ge
 // mcData needs to be accessible globally for handleBotMessage
 let mcData;
 
+// --- Settings Management ---
+const settingsFilePath = path.join(__dirname, 'saves', 'settings.json');
+let settings = {
+    autoEat: true,
+    autoDefend: true,
+    autoSleep: true,
+    whitelistedPlayers: []
+};
+
+const helpMessage = `
+--- Bot Commands ---
+In-Game Chat Commands (prefix with 'bloop' for AI interpretation):
+  hi bot: Bot greets you.
+  say <message>: Bot says <message> in chat.
+  follow <player_name>: Bot follows the specified player.
+  hunt <name> or kill <name>: Bot hunts the specified player or mob.
+  chop: Bot chops the nearest tree.
+  stop: Stops all current actions.
+  goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location.
+  save <name>: Saves the bot's current position as a named location.
+  list: Displays all saved locations.
+  delete <name>: Deletes a saved location.
+  status: Displays bot's health, food, and saturation.
+  give items to <player_name>: Bot gives all its items to the specified player.
+  quit or exit: Disconnects the bot (only by Luize26).
+  help: Displays this help message.
+
+Terminal Commands:
+  say <message>: Bot says <message> in chat.
+  follow <player_name>: Bot follows the specified player.
+  goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location.
+  save <name>: Saves the bot's current position as a named location.
+  list: Displays all saved locations.
+  delete <name>: Deletes a saved location.
+  chop: Bot chops the nearest tree.
+  stop: Stops all current actions.
+  status: Displays bot's health, food, and saturation.
+  autoeat <on|off>: Enables or disables auto-eat.
+  autodefend <on|off>: Enables or disables auto-defend.
+  autosleep <on|off>: Enables or disables auto-sleep.
+  setspawn: Sets spawn point to the nearest bed.
+  give items to <player_name>: Bot gives all its items to the specified player.
+  whitelist <add|remove> <player_name>: Manages whitelisted players.
+  quit or exit: Disconnects the bot.
+  help: Displays this help message.
+`;
+
+async function loadSettings() {
+    try {
+        const data = await fs.readFile(settingsFilePath, 'utf8');
+        settings = { ...settings, ...JSON.parse(data) };
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            await saveSettings(); // Create the file with default settings
+        } else {
+            throw err;
+        }
+    }
+}
+
+async function saveSettings() {
+    await fs.writeFile(settingsFilePath, JSON.stringify(settings, null, 2));
+}
+
+// --- Auto-Eat Feature ---
+let isEating = false;
+const EAT_THRESHOLD = 16; // Eat when food is at 8 hunger icons (16/20)
+
+// --- Auto-Defend Feature ---
+
+async function autoEat() {
+    if (!settings.autoEat || isEating || bot.food >= EAT_THRESHOLD) {
+        return;
+    }
+
+    const foodPriority = [
+        'golden_apple', 'enchanted_golden_apple', 'golden_carrot',
+        'cooked_porkchop', 'cooked_beef', 'cooked_salmon', 'cooked_mutton', 'cooked_chicken',
+        'steak', 'porkchop', 'beef', 'salmon', 'mutton', 'chicken',
+        'baked_potato', 'bread', 'apple', 'carrot', 'potato', 'beetroot'
+    ];
+
+    const items = bot.inventory.items();
+    let bestFood = null;
+    let bestPriority = -1;
+
+    for (const item of items) {
+        const priority = foodPriority.indexOf(item.name);
+        if (priority !== -1 && priority > bestPriority) {
+            bestFood = item;
+            bestPriority = priority;
+        }
+    }
+
+    if (!bestFood) {
+        // Fallback to any food if no priority food is found
+        bestFood = items.find(item => item.foodPoints > 0 && !item.name.includes('rotten_flesh') && !item.name.includes('spider_eye'));
+    }
+
+    if (!bestFood) {
+        logError('No suitable food found in inventory.');
+        return;
+    }
+
+    isEating = true;
+    logAction('Hunger low, attempting to eat...');
+
+    try {
+        const heldItem = bot.heldItem;
+        logAction(`Equipping and eating ${bestFood.displayName}...`);
+        await bot.equip(bestFood, 'hand');
+        await bot.consume();
+        logAction('Finished eating.');
+
+        // Re-equip previous item if it existed
+        if (heldItem) {
+            await bot.equip(heldItem, 'hand');
+        }
+    } catch (err) {
+        logError(`Could not eat: ${err.message}`);
+    } finally {
+        isEating = false;
+    }
+}
+
+// --- Auto-Sleep Feature ---
+let isSleeping = false;
+
+async function autoSleep() {
+    if (!settings.autoSleep || isSleeping || bot.isSleeping) {
+        return;
+    }
+
+    // Check if it's night time (between 13000 and 23000 ticks)
+    if (bot.time.timeOfDay < 13000 || bot.time.timeOfDay > 23000) {
+        return; // Not night time
+    }
+
+    isSleeping = true;
+    logAction('It\'s night, attempting to sleep...');
+
+    let bed = bot.inventory.items().find(item => item.name.includes('_bed'));
+    let bedBlock = null;
+
+    if (bed) {
+        // Place bed from inventory
+        logAction('Placing bed from inventory...');
+        const bedPos = bot.entity.position.offset(0, 0, 1); // Attempt to place in front of bot
+        const refBlock = bot.blockAt(bedPos.offset(0, -1, 0)); // Block below where bed will be placed
+
+        if (!refBlock || refBlock.name === 'air') {
+            logError('No solid block to place bed on.');
+            isSleeping = false;
+            return;
+        }
+
+        try {
+            await bot.equip(bed, 'hand');
+            await bot.placeBlock(refBlock, new Vec3(0, 1, 0)); // Place on top of refBlock
+            bedBlock = bot.blockAt(bedPos);
+            logAction('Bed placed.');
+        } catch (err) {
+            logError(`Could not place bed: ${err.message}`);
+            isSleeping = false;
+            return;
+        }
+    } else {
+        // Find existing bed
+        logAction('No bed in inventory, searching for nearby bed...');
+        bedBlock = bot.findBlock({
+            matching: block => block.name.includes('_bed'),
+            maxDistance: 32
+        });
+
+        if (!bedBlock) {
+            logError('No bed found nearby.');
+            isSleeping = false;
+            return;
+        }
+    }
+
+    try {
+        logAction('Sleeping in bed...');
+        await bot.sleep(bedBlock);
+        logAction('Woke up from sleeping.');
+
+        // Break and collect bed after waking
+        if (bedBlock) {
+            logAction('Breaking and collecting bed...');
+            await bot.dig(bedBlock);
+            await bot.collectBlock.collect(bedBlock);
+            logAction('Bed collected.');
+        }
+    } catch (err) {
+        logError(`Could not sleep: ${err.message}`);
+    } finally {
+        isSleeping = false;
+    }
+}
+
+
 async function callOllama(prompt) {
   try {
     const response = await fetch(`${OLLAMA_HOST}:${OLLAMA_PORT}/api/chat`, {
@@ -93,24 +296,31 @@ async function callOllama(prompt) {
   }
 }
 
-async function handleBotMessage(username, message) {
+async function handleBotMessage(username, message, isWhisper = false) {
+  function respond(targetUsername, message, isWhisper) {
+    if (isWhisper) {
+      bot.whisper(targetUsername, message);
+    } else {
+      bot.chat(message);
+    }
+  }
   const [cmd, ...args] = message.trim().split(/\s+/);
 
   switch (cmd.toLowerCase()) {
     case 'hi':
       if (args[0] && args[0].toLowerCase() === 'bot') {
-        bot.chat('hello there!');
+        respond(username, 'hello there!', isWhisper);
       }
       break;
     case 'say':
       const messageToSay = args.join(' ');
-      bot.chat(messageToSay);
+      respond(username, messageToSay, isWhisper);
       logAction(`Bot saying: "${messageToSay}"`);
       break;
     case 'follow': {
       const name = args[0];
       if (!name) return logError('Usage: follow <player>');
-      const target = bot.players[name]?.entity || bot.entities.find(e => e.name === name);
+      const target = bot.players[name]?.entity || Object.values(bot.entities).find(e => e.name === name);
       if (!target) return logError(`Cannot see ${name}.`);
 
       logAction(`Following ${name}`);
@@ -122,11 +332,25 @@ async function handleBotMessage(username, message) {
     case 'hunt':
     case 'kill': {
       const targetName = args[0];
+      // Check if the target is a whitelisted player
+      if (settings.whitelistedPlayers.includes(targetName)) {
+          logAction(`Player ${targetName} is whitelisted. Not attacking.`);
+          return;
+      }
+
       let target = bot.players[targetName]?.entity;
       if (!target) {
-        target = bot.entities.find(e => e.name === targetName && e.type === 'mob');
+        target = Object.values(bot.entities).find(e => e.name === targetName && e.type === 'mob');
       }
-      if (!target) return logError(`Could not find player or mob named ${targetName}.`);
+      if (!target) {
+          const aiResponse = await callOllama(`Execute the command: ${message}`);
+          if (aiResponse) {
+              handleBotMessage(username, aiResponse);
+          } else {
+              logError(`Could not find player or mob named ${targetName}.`);
+          }
+          return;
+      }
 
       const bow = bot.inventory.findInventoryItem('bow');
       if (bow) {
@@ -167,16 +391,22 @@ async function handleBotMessage(username, message) {
 
       if (locations[name]) {
         const { x, y, z } = locations[name];
-        goal = new goals.GoalExact(x, y, z);
+        goal = new goals.GoalExact(new Vec3(x, y, z));
         logAction(`Going to saved location "${name}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`);
       } else {
         const x = parseInt(args[0]);
         const y = parseInt(args[1]);
         const z = parseInt(args[2]);
         if (isNaN(x) || isNaN(y) || isNaN(z)) {
-          return logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+            const aiResponse = await callOllama(`Execute the command: ${message}`);
+            if (aiResponse) {
+                handleBotMessage(username, aiResponse);
+            } else {
+                logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+            }
+            return;
         }
-        goal = new goals.GoalExact(x, y, z);
+        goal = new goals.GoalExact(new Vec3(x, y, z));
         logAction(`Going to ${x}, ${y}, ${z}`);
       }
       bot.ashfinder.gotoSmart(goal);
@@ -222,6 +452,28 @@ async function handleBotMessage(username, message) {
       logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
       break;
     }
+    case 'give': {
+        if (args[0] === 'items' && args[1] === 'to') {
+            const playerName = args[2];
+            if (!playerName) return logError('Usage: give items to <player_name>');
+            const target = bot.players[playerName]?.entity;
+            if (!target) return logError(`Cannot see player ${playerName}.`);
+
+            logAction(`Giving all items to ${playerName}...`);
+            for (const item of bot.inventory.items()) {
+                try {
+                    await bot.tossStack(item);
+                } catch (err) {
+                    logError(`Could not toss ${item.name}: ${err.message}`);
+                }
+            }
+            logAction('Finished giving items.');
+        }
+        break;
+    }
+    case 'help':
+      respond(username, helpMessage, isWhisper);
+      break;
     case 'quit':
     case 'exit':
       if (username === 'Luize26') {
@@ -238,20 +490,27 @@ async function handleBotMessage(username, message) {
         logAction(`Responding to 'bloop' in chat from ${username} using Ollama (Host: ${OLLAMA_HOST}, Port: ${OLLAMA_PORT}, Model: ${OLLAMA_MODEL})...`);
         const aiResponse = await callOllama(message);
         if (aiResponse) {
-          bot.chat(aiResponse);
+          respond(username, aiResponse, isWhisper);
         } else {
           logError('Ollama API call failed or returned no response. Check Ollama server and model.');
-          bot.chat('I am unable to respond right now.');
+          respond(username, 'I am unable to respond right now.', isWhisper);
         }
       } else {
-        logError(`Unknown in-game command or AI trigger: ${message}`);
+        // If not a recognized command and no 'bloop', try AI command interpretation
+        const aiResponse = await callOllama(`Execute the command: ${message}`);
+        if (aiResponse) {
+            handleBotMessage(username, aiResponse);
+        } else {
+            logError(`Unknown in-game command or AI trigger: ${message}`);
+        }
       }
       break;
   }
 }
 
-function startBot() {
+async function startBot() {
   isIntentionalExit = false; // Reset flag on new bot creation
+  await loadSettings();
   bot = mineflayer.createBot({
     host: process.env.MC_HOST,
     port: 25565,
@@ -294,6 +553,52 @@ function startBot() {
   }
 
   // --- Bot Events ---
+  bot.on('health', autoEat);
+  bot.on('death', async () => {
+    logSystem('Bot died. Respawning...');
+    try {
+      await bot.respawn()
+    } catch (err) {
+      logError(`Error respawning: ${err.message}`)
+    }
+  });
+  bot.on('entityHurt', (entity) => {
+    if (settings.autoDefend && entity === bot.entity) {
+        const attacker = entity.attacker; // Use entity.attacker to get the actual attacker
+        if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
+            // Check if the attacker is a whitelisted player
+            if (attacker.type === 'player' && settings.whitelistedPlayers.includes(attacker.username)) {
+                logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
+                return;
+            }
+
+            logAction(`Attacked by ${attacker.username || attacker.name || 'an unknown entity'}! Retaliating.`);
+            const bow = bot.inventory.findInventoryItem('bow');
+            if (bow) {
+                bot.hawkEye.autoAttack(attacker, 'bow');
+            } else {
+                bot.pvp.attack(attacker);
+            }
+        }
+    }
+  });
+  bot.on('entityGone', async (entity) => {
+      if (entity.type === 'mob') {
+          setTimeout(async () => {
+              const items = bot.findBlocks({ matching: (block) => block.name.includes('air'), maxDistance: 16, point: entity.position });
+              for (const item of items) {
+                  const block = bot.blockAt(item);
+                  if (block && block.name !== 'air') {
+                      try {
+                          await bot.collectBlock.collect(block);
+                      } catch (err) {
+                          logError(`Could not collect ${block.name}: ${err.message}`);
+                      }
+                  }
+              }
+          }, 1000);
+      }
+  });
   bot.on('spawn', () => {
     logSystem('Bot spawned!')
     // Initialize prismarine-viewer only once, with port hopping
@@ -326,13 +631,13 @@ function startBot() {
     if (username === bot.username) return; // Ignore own messages
     //if (username !== 'Luize26' && username !== bot.username) return;
     logChat(username, message)
-    await handleBotMessage(username, message);
+    await handleBotMessage(username, message, false); // Pass false for isWhisper
   })
 
   bot.on('whisper', async (username, message) => {
     if (username !== 'Luize26') return;
     logChat(username, `[WHISPER] ${message}`);
-    await handleBotMessage(username, message);
+    await handleBotMessage(username, message, true); // Pass true for isWhisper
   })
 
   bot.on('error', err => logError(err))
@@ -429,16 +734,22 @@ rl.on('line', async (input) => {
 
       if (locations[name]) {
         const { x, y, z } = locations[name]
-        goal = new goals.GoalExact(x, y, z)
+        goal = new goals.GoalExact(new Vec3(x, y, z))
         logAction(`Going to saved location "${name}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`)
       } else {
         const x = parseInt(args[0])
         const y = parseInt(args[1])
         const z = parseInt(args[2])
         if (isNaN(x) || isNaN(y) || isNaN(z)) {
-          return logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>')
+            const aiResponse = await callOllama(`Execute the command: ${input}`); // Use input here
+            if (aiResponse) {
+                handleBotMessage(null, aiResponse); // Pass null for username as it's from terminal
+            } else {
+                logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+            }
+            return;
         }
-        goal = new goals.GoalExact(x, y, z)
+        goal = new goals.GoalExact(new Vec3(x, y, z))
         logAction(`Going to ${x}, ${y}, ${z}`)
       }
       bot.ashfinder.gotoSmart(goal)
@@ -451,7 +762,7 @@ rl.on('line', async (input) => {
       const pos = bot.entity.position
       locations[name] = { x: pos.x, y: pos.y, z: pos.z }
       await saveLocations(locations)
-      logAction(`Location "${name}" saved at ${pos.x.toFixed(1), pos.y.toFixed(1), pos.z.toFixed(1)}`)
+      logAction(`Location "${name}" saved at ${pos.x.toFixed(1)}, ${pos.y.toFixed(1)}, ${pos.z.toFixed(1)}`)
       break
     }
     case 'list': {
@@ -473,7 +784,7 @@ rl.on('line', async (input) => {
       if (!name) return logError('Usage: delete <name>')
       const locations = await loadLocations()
       if (!locations[name]) {
-        return logError(`Location "${name}" not found.`)
+        return logError(`Location "${name}" not found.`) 
       }
       delete locations[name]
       await saveLocations(locations)
@@ -497,13 +808,124 @@ rl.on('line', async (input) => {
       logSystem(`Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`);
       break;
     }
+    case 'autoeat': {
+        const arg = args[0];
+        if (arg === 'on') {
+            settings.autoEat = true;
+            logSystem('Auto-eat enabled.');
+        } else if (arg === 'off') {
+            settings.autoEat = false;
+            logSystem('Auto-eat disabled.');
+        } else {
+            logError('Usage: autoeat <on|off>');
+        }
+        await saveSettings();
+        break;
+    }
+    case 'autodefend': {
+        const arg = args[0];
+        if (arg === 'on') {
+            settings.autoDefend = true;
+            logSystem('Auto-defend enabled.');
+        } else if (arg === 'off') {
+            settings.autoDefend = false;
+            logSystem('Auto-defend disabled.');
+        }
+        await saveSettings();
+        break;
+    }
+    case 'autosleep': {
+        const arg = args[0];
+        if (arg === 'on') {
+            settings.autoSleep = true;
+            logSystem('Auto-sleep enabled.');
+        } else if (arg === 'off') {
+            settings.autoSleep = false;
+            logSystem('Auto-sleep disabled.');
+        }
+        await saveSettings();
+        break;
+    }
+    case 'setspawn': {
+        const bedBlock = bot.findBlock({
+            matching: block => bot.isABed(block),
+            maxDistance: 32
+        });
+        if (!bedBlock) return logError('No bed found nearby to set spawn.');
+
+        try {
+            await bot.activateBlock(bedBlock);
+            logAction('Spawn point set at bed.');
+        } catch (err) {
+            logError(`Could not set spawn: ${err.message}`);
+        }
+        break;
+    }
+    case 'give': {
+        if (args[0] === 'items' && args[1] === 'to') {
+            const playerName = args[2];
+            if (!playerName) return logError('Usage: give items to <player_name>');
+            const target = bot.players[playerName]?.entity;
+            if (!target) return logError(`Cannot see player ${playerName}.`);
+
+            logAction(`Giving all items to ${playerName}...`);
+            for (const item of bot.inventory.items()) {
+                try {
+                    await bot.tossStack(item);
+                } catch (err) {
+                    logError(`Could not toss ${item.name}: ${err.message}`);
+                }
+            }
+            logAction('Finished giving items.');
+        }
+        break;
+    }
+    case 'whitelist': {
+        const action = args[0];
+        const playerName = args[1];
+
+        if (!action || !playerName) {
+            logError('Usage: whitelist <add|remove> <player_name>');
+            break;
+        }
+
+        if (action === 'add') {
+            if (!settings.whitelistedPlayers.includes(playerName)) {
+                settings.whitelistedPlayers.push(playerName);
+                logSystem(`Added ${playerName} to whitelist.`);
+            } else {
+                logSystem(`${playerName} is already in the whitelist.`);
+            }
+        } else if (action === 'remove') {
+            const index = settings.whitelistedPlayers.indexOf(playerName);
+            if (index > -1) {
+                settings.whitelistedPlayers.splice(index, 1);
+                logSystem(`Removed ${playerName} from whitelist.`);
+            } else {
+                logSystem(`${playerName} is not in the whitelist.`);
+            }
+        } else {
+            logError('Usage: whitelist <add|remove> <player_name>');
+        }
+        await saveSettings();
+        break;
+    }
+    case 'help':
+      logSystem(helpMessage);
+      break;
     case 'quit':
     case 'exit':
       isIntentionalExit = true;
       bot.end();
       break;
     default:
-      logError(`Unknown command: ${cmd}`);
+      const aiResponse = await callOllama(`Execute the command: ${input}`); // Use input here
+      if (aiResponse) {
+          handleBotMessage(null, aiResponse); // Pass null for username as it's from terminal
+      } else {
+          logError(`Unknown command: ${cmd}`);
+      }
+      break;
   }
 });
 
