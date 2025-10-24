@@ -59,6 +59,7 @@ let viewerInstance = null; // To store the prismarine-viewer instance
 let webInventoryInstance = null; // To store the mineflayer-web-inventory instance
 let pathfinderListenersAttached = false;
 let isAttacking = false;
+let isFleeing = false;
 
 // Ollama Configuration
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
@@ -74,8 +75,58 @@ let settings = {
     autoEat: true,
     autoDefend: true,
     autoSleep: true,
+    autoFlee: true,
+    fleeHealthThreshold: 8,
     whitelistedPlayers: []
 };
+
+async function runForSafety() {
+    if (!settings.autoFlee || isFleeing || bot.health >= settings.fleeHealthThreshold) {
+        return;
+    }
+
+    isFleeing = true;
+    logAction('Low health, running for safety!');
+
+    // Stop current actions
+    bot.pvp.stop();
+    bot.hawkEye.stop();
+    bot.pathfinder.stop();
+    bot.ashfinder?.stop?.();
+
+    // Determine a flee goal
+    // For now, a simple goal: move away from the nearest hostile entity or just a random direction
+    const hostileEntity = bot.nearestEntity((e) => {
+        const isHostileMob = e.type === 'mob' && e.mobType && !['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer'].includes(e.mobType);
+        const isPlayer = e.type === 'player';
+        return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 32; // Search within 32 blocks
+    });
+
+    let fleeGoal;
+    if (hostileEntity) {
+        // Move in the opposite direction of the hostile entity
+        const direction = bot.entity.position.minus(hostileEntity.position).normalize();
+        const fleePoint = bot.entity.position.plus(direction.scaled(10)); // Move 10 blocks away
+        fleeGoal = new baritoneGoals.GoalExact(fleePoint.x, fleePoint.y, fleePoint.z);
+        logAction(`Fleeing from ${hostileEntity.displayName} to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
+    } else {
+        // If no hostile entity, just move in a random direction
+        const randomAngle = Math.random() * Math.PI * 2;
+        const randomDirection = new Vec3(Math.cos(randomAngle), 0, Math.sin(randomAngle));
+        const fleePoint = bot.entity.position.plus(randomDirection.scaled(10));
+        fleeGoal = new baritoneGoals.GoalExact(fleePoint.x, fleePoint.y, fleePoint.z);
+        logAction(`Fleeing in a random direction to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
+    }
+
+    try {
+        await bot.ashfinder.gotoSmart(fleeGoal);
+        logAction('Reached safety point.');
+    } catch (err) {
+        logError(`Failed to reach safety point: ${err.message}`);
+    } finally {
+        isFleeing = false;
+    }
+}
 
 const helpMessage = `
 --- Bot Commands ---
@@ -188,8 +239,14 @@ async function autoEat() {
             logAction('Finished eating.');
             eatenSuccessfully = true;
         } catch (err) {
-            logError(`Could not eat: ${err.message} (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
-            retries++;
+            /*if (err.message.includes('Food is full') || err.message.includes('Consuming cancelled')) {
+                logSystem(`Auto-eat: ${err.message}`); // Use logSystem for less critical messages
+            } else if (err.message.includes('Cannot read properties of null')) {
+                logError(`Auto-eat critical error: ${err.message} (This usually happens if inventory state changes unexpectedly during eating)`);
+            } else {
+                logError(`Could not eat: ${err.message} (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
+            }
+            retries++;*/
             // Wait a bit before retrying
             await new Promise(resolve => setTimeout(resolve, 1000));
         }
@@ -274,6 +331,29 @@ async function autoSleep() {
     } finally {
         isSleeping = false;
     }
+}
+
+// --- Melee Weapon Management ---
+function getBestMeleeWeapon() {
+    let bestWeapon = null;
+    let maxDamage = 0;
+
+    for (const item of bot.inventory.items()) {
+        // Consider swords and axes as melee weapons
+        if (item.name.includes('sword') || item.name.includes('axe')) {
+            // Temporarily equip the item to get its attack damage
+            // This is a workaround as bot.getAttackDamage requires the item to be equipped
+            // Or we can pass the item directly if the API supports it without equipping
+            // Let's assume bot.getAttackDamage can take an item object directly for now.
+            // If not, we'll need a more complex temporary equip/unequip logic.
+            const damage = bot.getAttackDamage(item);
+            if (damage > maxDamage) {
+                maxDamage = damage;
+                bestWeapon = item;
+            }
+        }
+    }
+    return bestWeapon;
 }
 
 
@@ -436,13 +516,13 @@ async function handleBotMessage(username, message, isWhisper = false) {
         // This is the corrected search logic you already implemented
                 let target = bot.players[targetName]?.entity;
                 if (!target) {
-                  /*logSystem('--- Debug: Nearby Entities ---');
+                  logSystem('--- Debug: Nearby Entities ---');
                   Object.values(bot.entities).forEach(e => {
                     logSystem(`Entity: Type=${e.type}, Name=${e.name}, DisplayName=${e.displayName?.toString()}`);
                   });
-                  logSystem('--- End Debug ---');*/
+                  logSystem('--- End Debug ---');
                   const lowerCaseTargetName = targetName.toLowerCase();
-                  target = bot.nearestEntity(entity => {                    if (!(entity.type === 'mob' || entity.type === 'player' || entity.type === 'animal')) return false;
+                  target = bot.nearestEntity(entity => {                    if (!(entity.type === 'mob' || entity.type === 'player' || entity.type === 'animal' || entity.type === 'hostile')) return false;
                     const displayName = entity.displayName?.toString().toLowerCase();
                     const internalName = entity.name?.toLowerCase();
                     return displayName === lowerCaseTargetName || internalName === lowerCaseTargetName;
@@ -471,10 +551,27 @@ async function handleBotMessage(username, message, isWhisper = false) {
         logAction(`Found ${target.displayName}. Attacking!`);
         isAttacking = true; // Set flag when attack starts
         const bow = bot.inventory.findInventoryItem('bow');
-        if (bow) {
+        const arrows = bot.inventory.findInventoryItem('arrow'); // Check for arrows
+
+        if (bow && arrows) { // If bot has both bow and arrows
+          logAction(`Using bow to attack ${target.displayName}.`);
           bot.hawkEye.autoAttack(target, 'bow');
-        } else {
-          bot.pvp.attack(target);
+        } else { // No bow, or no arrows
+          logAction(`No bow or no arrows found, attempting to equip best melee weapon and initiate melee attack on ${target.displayName}.`);
+          const bestWeapon = getBestMeleeWeapon();
+          if (bestWeapon) {
+            try {
+              await bot.equip(bestWeapon, 'hand');
+              bot.pvp.attack(target);
+            } catch (err) {
+              logError(`Failed to equip ${bestWeapon.displayName}: ${err.message}`);
+              logAction(`Attacking ${target.displayName} with bare hands due to equip failure.`);
+              bot.pvp.attack(target);
+            }
+          } else {
+            logAction(`No suitable melee weapon found for ${target.displayName}. Attacking with bare hands.`);
+            bot.pvp.attack(target);
+          }
         }
         // No immediate stop calls here, rely on event listeners
       }
@@ -698,7 +795,10 @@ async function handleBotMessage(username, message, isWhisper = false) {
   }
 
   // --- Bot Events ---
-  bot.on('health', autoEat);
+  bot.on('health', () => {
+    autoEat();
+    runForSafety();
+  });
   bot.on('death', async () => {
     logSystem('Bot died. Respawning...');
     try {
@@ -707,24 +807,42 @@ async function handleBotMessage(username, message, isWhisper = false) {
       logError(`Error respawning: ${err.message}`)
     }
   });
-  bot.on('entityHurt', (entity) => {
+  bot.on('entityHurt', async (entity) => {
     if (settings.autoDefend && entity === bot.entity) {
-        const attacker = entity.attacker; // Use entity.attacker to get the actual attacker
-        if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
-            // Check if the attacker is a whitelisted player
-            if (attacker.type === 'player' && settings.whitelistedPlayers.includes(attacker.username)) {
-                logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
-                return;
-            }
+      // Give a small delay to allow the game state to update and attacker to be more reliably identified
+      await new Promise(resolve => setTimeout(resolve, 100));
 
-            logAction(`Attacked by ${attacker.username || attacker.name || 'an unknown entity'}! Retaliating.`);
-            const bow = bot.inventory.findInventoryItem('bow');
-            if (bow) {
-                bot.hawkEye.autoAttack(attacker, 'bow');
-            } else {
-                bot.pvp.attack(attacker);
-            }
+      let attacker = bot.nearestEntity((e) => {
+        // Exclude self
+        if (e.id === bot.entity.id) return false;
+
+        const isHostileMob = e.type === 'mob' && e.mobType && !['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer'].includes(e.mobType);
+        const isPlayer = e.type === 'player';
+
+        // If it's a player, chec k if they are whitelisted. If so, ignore them as an attacker.
+        if (isPlayer && settings.whitelistedPlayers.includes(e.username)) {
+          return false;
         }
+
+        return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 16; // Within 16 blocks
+      });
+
+      if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
+        logAction(`Identified potential attacker: ${attacker.username || attacker.name || 'unknown'} (Type: ${attacker.type}, MobType: ${attacker.mobType || 'N/A'}, Distance: ${attacker.position.distanceTo(bot.entity.position).toFixed(2)})`);
+        // Check if the attacker is a whitelisted player
+        if (attacker.type === 'player' && settings.whitelistedPlayers.includes(attacker.username)) {
+          logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
+          return;
+        }
+
+        logAction(`Attacked by ${attacker.username || attacker.name || 'an unknown entity'}! Retaliating.`);
+        const bow = bot.inventory.findInventoryItem('bow');
+        if (bow) {
+          bot.hawkEye.autoAttack(attacker, 'bow');
+        } else {
+          bot.pvp.attack(attacker);
+        }
+      }
     }
   });
 
@@ -775,7 +893,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
       pathfinderListenersAttached = true;
     }
     // Initialize prismarine-viewer only once, with port hopping
-    if (!viewerInstance) {
+    /*if (!viewerInstance) {
       const startPort = 3008;
       const maxPortAttempts = 5;
       for (let i = 0; i < maxPortAttempts; i++) {
@@ -796,7 +914,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
           }
         }
       }
-    }
+    }*/
     bot.armorManager.equipAll()
   })
 
@@ -1040,6 +1158,31 @@ rl.on('line', async (input) => {
         } else if (arg === 'off') {
             settings.autoSleep = false;
             logSystem('Auto-sleep disabled.');
+        }
+        await saveSettings();
+        break;
+    }
+    case 'autoflee': {
+        const arg = args[0];
+        if (arg === 'on') {
+            settings.autoFlee = true;
+            logSystem('Auto-flee enabled.');
+        } else if (arg === 'off') {
+            settings.autoFlee = false;
+            logSystem('Auto-flee disabled.');
+        } else {
+            logError('Usage: autoflee <on|off>');
+        }
+        await saveSettings();
+        break;
+    }
+    case 'setfleehealth': {
+        const health = parseInt(args[0]);
+        if (!isNaN(health) && health > 0 && health <= 20) {
+            settings.fleeHealthThreshold = health;
+            logSystem(`Flee health threshold set to ${health}.`);
+        } else {
+            logError('Usage: setfleehealth <1-20>');
         }
         await saveSettings();
         break;
