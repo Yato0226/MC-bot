@@ -1,10 +1,10 @@
 require('dotenv').config()
 const mineflayer = require('mineflayer')
 const baritone = require('@miner-org/mineflayer-baritone').loader
-const { pathfinder, Movements } = require('mineflayer-pathfinder')
-const { goals } = require('@miner-org/mineflayer-baritone')
+const { pathfinder, Movements, goals: pathfinderGoals } = require('mineflayer-pathfinder')
+const { goals: baritoneGoals } = require('@miner-org/mineflayer-baritone')
 const { Vec3 } = require('vec3')
-const GoalFollow = goals.GoalFollow
+const GoalFollow = baritoneGoals.GoalFollow
 const mineflayerViewer = require('prismarine-viewer').mineflayer
 const minecraftHawkEye = require('minecrafthawkeye')
 const toolPlugin = require('mineflayer-tool').plugin
@@ -57,11 +57,12 @@ let bot; // Declare bot in a scope accessible by the functions
 let isIntentionalExit = false;
 let viewerInstance = null; // To store the prismarine-viewer instance
 let webInventoryInstance = null; // To store the mineflayer-web-inventory instance
+let pathfinderListenersAttached = false;
 
 // Ollama Configuration
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
 const OLLAMA_PORT = process.env.OLLAMA_PORT || '11434';
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'gemma3:270m'; // Default to gemma:2b if not specified
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || 'gemma3:270m';
 
 // mcData needs to be accessible globally for handleBotMessage
 let mcData;
@@ -78,13 +79,15 @@ let settings = {
 const helpMessage = `
 --- Bot Commands ---
 In-Game Chat Commands (prefix with 'bloop' for AI interpretation):
+  AI Command Interpretation: If a command is not recognized, it will be sent to the Ollama AI for interpretation. The AI will attempt to return a structured JSON command. For example, 'hunt all zombies' will be interpreted by the AI and executed.
+  AI Chat: If a message contains the word "bloop", the bot will respond using the configured Ollama model.
   hi bot: Bot greets you.
   say <message>: Bot says <message> in chat.
   follow <player_name>: Bot follows the specified player.
-  hunt <name> or kill <name>: Bot hunts the specified player or mob.
+  hunt <name> or kill <name>: Bot hunts the specified player or mob. Can accept multiple targets if interpreted by AI.
   chop: Bot chops the nearest tree.
   stop: Stops all current actions.
-  goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location.
+  goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location. Can accept coordinates from AI.
   save <name>: Saves the bot's current position as a named location.
   list: Displays all saved locations.
   delete <name>: Deletes a saved location.
@@ -277,7 +280,7 @@ async function callOllama(prompt) {
       body: JSON.stringify({
         model: OLLAMA_MODEL,
         messages: [
-          { role: 'system', content: 'You are a Minecraft bot that acts like a human player. Respond naturally and concisely.' },
+          { role: 'system', content: 'You are a Minecraft bot that acts like a human player. When asked to execute a command, respond with a JSON object containing the command and its arguments. For example, if asked to "hunt sheeps, cows, chickens", respond with { "command": "hunt", "targets": ["sheep", "cow", "chicken"] }. If asked to "goto 10 20 30", respond with { "command": "goto", "x": 10, "y": 20, "z": 30 }. If the command is not recognized or cannot be structured as JSON, respond naturally and concisely.' },
           { role: 'user', content: prompt }
         ],
         stream: false,
@@ -297,6 +300,39 @@ async function callOllama(prompt) {
 }
 
 async function handleBotMessage(username, message, isWhisper = false) {
+  // --- Comprehensive Permission System ---
+
+  // Define command access levels. AI-interpreted commands will be checked against these lists.
+  const adminCommands = ['quit', 'exit', 'whitelist', 'autoeat', 'autodefend', 'autosleep', 'give'];
+  const trustedCommands = ['follow', 'hunt', 'kill', 'goto', 'save', 'delete', 'setspawn', 'chop'];
+  // Public commands don't need to be listed; they are anything not in the lists above.
+
+  // Determine the command being issued, whether it's from a string or an AI object.
+  let potentialCmd = '';
+  if (typeof message === 'object' && message.command) {
+    potentialCmd = message.command.toLowerCase();
+  } else if (typeof message === 'string') {
+    potentialCmd = message.trim().split(/\s+/)[0].toLowerCase();
+  }
+
+  // Check permissions. The admin (Luize26) bypasses all checks.
+  if (username && username !== 'Luize26') {
+    // 1. Check for admin commands
+    if (adminCommands.includes(potentialCmd)) {
+      logError(`Unauthorized attempt to use ADMIN command "${potentialCmd}" by user "${username}".`);
+      respond(username, "I'm sorry, that command is for the bot owner only.", isWhisper);
+      return; // Stop processing immediately.
+    }
+    // 2. Check for trusted commands
+    if (trustedCommands.includes(potentialCmd) && !settings.trustedUsers.includes(username)) {
+      logError(`Unauthorized attempt to use TRUSTED command "${potentialCmd}" by user "${username}".`);
+      respond(username, "I'm sorry, you don't have permission to use that command.", isWhisper);
+      return; // Stop processing immediately.
+    }
+  }
+  // --- End of Permission System ---
+
+
   function respond(targetUsername, message, isWhisper) {
     if (isWhisper) {
       bot.whisper(targetUsername, message);
@@ -304,8 +340,29 @@ async function handleBotMessage(username, message, isWhisper = false) {
       bot.chat(message);
     }
   }
-  const [cmd, ...args] = message.trim().split(/\s+/);
+  let cmd, args;
+  let aiCommand = null;
 
+  // --- THIS IS THE MISSING PARSING LOGIC ---
+  if (typeof message === 'object' && message.command) {
+    // This is a pre-parsed command from the AI
+    aiCommand = message;
+    cmd = message.command;
+    args = []; // Arguments are handled inside the cases based on the aiCommand object
+  } else if (typeof message === 'string') {
+    // This is a regular string message from chat or terminal
+    const parts = message.trim().split(/\s+/);
+    cmd = parts[0];
+    args = parts.slice(1);
+  }
+
+  // If after parsing there's no command, do nothing.
+  if (!cmd) {
+    return;
+  }
+  // --- END OF FIX ---
+
+  // (The rest of your function from this point down remains exactly the same...)
   switch (cmd.toLowerCase()) {
     case 'hi':
       if (args[0] && args[0].toLowerCase() === 'bot') {
@@ -326,39 +383,47 @@ async function handleBotMessage(username, message, isWhisper = false) {
       logAction(`Following ${name}`);
       const movements = new Movements(bot, mcData);
       bot.pathfinder.setMovements(movements);
-      bot.pathfinder.setGoal(new GoalFollow(target, 3), true);
+      bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(target, 3), true);
       break;
     }
     case 'hunt':
     case 'kill': {
-      const targetName = args[0];
-      // Check if the target is a whitelisted player
-      if (settings.whitelistedPlayers.includes(targetName)) {
-          logAction(`Player ${targetName} is whitelisted. Not attacking.`);
-          return;
-      }
-
-      let target = bot.players[targetName]?.entity;
-      if (!target) {
-        target = Object.values(bot.entities).find(e => e.name === targetName && e.type === 'mob');
-      }
-      if (!target) {
-          const aiResponse = await callOllama(`Execute the command: ${message}`);
-          if (aiResponse) {
-              handleBotMessage(username, aiResponse);
-          } else {
-              logError(`Could not find player or mob named ${targetName}.`);
-          }
-          return;
-      }
-
-      const bow = bot.inventory.findInventoryItem('bow');
-      if (bow) {
-        logAction(`Attacking ${targetName} with a bow!`);
-        bot.hawkEye.autoAttack(target, 'bow');
+      let targetsToHunt = [];
+      if (aiCommand && aiCommand.targets && Array.isArray(aiCommand.targets)) {
+        targetsToHunt = aiCommand.targets;
       } else {
-        logAction(`Attacking ${targetName} with melee.`);
-        bot.pvp.attack(target);
+        targetsToHunt = [args[0]]; // Fallback to single target from original parsing
+      }
+
+      for (const targetName of targetsToHunt) {
+        if (!targetName) {
+          logError('Usage: hunt <name> or kill <name>');
+          continue;
+        }
+
+        // Check if the target is a whitelisted player
+        if (settings.whitelistedPlayers.includes(targetName)) {
+            logAction(`Player ${targetName} is whitelisted. Not attacking.`);
+            continue;
+        }
+
+        let target = bot.players[targetName]?.entity;
+        if (!target) {
+          target = Object.values(bot.entities).find(e => e.name.toLowerCase() === targetName.toLowerCase() && e.type === 'mob');
+        }
+        if (!target) {
+            logError(`Could not find player or mob named ${targetName}.`);
+            continue;
+        }
+
+        const bow = bot.inventory.findInventoryItem('bow');
+        if (bow) {
+          logAction(`Attacking ${targetName} with a bow!`);
+          bot.hawkEye.autoAttack(target, 'bow');
+        } else {
+          logAction(`Attacking ${targetName} with melee.`);
+          bot.pvp.attack(target);
+        }
       }
       break;
     }
@@ -386,27 +451,24 @@ async function handleBotMessage(username, message, isWhisper = false) {
       break;
     case 'goto': {
       const locations = await loadLocations();
-      const name = args[0];
       let goal;
 
-      if (locations[name]) {
-        const { x, y, z } = locations[name];
-        goal = new goals.GoalExact(new Vec3(x, y, z));
-        logAction(`Going to saved location "${name}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`);
+      if (aiCommand && typeof aiCommand.x === 'number' && typeof aiCommand.y === 'number' && typeof aiCommand.z === 'number') {
+        goal = new baritoneGoals.GoalExact(new Vec3(aiCommand.x, aiCommand.y, aiCommand.z));
+        logAction(`Going to AI-specified coordinates ${aiCommand.x}, ${aiCommand.y}, ${aiCommand.z}`);
+      } else if (args[0] && locations[args[0]]) {
+        const { x, y, z } = locations[args[0]];
+        goal = new baritoneGoals.GoalExact(new Vec3(x, y, z));
+        logAction(`Going to saved location "${args[0]}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`);
       } else {
         const x = parseInt(args[0]);
         const y = parseInt(args[1]);
         const z = parseInt(args[2]);
         if (isNaN(x) || isNaN(y) || isNaN(z)) {
-            const aiResponse = await callOllama(`Execute the command: ${message}`);
-            if (aiResponse) {
-                handleBotMessage(username, aiResponse);
-            } else {
-                logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
-            }
+            logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
             return;
         }
-        goal = new goals.GoalExact(new Vec3(x, y, z));
+        goal = new baritoneGoals.GoalExact(new Vec3(x, y, z));
         logAction(`Going to ${x}, ${y}, ${z}`);
       }
       bot.ashfinder.gotoSmart(goal);
@@ -484,31 +546,46 @@ async function handleBotMessage(username, message, isWhisper = false) {
         logError('Only Luize26 can issue quit/exit commands via chat/whisper.');
       }
       break;
-    default:
-      // If no command matched, check for 'bloop' for AI response
-      if (message.toLowerCase().includes('bloop')) {
-        logAction(`Responding to 'bloop' in chat from ${username} using Ollama (Host: ${OLLAMA_HOST}, Port: ${OLLAMA_PORT}, Model: ${OLLAMA_MODEL})...`);
-        const aiResponse = await callOllama(message);
-        if (aiResponse) {
-          respond(username, aiResponse, isWhisper);
+    default: {
+      // Any command not explicitly recognized is sent to the AI for interpretation.
+      // We create a specific prompt based on whether "bloop" is used.
+      const promptForAI = message.toLowerCase().includes('bloop')
+        ? message // If "bloop" is present, send the raw message for full context.
+        : `Execute the command: ${message}`; // If not, explicitly ask the AI to create a command.
+
+      logAction(`Sending prompt to Ollama: "${promptForAI}"`);
+      const aiResponse = await callOllama(promptForAI);
+
+      if (aiResponse) {
+        let commandObject;
+        try {
+          // Attempt to parse the AI's response as a JSON command.
+          commandObject = JSON.parse(aiResponse);
+        } catch (e) {
+          // If parsing fails, it's a natural language response.
+          commandObject = null;
+        }
+
+        // If the AI returned a valid JSON command, execute it.
+        if (commandObject && typeof commandObject === 'object' && commandObject.command) {
+          logAction('AI returned a valid command. Executing...');
+          handleBotMessage(username, commandObject, isWhisper); // Re-run this function with the structured command.
         } else {
-          logError('Ollama API call failed or returned no response. Check Ollama server and model.');
-          respond(username, 'I am unable to respond right now.', isWhisper);
+          // Otherwise, the AI returned a regular chat message.
+          // This allows the bot to answer questions like "bloop how are you?"
+          logAction('AI returned a natural language response. Relaying to chat...');
+          respond(username, aiResponse, isWhisper);
         }
       } else {
-        // If not a recognized command and no 'bloop', try AI command interpretation
-        const aiResponse = await callOllama(`Execute the command: ${message}`);
-        if (aiResponse) {
-            handleBotMessage(username, aiResponse);
-        } else {
-            logError(`Unknown in-game command or AI trigger: ${message}`);
-        }
+        logError('Ollama API call failed or returned no response. Check Ollama server and model.');
+        respond(username, 'I am unable to respond right now.', isWhisper);
       }
       break;
+    }
   }
 }
-
-async function startBot() {
+      
+      async function startBot() {
   isIntentionalExit = false; // Reset flag on new bot creation
   await loadSettings();
   bot = mineflayer.createBot({
@@ -601,6 +678,36 @@ async function startBot() {
   });
   bot.on('spawn', () => {
     logSystem('Bot spawned!')
+    if (!pathfinderListenersAttached) {
+      bot.ashfinder.on('goal-reach-partial', (goal) => {
+        logAction('Baritone is struggling, switching to mineflayer-pathfinder for replanning.');
+        bot.ashfinder.stop();
+    
+        let newGoal;
+        if (goal instanceof baritoneGoals.GoalExact) {
+            newGoal = new pathfinderGoals.GoalBlock(goal.x, goal.y, goal.z);
+        } else if (goal instanceof baritoneGoals.GoalNear) {
+            newGoal = new pathfinderGoals.GoalNear(goal.x, goal.y, goal.z, goal.range);
+        } else {
+            logError(`Cannot translate baritone goal to pathfinder goal. Goal type ${goal.constructor.name} not supported for fallback.`);
+            return;
+        }
+        
+        const movements = new Movements(bot, mcData);
+        bot.pathfinder.setMovements(movements);
+        bot.pathfinder.setGoal(newGoal);
+      });
+
+      bot.ashfinder.on('goal-reach', (goal) => {
+        logAction(`Baritone goal reached: ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}`);
+      });
+
+      bot.ashfinder.on('goal-reach', () => {
+        logAction('Mineflayer-pathfinder goal reached!');
+      });
+
+      pathfinderListenersAttached = true;
+    }
     // Initialize prismarine-viewer only once, with port hopping
     if (!viewerInstance) {
       const startPort = 3008;
@@ -723,7 +830,7 @@ rl.on('line', async (input) => {
       if (!target) return logError(`Cannot see ${name}.`)
       const movements = new Movements(bot, mcData)
       bot.pathfinder.setMovements(movements)
-      bot.pathfinder.setGoal(new GoalFollow(target, 3), true)
+      bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(target, 3), true)
       logAction(`Following ${name}`)
       break
     }
@@ -734,7 +841,7 @@ rl.on('line', async (input) => {
 
       if (locations[name]) {
         const { x, y, z } = locations[name]
-        goal = new goals.GoalExact(new Vec3(x, y, z))
+        goal = new baritoneGoals.GoalExact(new Vec3(x, y, z))
         logAction(`Going to saved location "${name}" at ${x.toFixed(1)}, ${y.toFixed(1)}, ${z.toFixed(1)}`)
       } else {
         const x = parseInt(args[0])
@@ -749,7 +856,7 @@ rl.on('line', async (input) => {
             }
             return;
         }
-        goal = new goals.GoalExact(new Vec3(x, y, z))
+        goal = new baritoneGoals.GoalExact(new Vec3(x, y, z))
         logAction(`Going to ${x}, ${y}, ${z}`)
       }
       bot.ashfinder.gotoSmart(goal)
@@ -921,7 +1028,12 @@ rl.on('line', async (input) => {
     default:
       const aiResponse = await callOllama(`Execute the command: ${input}`); // Use input here
       if (aiResponse) {
-          handleBotMessage(null, aiResponse); // Pass null for username as it's from terminal
+          // If AI response is JSON, it means it's a command to be executed
+          if (typeof aiResponse === 'object' && aiResponse !== null && aiResponse.command) {
+            handleBotMessage(null, aiResponse); // Pass null for username as it's from terminal
+          } else {
+            logError(`AI could not interpret command: ${input}. Response: ${aiResponse}`);
+          }
       } else {
           logError(`Unknown command: ${cmd}`);
       }
@@ -929,5 +1041,5 @@ rl.on('line', async (input) => {
   }
 });
 
-// Initial bot creation
+// reconnecting...
 startBot();

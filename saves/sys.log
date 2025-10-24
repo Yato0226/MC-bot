@@ -368,3 +368,112 @@
 [2025-10-24T07:36:07.394Z] 0m[SYSTEM] Added luize26 to whitelist.9m
 [2025-10-24T07:36:35.669Z] 6m[CHAT] Luize26: 9m7mhey bloop9m
 [2025-10-24T07:36:35.670Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m
+[2025-10-24T07:49:12.777Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T07:49:13.888Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T07:49:13.889Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T07:49:15.946Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T07:49:16.063Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T07:49:16.066Z] Prismarine viewer web server running on *:3008
+[2025-10-24T07:49:44.127Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -217 100 -929m
+[2025-10-24T07:49:44.137Z] 2m[ACTION] Going to -217, 100, -929m
+[2025-10-24T07:49:44.138Z] [AshFinder] Long distance: 241.2 blocks
+[2025-10-24T07:49:44.257Z] Generated 4 waypoints (241.2 blocks)
+[2025-10-24T07:49:44.257Z] → Waypoint 1/4: (-39.5, 131, -21.5)
+[2025-10-24T07:50:21.293Z] ✓ Reached waypoint 1
+[2025-10-24T07:50:21.293Z] → Waypoint 2/4: (-74.5, 98, -45.5)
+[2025-10-24T07:50:58.700Z] ✓ Reached waypoint 2
+[2025-10-24T07:50:58.700Z] → Waypoint 3/4: (-127.5, 103, -56.5)
+[2025-10-24T07:53:49.382Z] TERMINAL COMMAND: stop
+[2025-10-24T07:53:49.382Z] 2m[ACTION] Stopped.9m
+[2025-10-24T07:53:53.314Z] TERMINAL COMMAND: quit
+[2025-10-24T08:04:53.194Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:07:25.540Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:07:26.702Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T08:07:26.703Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T08:07:28.854Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T08:07:28.955Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T08:07:28.958Z] Prismarine viewer web server running on *:3008
+[2025-10-24T08:07:59.478Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -217 100 -929m
+[2025-10-24T08:07:59.496Z] 2m[ACTION] Going to -217, 100, -929m
+[2025-10-24T08:07:59.497Z] [AshFinder] Long distance: 98.1 blocks
+[2025-10-24T08:07:59.499Z] Generated 3 waypoints (98.1 blocks)
+[2025-10-24T08:07:59.500Z] → Waypoint 1/3: (-171.5, 106, -73.5)
+[2025-10-24T08:09:36.475Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:09:37.567Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T08:09:37.570Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T08:09:41.215Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T08:09:41.342Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T08:09:41.344Z] Prismarine viewer web server running on *:3008
+[2025-10-24T08:10:13.045Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -217 100 -929m
+[2025-10-24T08:10:13.074Z] 2m[ACTION] Going to -217, 100, -929m
+[2025-10-24T08:10:13.075Z] [AshFinder] Direct path: 58.8 blocks
+[2025-10-24T08:10:58.290Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:11:32.797Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:12:03.236Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:12:16.896Z] TERMINAL COMMAND: stop
+[2025-10-24T08:12:16.896Z] 2m[ACTION] Stopped.9m
+[2025-10-24T08:12:33.638Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:12:49.101Z] 6m[CHAT] Luize26: 9m7mBloop follow me9m
+[2025-10-24T08:12:49.102Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m
+[2025-10-24T08:13:04.086Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:13:20.025Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow luize269m
+[2025-10-24T08:13:20.026Z] ERROR: 1m[ERROR] Cannot see luize26.9m
+[2025-10-24T08:13:34.437Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:13:43.043Z] 6m[CHAT] Luize26: 9m7mbloop follow Luize269m
+[2025-10-24T08:13:43.043Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m
+[2025-10-24T08:14:04.853Z] 2m[ACTION] Baritone is struggling, switching to mineflayer-pathfinder for replanning.9m
+[2025-10-24T08:14:07.166Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-24T08:14:07.167Z] 2m[ACTION] Following Luize269m
+[2025-10-24T08:15:54.056Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt all animals9m
+[2025-10-24T08:16:19.827Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-24T08:16:19.827Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-24T08:16:48.765Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-24T08:16:48.765Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T08:19:16.015Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:19:17.187Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T08:19:17.189Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T08:25:01.697Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:25:02.848Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T08:25:02.851Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T08:25:05.122Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T08:25:05.277Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T08:25:05.281Z] Prismarine viewer web server running on *:3008
+[2025-10-24T08:25:49.541Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt sheeps, cows, chickens, pigs9m
+[2025-10-24T08:27:25.856Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt sheep9m
+[2025-10-24T08:30:30.801Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:30:31.994Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T08:30:31.995Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T08:30:34.154Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T08:30:34.286Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T08:30:34.290Z] Prismarine viewer web server running on *:3008
+[2025-10-24T08:32:23.856Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt sheeps, chickens, cows, pigs9m
+[2025-10-24T08:32:23.859Z] ERROR: 1m[ERROR] Could not find player or mob named sheeps,.9m
+[2025-10-24T08:32:42.050Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop hunt sheeps, chickens, cows, pigs9m
+[2025-10-24T08:32:42.051Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m
+[2025-10-24T08:34:40.233Z] 0m[SYSTEM] Bot died. Respawning...9m
+[2025-10-24T08:48:19.052Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T08:48:20.200Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T08:48:20.201Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T08:48:22.319Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T08:48:22.456Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T08:48:22.459Z] Prismarine viewer web server running on *:3008
+[2025-10-24T08:49:02.987Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -185 101 -1079m
+[2025-10-24T08:49:02.988Z] 2m[ACTION] Responding to 'bloop' in chat from Luize26 using Ollama (Host: http://localhost, Port: 11434, Model: gemma3:270m)...9m
+[2025-10-24T08:54:18.387Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-24T08:54:18.387Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-24T09:22:13.930Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:22:15.126Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:22:15.127Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:22:17.204Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:22:17.355Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:22:17.357Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:31:41.221Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-24T09:31:42.371Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-24T09:31:42.372Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-24T09:31:44.433Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-24T09:31:44.554Z] 0m[SYSTEM] Prismarine viewer web server running on *:30089m
+[2025-10-24T09:31:44.556Z] Prismarine viewer web server running on *:3008
+[2025-10-24T09:32:06.920Z] 2m[ACTION] Sending prompt to Ollama: "bloop goto -193 102 -91"9m
+[2025-10-24T09:32:06.918Z] 6m[CHAT] Luize26: 9m7m[WHISPER] bloop goto -193 102 -919m
+[2025-10-24T09:32:09.630Z] 2m[ACTION] AI returned a natural language response. Relaying to chat...9m
+[2025-10-24T09:35:51.439Z] TERMINAL COMMAND: quit

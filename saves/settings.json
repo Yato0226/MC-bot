@@ -3,6 +3,10 @@
   "autoDefend": true,
   "autoSleep": true,
   "whitelistedPlayers": [
-    "luize26"
+    "Luize26"
+  ],
+  "trustedUsers": [
+    "Luize26",
+    "AnotherTrustedFriend"
   ]
 }
