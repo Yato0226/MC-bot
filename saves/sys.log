@@ -4546,3 +4546,22 @@
     at listOnTimeout (node:internal/timers:588:17)
     at process.processTimers (node:internal/timers:523:7)
 [2025-10-24T13:09:26.521Z] ERROR: 1m[ERROR] Error: client timed out after 30000 milliseconds9m
+[2025-10-25T00:35:02.162Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T00:35:03.196Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T00:35:03.197Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T00:35:04.202Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T00:35:04.203Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T00:35:04.204Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T00:35:04.205Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T00:35:09.225Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T00:35:09.226Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T00:35:11.472Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T00:35:41.010Z] 6m[CHAT] utot1721: 9m7mwala si nat9m
+[2025-10-25T00:35:41.011Z] 2m[ACTION] Sending prompt to Ollama: "wala si nat"9m
+[2025-10-25T00:35:45.934Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-25T00:35:45.935Z] ERROR: 1m[ERROR] Unauthorized attempt to use TRUSTED command "hunt" by user "utot1721".9m

@@ -280,22 +280,34 @@ async function autoSleep() {
     if (bed) {
         // Place bed from inventory
         logAction('Placing bed from inventory...');
-        const bedPos = bot.entity.position.offset(0, 0, 1); // Attempt to place in front of bot
-        const refBlock = bot.blockAt(bedPos.offset(0, -1, 0)); // Block below where bed will be placed
+        let placed = false;
+        const possibleBedPositions = [
+            bot.entity.position.offset(0, 0, 1), // In front
+            bot.entity.position.offset(0, 0, -1), // Behind
+            bot.entity.position.offset(1, 0, 0), // Right
+            bot.entity.position.offset(-1, 0, 0)  // Left
+        ];
 
-        if (!refBlock || refBlock.name === 'air') {
-            logError('No solid block to place bed on.');
-            isSleeping = false;
-            return;
+        for (const bedPos of possibleBedPositions) {
+            const refBlock = bot.blockAt(bedPos.offset(0, -1, 0)); // Block below where bed will be placed
+            if (refBlock && refBlock.name !== 'air' && refBlock.boundingBox === 'block') { // Ensure solid block below
+                try {
+                    await bot.equip(bed, 'hand');
+                    await bot.placeBlock(refBlock, new Vec3(0, 1, 0)); // Place on top of refBlock
+                    bedBlock = bot.blockAt(bedPos);
+                    if (bedBlock && bedBlock.name.includes('_bed')) {
+                        logAction(`Bed placed at ${bedPos.x.toFixed(1)}, ${bedPos.y.toFixed(1)}, ${bedPos.z.toFixed(1)}.`);
+                        placed = true;
+                        break;
+                    }
+                } catch (err) {
+                    logSystem(`Attempted to place bed at ${bedPos.x.toFixed(1)}, ${bedPos.y.toFixed(1)}, ${bedPos.z.toFixed(1)} but failed: ${err.message}`);
+                }
+            }
         }
 
-        try {
-            await bot.equip(bed, 'hand');
-            await bot.placeBlock(refBlock, new Vec3(0, 1, 0)); // Place on top of refBlock
-            bedBlock = bot.blockAt(bedPos);
-            logAction('Bed placed.');
-        } catch (err) {
-            logError(`Could not place bed: ${err.message}`);
+        if (!placed) {
+            logError('Could not find a suitable spot to place the bed.');
             isSleeping = false;
             return;
         }
@@ -304,16 +316,9 @@ async function autoSleep() {
         logAction('No bed in inventory, searching for nearby bed...');
         bedBlock = bot.findBlock({
             matching: block => block.name.includes('_bed'),
-            maxDistance: 32
+            maxDistance: 64
         });
-
-        if (!bedBlock) {
-            logError('No bed found nearby.');
-            isSleeping = false;
-            return;
-        }
     }
-
     try {
         logAction('Sleeping in bed...');
         await bot.sleep(bedBlock);
@@ -418,14 +423,14 @@ async function handleBotMessage(username, message, isWhisper = false) {
   if (username && username !== 'Luize26') {
     // 1. Check for admin commands
     if (adminCommands.includes(potentialCmd)) {
-      logError(`Unauthorized attempt to use ADMIN command "${potentialCmd}" by user "${username}".`);
-      respond(username, "I'm sorry, that command is for the bot owner only.", isWhisper);
+      /*logError(`Unauthorized attempt to use ADMIN command "${potentialCmd}" by user "${username}".`);
+      respond(username, "I'm sorry, that command is for the bot owner only.", isWhisper);*/
       return; // Stop processing immediately.
     }
     // 2. Check for trusted commands
     if (trustedCommands.includes(potentialCmd) && !settings.trustedUsers.includes(username)) {
-      logError(`Unauthorized attempt to use TRUSTED command "${potentialCmd}" by user "${username}".`);
-      respond(username, "I'm sorry, you don't have permission to use that command.", isWhisper);
+      /*logError(`Unauthorized attempt to use TRUSTED command "${potentialCmd}" by user "${username}".`);
+      respond(username, "I'm sorry, you don't have permission to use that command.", isWhisper);*/
       return; // Stop processing immediately.
     }
   }
@@ -1190,7 +1195,7 @@ rl.on('line', async (input) => {
     case 'setspawn': {
         const bedBlock = bot.findBlock({
             matching: block => block.name.includes('_bed'),
-            maxDistance: 32
+            maxDistance: 64
         });
         if (!bedBlock) return logError('No bed found nearby to set spawn.');
 
