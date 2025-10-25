@@ -60,6 +60,43 @@ let webInventoryInstance = null; // To store the mineflayer-web-inventory instan
 let pathfinderListenersAttached = false;
 let isAttacking = false;
 let isFleeing = false;
+let isGuarding = false;
+let guardedPlayer = null;
+let lastFleeErrorTime = 0;
+const FLEE_ERROR_COOLDOWN = 5000; // 5 seconds
+
+const loggedMessages = new Map();
+const LOG_COOLDOWN = 2000; // Default cooldown for debounced logs (2 seconds)
+
+function debouncedLog(key, message, logFunction, cooldown = LOG_COOLDOWN) {
+  const now = Date.now();
+  if (!loggedMessages.has(key) || (now - loggedMessages.get(key)) > cooldown) {
+    logFunction(message);
+    loggedMessages.set(key, now);
+  }
+}
+
+function logError (msg) {
+
+  console.error(chalk.default.red(`[ERROR] ${msg}`))
+
+}
+
+
+
+function debouncedLogAction(key, msg, cooldown = LOG_COOLDOWN) {
+
+  debouncedLog(key, msg, logAction, cooldown);
+
+}
+
+
+
+function debouncedLogError(key, msg, cooldown = LOG_COOLDOWN) {
+
+  debouncedLog(key, msg, logError, cooldown);
+
+}
 
 // Ollama Configuration
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
@@ -95,51 +132,158 @@ async function runForSafety() {
     bot.ashfinder?.stop?.();
 
     // Determine a flee goal
-    // For now, a simple goal: move away from the nearest hostile entity or just a random direction
     const hostileEntity = bot.nearestEntity((e) => {
-        const isHostileMob = e.type === 'mob' && e.mobType && !['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer'].includes(e.mobType);
+        const isHostileMob = isHostile(e);
         const isPlayer = e.type === 'player';
         return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 32; // Search within 32 blocks
     });
 
     let fleeGoal;
-    if (hostileEntity) {
-        // Move in the opposite direction of the hostile entity
-        const direction = bot.entity.position.minus(hostileEntity.position).normalize();
-        const fleePoint = bot.entity.position.plus(direction.scaled(10)); // Move 10 blocks away
-        fleeGoal = new baritoneGoals.GoalExact(fleePoint.x, fleePoint.y, fleePoint.z);
-        logAction(`Fleeing from ${hostileEntity.displayName} to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
+    let fleePoint;
+    let entityName = 'an unknown entity';
+
+    if (hostileEntity && hostileEntity.position) {
+        entityName = hostileEntity.username || hostileEntity.name || hostileEntity.displayName || 'an unknown entity';
+        const distanceToHostile = bot.entity.position.distanceTo(hostileEntity.position);
+
+        if (distanceToHostile > 0.1) { // Ensure positions are not identical to avoid zero vector
+            const direction = bot.entity.position.minus(hostileEntity.position).normalize();
+            fleePoint = bot.entity.position.plus(direction.scaled(10)); // Move 10 blocks away
+            logAction(`Fleeing from ${entityName} to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
+        } else {
+            // If too close or same position, move in a random direction
+            const randomAngle = Math.random() * Math.PI * 2;
+            const randomDirection = new Vec3(Math.cos(randomAngle), 0, Math.sin(randomAngle));
+            fleePoint = bot.entity.position.plus(randomDirection.scaled(10));
+            logAction(`Hostile entity ${entityName} is too close or at same position. Fleeing in a random direction to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
+        }
     } else {
         // If no hostile entity, just move in a random direction
         const randomAngle = Math.random() * Math.PI * 2;
         const randomDirection = new Vec3(Math.cos(randomAngle), 0, Math.sin(randomAngle));
-        const fleePoint = bot.entity.position.plus(randomDirection.scaled(10));
-        fleeGoal = new baritoneGoals.GoalExact(fleePoint.x, fleePoint.y, fleePoint.z);
-        logAction(`Fleeing in a random direction to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
+        fleePoint = bot.entity.position.plus(randomDirection.scaled(10));
+        logAction(`No hostile entity found or invalid position. Fleeing in a random direction to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
     }
+
+    fleeGoal = new baritoneGoals.GoalExact(fleePoint.x, fleePoint.y, fleePoint.z);
 
     try {
         await bot.ashfinder.gotoSmart(fleeGoal);
         logAction('Reached safety point.');
     } catch (err) {
-        logError(`Failed to reach safety point: ${err.message}`);
+        const now = Date.now();
+        if (now - lastFleeErrorTime > FLEE_ERROR_COOLDOWN) {
+            logError(`Failed to reach safety point: ${err.message}`);
+            lastFleeErrorTime = now;
+        } else {
+            // Optionally log a less verbose message or skip entirely if within cooldown
+            // console.log(`Flee error suppressed (cooldown): ${err.message}`);
+        }
     } finally {
         isFleeing = false;
     }
 }
 
-const helpMessage = `
---- Bot Commands ---
-In-Game Chat Commands (prefix with 'bloop' for AI interpretation):
-  AI Command Interpretation: If a command is not recognized, it will be sent to the Ollama AI for interpretation. The AI will attempt to return a structured JSON command. For example, 'hunt all zombies' will be interpreted by the AI and executed.
-  AI Chat: If a message contains the word "bloop", the bot will respond using the configured Ollama model.
-  hi bot: Bot greets you.
-  say <message>: Bot says <message> in chat.
+function isHostile(entity) {
+    if (!entity) return false;
+    // In mineflayer, hostile mobs generally have type 'mob' and are not explicitly listed as passive.
+    // A more direct way is to check if the entity is hostile based on its behavior or a property.
+    // For simplicity and robustness, we can assume entities with type 'hostile' are hostile if such a type exists.
+    // If not, we rely on mobType and exclude known passive mobs.
+    const passiveMobs = ['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer', 'Chicken', 'Cow', 'Pig', 'Sheep', 'Rabbit', 'Fox', 'Bee', 'Llama', 'Trader Llama', 'Horse', 'Donkey', 'Mule', 'Cat', 'Wolf', 'Parrot', 'Panda', 'Polar Bear', 'Goat', 'Camel'];
+    return entity.type === 'mob' && !passiveMobs.includes(entity.displayName.toString().toLowerCase());
+}
+
+async function guardLoop() {
+    while (isGuarding) {
+        if (!guardedPlayer) {
+            debouncedLogError('guard_no_player', 'Guard mode active but no player is being guarded. Stopping guard mode.');
+            isGuarding = false;
+            break;
+        }
+
+        const playerEntity = bot.players[guardedPlayer]?.entity;
+
+        if (!playerEntity) {
+            debouncedLogAction('guard_player_out_of_range', `Guarded player ${guardedPlayer} not found or out of range. Waiting...`);
+            // Stop any current actions and wait for player to reappear
+            bot.pvp.stop();
+            bot.hawkEye.stop();
+            bot.pathfinder.stop();
+            bot.ashfinder?.stop?.();
+            await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds
+            continue;
+        }
+
+        // Follow the guarded player
+        const movements = new Movements(bot, mcData);
+        bot.pathfinder.setMovements(movements);
+        bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(playerEntity, 3), true);
+
+        // Search for hostile mobs around the guarded player
+        const hostileTarget = bot.nearestEntity((e) => {
+            return isHostile(e) && e.position.distanceTo(playerEntity.position) < 16; // Hostile within 16 blocks of player
+        });
+
+        if (hostileTarget) {
+            logAction(`Hostile mob ${hostileTarget.displayName} detected near ${guardedPlayer}. Attacking!`);
+            // Stop following to engage target
+            bot.pathfinder.stop();
+            bot.ashfinder?.stop?.();
+
+            const bow = bot.inventory.findInventoryItem('bow');
+            const arrows = bot.inventory.findInventoryItem('arrow');
+
+            if (bow && arrows) {
+                logAction(`Using bow to attack ${hostileTarget.displayName}.`);
+                bot.hawkEye.autoAttack(hostileTarget, 'bow');
+            } else {
+                logAction(`No bow or no arrows found, attempting to equip best melee weapon and initiate melee attack on ${hostileTarget.displayName}.`);
+                const bestWeapon = getBestMeleeWeapon();
+                if (bestWeapon) {
+                    try {
+                        await bot.equip(bestWeapon, 'hand');
+                        bot.pvp.attack(hostileTarget);
+                    } catch (err) {
+                        debouncedLogError(`guard_equip_fail_${bestWeapon.displayName}`, `Failed to equip ${bestWeapon.displayName}: ${err.message}`);
+                        logAction(`Attacking ${hostileTarget.displayName} with bare hands due to equip failure.`);
+                        bot.pvp.attack(hostileTarget);
+                    }
+                } else {
+                    logAction(`No suitable melee weapon found for ${hostileTarget.displayName}. Attacking with bare hands.`);
+                    bot.pvp.attack(hostileTarget);
+                }
+            }
+
+            // Wait until attack is over (mob dead or escaped)
+            await new Promise(resolve => {
+                const onMobGone = (entity) => {
+                    if (entity.id === hostileTarget.id) {
+                        logAction(`Hostile mob ${hostileTarget.displayName} is gone.`);
+                        bot.removeListener('entityGone', onMobGone);
+                        bot.removeListener('entityDead', onMobGone);
+                        bot.pvp.stop();
+                        bot.hawkEye.stop();
+                        resolve();
+                    }
+                };
+                bot.on('entityGone', onMobGone);
+                bot.on('entityDead', onMobGone);
+            });
+        }
+
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Check every second
+    }
+    logAction('Guard mode stopped.');
+}
+
+const helpMessage = `  say <message>: Bot says <message> in chat.
   follow <player_name>: Bot follows the specified player.
+  guard <player_name>: Bot guards the specified player, following them and attacking hostile mobs nearby.
   hunt <name> or kill <name>: Bot hunts the specified player or mob. Can accept multiple targets if interpreted by AI.
   chop: Bot chops the nearest tree.
   stop: Stops all current actions.
-  goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location. Can accept coordinates from AI.
+  goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location.
   save <name>: Saves the bot's current position as a named location.
   list: Displays all saved locations.
   delete <name>: Deletes a saved location.
@@ -151,10 +295,11 @@ In-Game Chat Commands (prefix with 'bloop' for AI interpretation):
 Terminal Commands:
   say <message>: Bot says <message> in chat.
   follow <player_name>: Bot follows the specified player.
+  guard <player_name>: Bot guards the specified player, following them and attacking hostile mobs nearby.
   goto <x> <y> <z> or goto <saved_location_name>: Bot navigates to a location.
   save <name>: Saves the bot's current position as a named location.
   list: Displays all saved locations.
-  delete <name>: Deletes a saved location.
+  delete <name>: (name): Deletes a saved location.
   chop: Bot chops the nearest tree.
   stop: Stops all current actions.
   status: Displays bot's health, food, and saturation.
@@ -165,7 +310,7 @@ Terminal Commands:
   give items to <player_name>: Bot gives all its items to the specified player.
   whitelist <add|remove> <player_name>: Manages whitelisted players.
   quit or exit: Disconnects the bot.
-  help: Displays this help message.
+  help: Displays this help message.;
 `;
 
 async function loadSettings() {
@@ -192,7 +337,7 @@ const MAX_EAT_RETRIES = 3; // Max retries for eating
 
 async function autoEat() {
     // Check if autoEat is enabled, bot is already eating, or food/health is sufficient
-    if (!settings.autoEat || bot.isEating || (bot.food >= EAT_THRESHOLD && bot.health >= HEALTH_EAT_THRESHOLD)) {
+    if (!settings.autoEat || bot.isEating || (bot.food >= EAT_THRESHOLD && bot.health >= HEALTH_EAT_THRESHOLD) || isFleeing) {
         return;
     }
 
@@ -200,7 +345,7 @@ async function autoEat() {
         'golden_apple', 'enchanted_golden_apple', 'golden_carrot',
         'cooked_porkchop', 'cooked_beef', 'cooked_salmon', 'cooked_mutton', 'cooked_chicken',
         'steak', 'porkchop', 'beef', 'salmon', 'mutton', 'chicken',
-        'baked_potato', 'bread', 'apple', 'carrot', 'potato', 'beetroot'
+        'baked_potato', 'bread', 'apple', 'carrot', 'potato', 'beetroot', 'sweet_berries',
     ];
 
     const items = bot.inventory.items();
@@ -221,11 +366,11 @@ async function autoEat() {
     }
 
     if (!bestFood) {
-        logError('No suitable food found in inventory.');
+        debouncedLogError('No_food','No suitable food found in inventory.');
         return;
     }
 
-    logAction('Hunger low or health low, attempting to eat...');
+    //logAction('Hunger low or health low, attempting to eat...');
 
     const heldItem = bot.heldItem;
     let retries = 0;
@@ -233,10 +378,10 @@ async function autoEat() {
 
     while (retries < MAX_EAT_RETRIES && !eatenSuccessfully) {
         try {
-            logAction(`Equipping and eating ${bestFood.displayName}... (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
+            //logAction(`Equipping and eating ${bestFood.displayName}... (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
             await bot.equip(bestFood, 'hand');
             await bot.consume();
-            logAction('Finished eating.');
+            debouncedLogAction('Finished eating.');
             eatenSuccessfully = true;
         } catch (err) {
             /*if (err.message.includes('Food is full') || err.message.includes('Consuming cancelled')) {
@@ -245,8 +390,8 @@ async function autoEat() {
                 logError(`Auto-eat critical error: ${err.message} (This usually happens if inventory state changes unexpectedly during eating)`);
             } else {
                 logError(`Could not eat: ${err.message} (Attempt ${retries + 1}/${MAX_EAT_RETRIES})`);
-            }
-            retries++;*/
+            }*/
+            retries++;
             // Wait a bit before retrying
             await new Promise(resolve => setTimeout(resolve, 1000));
         }
@@ -340,24 +485,37 @@ async function autoSleep() {
 
 // --- Melee Weapon Management ---
 function getBestMeleeWeapon() {
+    const weaponPriority = [
+        'netherite_sword', 'diamond_sword', 'iron_sword', 'stone_sword', 'wooden_sword',
+        'netherite_axe', 'diamond_axe', 'iron_axe', 'stone_axe', 'wooden_axe',
+        'trident' // Trident is a powerful melee/ranged weapon
+    ];
+
     let bestWeapon = null;
-    let maxDamage = 0;
+    let bestPriority = -1;
 
     for (const item of bot.inventory.items()) {
-        // Consider swords and axes as melee weapons
-        if (item.name.includes('sword') || item.name.includes('axe')) {
-            // Temporarily equip the item to get its attack damage
-            // This is a workaround as bot.getAttackDamage requires the item to be equipped
-            // Or we can pass the item directly if the API supports it without equipping
-            // Let's assume bot.getAttackDamage can take an item object directly for now.
-            // If not, we'll need a more complex temporary equip/unequip logic.
-            const damage = bot.getAttackDamage(item);
-            if (damage > maxDamage) {
-                maxDamage = damage;
+        const priority = weaponPriority.indexOf(item.name);
+        if (priority !== -1) {
+            // Lower index means higher priority
+            if (bestWeapon === null || priority < bestPriority) {
                 bestWeapon = item;
+                bestPriority = priority;
             }
         }
     }
+
+    // Fallback: if no specific weapon is found, consider any item that could be used as a weapon
+    // This is a simplified check and might need refinement based on actual item properties
+    if (!bestWeapon) {
+        for (const item of bot.inventory.items()) {
+            if (item.name.includes('sword') || item.name.includes('axe') || item.name.includes('pickaxe') || item.name.includes('shovel') || item.name.includes('hoe')) {
+                bestWeapon = item;
+                break;
+            }
+        }
+    }
+
     return bestWeapon;
 }
 
@@ -374,15 +532,31 @@ async function callOllama(prompt) {
         messages: [
           { 
                         role: 'system',
-                        content: 'You are a Minecraft bot. Your task is to convert user requests into structured JSON commands. Your response MUST be a valid JSON object and contain NOTHING else. Do NOT include any conversational text, explanations, or markdown formatting outside of the JSON object itself. \n' +
+                        content: 'You are a Minecraft bot. Your task is to convert user requests into structured JSON commands. Your response MUST be a valid JSON object and contain NOTHING else. Do NOT include any conversational text, explanations, or markdown formatting outside of the JSON object itself. Always return a single command. \n' +
+                                 'If the user specifies coordinates (e.g., "go to X Y Z"), always use the "goto" command with x, y, and z parameters. \n' +
                                  'If the users message is a clear instruction for the bot to perform an action (e.g., move, attack, collect), return the corresponding command. \n' +
                                  'If the users message is conversational, a question, or a statement that does not require a specific bot action, use the "chat" command. \n' +
                                  'If the users message is ambiguous or cannot be clearly mapped to a known command, use the "unknown" command. \n' +
-                                 'Examples:\n' +
-                                 '- User: "hunt the sheep and the zombie"\n' +
-                                 '- You: { "command": "hunt", "targets": ["sheep", "zombie"] }\n' +
-                                 '- User: "go to -100 64 50"\n' +
-                                 '- You: { "command": "goto", "x": -100, "y": 64, "z": 50 }\n' +
+                                 '\nAvailable Commands and their JSON format:\n' +
+                                 '- Hunt/Kill: { "command": "hunt", "targets": ["<mob_name_1>", "<mob_name_2>"] } (e.g., "hunt the sheep and the zombie")\n' +
+                                 '- Go To Coordinates: { "command": "goto", "x": <number>, "y": <number>, "z": <number> } (e.g., "go to -100 64 50")\n' +
+                                 '- Go To Saved Location: { "command": "goto", "name": "<location_name>" } (e.g., "go to my_base")\n' +
+                                 '- Save Location: { "command": "save", "name": "<location_name>" } (e.g., "save my_base")\n' +
+                                 '- Delete Location: { "command": "delete", "name": "<location_name>" } (e.g., "delete my_base")\n' +
+                                 '- Chop Tree: { "command": "chop" } (e.g., "chop the nearest tree")\n' +
+                                 '- Stop All Actions: { "command": "stop" } (e.g., "stop everything")\n' +
+                                 '- Follow Player: { "command": "follow", "player": "<player_name>" } (e.g., "follow Luize26")\n' +
+                                 '- Guard Player: { "command": "guard", "player": "<player_name>" } (e.g., "guard Luize26")\n' +
+                                 '- Say Message: { "command": "say", "message": "<text>" } (e.g., "say hello world")\n' +
+                                 '- Give Items: { "command": "give", "target_player": "<player_name>" } (e.g., "give all items to Luize26")\n' +
+                                 '- Auto-Eat: { "command": "autoeat", "state": "on"|"off" } (e.g., "turn autoeat on")\n' +
+                                 '- Auto-Defend: { "command": "autodefend", "state": "on"|"off" } (e.g., "disable autodefend")\n' +
+                                 '- Auto-Sleep: { "command": "autosleep", "state": "on"|"off" } (e.g., "autosleep off")\n' +
+                                 '- Auto-Flee: { "command": "autoflee", "state": "on"|"off" } (e.g., "autoflee on")\n' +
+                                 '- Set Flee Health: { "command": "setfleehealth", "health": <number> } (e.g., "set flee health to 5")\n' +
+                                 '- Set Spawn: { "command": "setspawn" } (e.g., "set my spawn point")\n' +
+                                 '- Whitelist Player: { "command": "whitelist", "action": "add"|"remove", "player": "<player_name>" } (e.g., "whitelist add Luize26")\n' +
+                                 '\nExamples of AI interpretation:\n' +
                                  '- User: "what is your name?"\n' +
                                  '- You: { "command": "chat", "message": "My name is Bloop." }\n' +
                                  '- User: "asdfghjkl"\n' +
@@ -467,30 +641,38 @@ async function handleBotMessage(username, message, isWhisper = false) {
   // If after parsing there's no command, do nothing.
   if (!cmd) {
     return;
-  }f
+  }
+
+  console.log(`[DEBUG] Parsed command: '${cmd}', Arguments: ${JSON.stringify(args)}`); // Temporary debug log
 
   // (The rest of your function from this point down remains exactly the same...)
   switch (cmd.toLowerCase()) {
-    case 'hi':
-      if (args[0] && args[0].toLowerCase() === 'bot') {
-        respond(username, 'hello there!', isWhisper);
-      }
+    case 'follow': {
+      const name = aiCommand?.player || args[0];
+      if (!name) return logError('Usage: follow <player_name>');
+      const target = bot.players[name]?.entity;
+      if (!target) return logError(`Cannot see ${name}.`);
+      const movements = new Movements(bot, mcData);
+      bot.pathfinder.setMovements(movements);
+      bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(target, 3), true);
+      logAction(`Following ${name}`);
       break;
+    }
     case 'say':
       const messageToSay = args.join(' ');
       respond(username, messageToSay, isWhisper);
       logAction(`Bot saying: "${messageToSay}"`);
       break;
-    case 'follow': {
+    case 'guard': {
       const name = args[0];
-      if (!name) return logError('Usage: follow <player>');
-      const target = bot.players[name]?.entity || Object.values(bot.entities).find(e => e.name === name);
-      if (!target) return logError(`Cannot see ${name}.`);
+      if (!name) return logError('Usage: guard <player_name>');
+      const targetPlayer = bot.players[name];
+      if (!targetPlayer || !targetPlayer.entity) return logError(`Cannot see player ${name}.`);
 
-      logAction(`Following ${name}`);
-      const movements = new Movements(bot, mcData);
-      bot.pathfinder.setMovements(movements);
-      bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(target, 3), true);
+      guardedPlayer = name;
+      isGuarding = true;
+      logAction(`Guarding player ${name}.`);
+      guardLoop(); // Start the guard loop
       break;
     }
     case 'hunt':
@@ -524,11 +706,6 @@ async function handleBotMessage(username, message, isWhisper = false) {
         // This is the corrected search logic you already implemented
                 let target = bot.players[targetName]?.entity;
                 if (!target) {
-                  logSystem('--- Debug: Nearby Entities ---');
-                  Object.values(bot.entities).forEach(e => {
-                    logSystem(`Entity: Type=${e.type}, Name=${e.name}, DisplayName=${e.displayName?.toString()}`);
-                  });
-                  logSystem('--- End Debug ---');
                   const lowerCaseTargetName = targetName.toLowerCase();
                   target = bot.nearestEntity(entity => {                    if (!(entity.type === 'mob' || entity.type === 'player' || entity.type === 'animal' || entity.type === 'hostile')) return false;
                     const displayName = entity.displayName?.toString().toLowerCase();
@@ -539,16 +716,16 @@ async function handleBotMessage(username, message, isWhisper = false) {
 
         // --- THIS IS THE CRUCIAL NEW PART ---
         if (!target) {
-          logError(`Could not find a mob named '${targetName}'.`);
+          debouncedLogError(`hunt_mob_not_found_${targetName}`, `Could not find a mob named '${targetName}'.`);
 
           // Get a list of unique mob names the bot can currently see
           const nearbyMobs = Object.values(bot.entities)
-            .filter(e => e.type === 'mob' && e.displayName)
+            .filter(e => (e.type === 'mob' || e.type === 'animal' || e.type === 'hostile') && e.displayName)
             .map(e => e.displayName.toString())
             .filter((name, index, self) => self.indexOf(name) === index); // Get unique names
 
           if (nearbyMobs.length > 0) {
-            respond(username, `I can't find a '${targetName}', but I do see: ${mobList}.`, isWhisper);
+            respond(username, `I can't find a '${targetName}', but I do see: ${nearbyMobs.join(', ')}.`, isWhisper);
           } else {
             respond(username, `I can't find a '${targetName}'. I don't see any mobs nearby. Get closer.`, isWhisper);
           }
@@ -558,12 +735,22 @@ async function handleBotMessage(username, message, isWhisper = false) {
 
         logAction(`Found ${target.displayName}. Attacking!`);
         isAttacking = true; // Set flag when attack starts
+
+        const originalHeldItem = bot.heldItem; // Store the currently held item
+
         const bow = bot.inventory.findInventoryItem('bow');
         const arrows = bot.inventory.findInventoryItem('arrow'); // Check for arrows
 
         if (bow && arrows) { // If bot has both bow and arrows
           logAction(`Using bow to attack ${target.displayName}.`);
-          bot.hawkEye.autoAttack(target, 'bow');
+          try {
+            await bot.equip(bow, 'hand'); // Equip bow before attacking
+            bot.hawkEye.autoAttack(target, 'bow');
+          } catch (err) {
+            logError(`Failed to equip bow: ${err.message}`);
+            logAction(`Attacking ${target.displayName} with bare hands due to equip failure.`);
+            bot.pvp.attack(target);
+          }
         } else { // No bow, or no arrows
           logAction(`No bow or no arrows found, attempting to equip best melee weapon and initiate melee attack on ${target.displayName}.`);
           const bestWeapon = getBestMeleeWeapon();
@@ -581,10 +768,18 @@ async function handleBotMessage(username, message, isWhisper = false) {
             bot.pvp.attack(target);
           }
         }
-        // No immediate stop calls here, rely on event listeners
-      }
+
+        // Re-equip original item after attack is stopped
+        const onAttackStopped = () => {
+            if (originalHeldItem) {
+                bot.equip(originalHeldItem, 'hand').catch(err => logError(`Failed to re-equip original item: ${err.message}`));
+            }
+            bot.removeListener('stoppedAttacking', onAttackStopped);
+        };
+        bot.on('stoppedAttacking', onAttackStopped);
       break;
-    }    case 'chop': {
+    }    }
+    case 'chop': {
       const treeBlock = bot.findBlock({
         matching: block => block.name.includes('log'),
         maxDistance: 64
@@ -606,6 +801,8 @@ async function handleBotMessage(username, message, isWhisper = false) {
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.hawkEye.stop();
+      isGuarding = false; // Disable guard mode
+      guardedPlayer = null; // Clear guarded player
       break;
     case 'goto': {
       const locations = await loadLocations();
@@ -726,11 +923,12 @@ async function handleBotMessage(username, message, isWhisper = false) {
           try {
             // Basic validation: check if it looks like a JSON object
             if (!aiResponse.startsWith('{') || !aiResponse.endsWith('}')) {
+                debouncedLogError('ai_non_json_response', `AI response is not a valid JSON object (missing curly braces). Full response: ${aiResponse}`);
                 throw new Error('AI response is not a valid JSON object (missing curly braces).');
             }
             commandObject = JSON.parse(aiResponse);
           } catch (e) {
-            logError(`AI returned a non-JSON response: ${aiResponse}. Error: ${e.message}`);
+            debouncedLogError('ai_non_json_response', `AI returned a non-JSON response: ${aiResponse}. Error: ${e.message}`);
             respond(username, `I didn't understand that. The AI said: ${aiResponse}`, isWhisper);
             break;
           }
@@ -752,15 +950,15 @@ async function handleBotMessage(username, message, isWhisper = false) {
             // We use the AI's command object directly as the 'message'.
             await handleBotMessage(username, commandObject, isWhisper);
           } else {
-            logError(`AI returned invalid or incomplete JSON: ${aiResponse}`);
+            debouncedLogError('ai_invalid_json', `AI returned invalid or incomplete JSON: ${aiResponse}`);
             respond(username, 'I received a malformed command from the AI.', isWhisper);
           }
         } else {
-          logError('Ollama API call failed or returned no response. Check Ollama server and model.');
+          debouncedLogError('ai_api_fail', 'Ollama API call failed or returned no response. Check Ollama server and model.');
           respond(username, 'I am unable to process AI commands right now.', isWhisper);
         }
       } else { // If not a bloop command and not a recognized command
-        logError(`Unknown command: ${cmd}`);
+        debouncedLogError(`unknown_command_${cmd}`, `Unknown command: ${cmd}`);
         respond(username, "I don't recognize that command. Try 'bloop <your request>' for AI assistance.", isWhisper);
       }
       break;
@@ -834,10 +1032,10 @@ async function handleBotMessage(username, message, isWhisper = false) {
         // Exclude self
         if (e.id === bot.entity.id) return false;
 
-        const isHostileMob = e.type === 'mob' && e.mobType && !['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer'].includes(e.mobType);
+        const isHostileMob = isHostile(e);
         const isPlayer = e.type === 'player';
 
-        // If it's a player, chec k if they are whitelisted. If so, ignore them as an attacker.
+        // If it's a player, check if they are whitelisted. If so, ignore them as an attacker.
         if (isPlayer && settings.whitelistedPlayers.includes(e.username)) {
           return false;
         }
@@ -846,7 +1044,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
       });
 
       if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
-        logAction(`Identified potential attacker: ${attacker.username || attacker.name || 'unknown'} (Type: ${attacker.type}, MobType: ${attacker.mobType || 'N/A'}, Distance: ${attacker.position.distanceTo(bot.entity.position).toFixed(2)})`);
+        logAction(`Identified potential attacker: ${attacker.username || attacker.name || 'unknown'} (Type: ${attacker.type}, MobType: ${attacker.displayName.toString() || 'N/A'}, Distance: ${attacker.position.distanceTo(bot.entity.position).toFixed(2)})`);
         // Check if the attacker is a whitelisted player
         if (attacker.type === 'player' && settings.whitelistedPlayers.includes(attacker.username)) {
           logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
@@ -866,11 +1064,24 @@ async function handleBotMessage(username, message, isWhisper = false) {
 
   bot.on('itemDrop', async (entity) => {
     if (entity.type === 'item') {
+      // Prioritize critical actions over item collection
+      if (isFleeing) {
+        debouncedLogAction('collect_item_skipped_busy', `Skipping item collection for ${entity.displayName} because bot is fleeing.`);
+        return;
+      }
+
+      // Check for inventory space before attempting to collect
+      const emptySlots = bot.inventory.emptySlotCount();
+      if (emptySlots === 0) {
+        debouncedLogError('inventory_full', `Inventory is full. Cannot collect item ${entity.displayName}.`);
+        return;
+      }
+
       logAction(`Collecting dropped item: ${entity.displayName}`);
       try {
         await bot.collectBlock.collect(entity);
       } catch (err) {
-        logError(`Could not collect item ${entity.displayName}: ${err.message}`);
+        debouncedLogError(`collect_item_fail_${entity.displayName}`, `Could not collect item ${entity.displayName}: ${err.message}`);
       }
     }
   });
@@ -878,7 +1089,8 @@ async function handleBotMessage(username, message, isWhisper = false) {
     logSystem('Bot spawned!')
     if (!pathfinderListenersAttached) {
       bot.ashfinder.on('goal-reach-partial', (goal) => {
-        logAction('Baritone is struggling, switching to mineflayer-pathfinder for replanning.');
+        const botPos = bot.entity.position;
+        debouncedLogAction('baritone_struggling', `Baritone is struggling at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}. Switching to mineflayer-pathfinder for replanning to goal ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}.`);
         bot.ashfinder.stop();
     
         let newGoal;
@@ -887,7 +1099,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
         } else if (goal instanceof baritoneGoals.GoalNear) {
             newGoal = new pathfinderGoals.GoalNear(goal.x, goal.y, goal.z, goal.range);
         } else {
-            logError(`Cannot translate baritone goal to pathfinder goal. Goal type ${goal.constructor.name} not supported for fallback.`);
+            debouncedLogError('baritone_goal_translate_fail', `Cannot translate baritone goal to pathfinder goal. Goal type ${goal.constructor.name} not supported for fallback.`);
             return;
         }
         
@@ -897,15 +1109,17 @@ async function handleBotMessage(username, message, isWhisper = false) {
       });
 
       bot.ashfinder.on('goal-reach', (goal) => {
+        const botPos = bot.entity.position;
         if (goal && typeof goal.x === 'number' && typeof goal.y === 'number' && typeof goal.z === 'number') {
-          logAction(`Baritone goal reached: ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}`);
+          logAction(`Baritone goal reached at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}: ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}`);
         } else {
-          logAction('Baritone goal reached!');
+          logAction(`Baritone goal reached at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}!`);
         }
       });
 
-      bot.ashfinder.on('goal-reach', () => {
-        logAction('Mineflayer-pathfinder goal reached!');
+      bot.on('goal_reached', () => {
+        const botPos = bot.entity.position;
+        logAction(`Mineflayer-pathfinder goal reached at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}!`);
       });
 
       pathfinderListenersAttached = true;
@@ -1038,15 +1252,27 @@ rl.on('line', async (input) => {
       bot.chat(args.join(' '))
       break
     case 'follow': {
-      const name = args[0]
-      if (!name) return logError('Usage: follow <player>')
-      const target = bot.players[name]?.entity
-      if (!target) return logError(`Cannot see ${name}.`)
-      const movements = new Movements(bot, mcData)
-      bot.pathfinder.setMovements(movements)
-      bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(target, 3), true)
-      logAction(`Following ${name}`)
-      break
+      const name = aiCommand?.player || args[0];
+      if (!name) return logError('Usage: follow <player_name>');
+      const target = bot.players[name]?.entity;
+      if (!target) return logError(`Cannot see ${name}.`);
+      const movements = new Movements(bot, mcData);
+      bot.pathfinder.setMovements(movements);
+      bot.pathfinder.setGoal(new pathfinderGoals.GoalFollow(target, 3), true);
+      logAction(`Following ${name}`);
+      break;
+    }
+    case 'guard': {
+        const name = args[0];
+        if (!name) return logError('Usage: guard <player_name>');
+        const targetPlayer = bot.players[name];
+        if (!targetPlayer || !targetPlayer.entity) return logError(`Cannot see player ${name}.`);
+
+        guardedPlayer = name;
+        isGuarding = true;
+        logAction(`Guarding player ${name}.`);
+        guardLoop(); // Start the guard loop
+        break;
     }
     case 'goto': {
       const locations = await loadLocations()
@@ -1068,18 +1294,18 @@ rl.on('line', async (input) => {
                 try {
                     commandObject = JSON.parse(aiResponse);
                 } catch (e) {
-                    logError(`AI returned a non-JSON response for goto: ${aiResponse}`);
-                    logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+                    debouncedLogError('terminal_goto_ai_non_json', `AI returned a non-JSON response for goto: ${aiResponse}`);
+                    debouncedLogError('terminal_goto_usage', 'Usage: goto <x> <y> <z> OR goto <saved_location_name>');
                     return;
                 }
                 if (commandObject && typeof commandObject === 'object' && commandObject.command === 'goto') {
                     handleBotMessage(null, commandObject); // Pass null for username as it's from terminal
                 } else {
-                    logError(`AI could not interpret goto command: ${input}. Response: ${aiResponse}`);
-                    logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+                    debouncedLogError('terminal_goto_ai_interpret_fail', `AI could not interpret goto command: ${input}. Response: ${aiResponse}`);
+                    debouncedLogError('terminal_goto_usage', 'Usage: goto <x> <y> <z> OR goto <saved_location_name>');
                 }
             } else {
-                logError('Usage: goto <x> <y> <z> OR goto <saved_location_name>');
+                debouncedLogError('terminal_goto_usage', 'Usage: goto <x> <y> <z> OR goto <saved_location_name>');
             }
             return;
         }
@@ -1136,6 +1362,8 @@ rl.on('line', async (input) => {
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.ashfinder?.stop?.();
+      isGuarding = false; // Disable guard mode
+      guardedPlayer = null; // Clear guarded player
       logAction('Stopped.');
       break;
     case 'status': {
@@ -1284,8 +1512,8 @@ rl.on('line', async (input) => {
         try {
           commandObject = JSON.parse(aiResponse);
         } catch (e) {
-          logError(`AI returned a non-JSON response: ${aiResponse}`);
-          logError(`Unknown command: ${cmd}`);
+          debouncedLogError('terminal_default_ai_non_json', `AI returned a non-JSON response: ${aiResponse}`);
+          debouncedLogError(`terminal_unknown_command_${cmd}`, `Unknown command: ${cmd}`);
           break;
         }
 
@@ -1296,18 +1524,18 @@ rl.on('line', async (input) => {
             break;
           }
           if (commandObject.command === 'unknown') {
-            logError('AI could not determine a command.');
-            logError(`Unknown command: ${cmd}`);
+            debouncedLogError('terminal_ai_unknown_command', 'AI could not determine a command.');
+            debouncedLogError(`terminal_unknown_command_${cmd}`, `Unknown command: ${cmd}`);
             break;
           }
           logAction('AI returned a valid command. Executing...');
           handleBotMessage(null, commandObject); // Pass null for username as it's from terminal
         } else {
-          logError(`AI returned invalid or incomplete JSON: ${aiResponse}`);
-          logError(`Unknown command: ${cmd}`);
+          debouncedLogError('terminal_ai_invalid_json', `AI returned invalid or incomplete JSON: ${aiResponse}`);
+          debouncedLogError(`terminal_unknown_command_${cmd}`, `Unknown command: ${cmd}`);
         }
       } else {
-        logError(`Ollama API call failed or returned no response. Unknown command: ${cmd}`);
+        debouncedLogError('terminal_ollama_api_fail', `Ollama API call failed or returned no response. Unknown command: ${cmd}`);
       }
       break;
   }
