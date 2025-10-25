@@ -1,8 +1,8 @@
 require('dotenv').config()
 const mineflayer = require('mineflayer')
-const baritone = require('@miner-org/mineflayer-baritone').loader
+const baritone = require('@miner-org/mineflayer-baritone')
 const { pathfinder, Movements, goals: pathfinderGoals } = require('mineflayer-pathfinder')
-const { goals: baritoneGoals } = require('@miner-org/mineflayer-baritone')
+const { goals: baritoneGoals } = require('@miner-org/mineflayer-baritone').loader
 const { Vec3 } = require('vec3')
 const GoalFollow = baritoneGoals.GoalFollow
 const mineflayerViewer = require('prismarine-viewer').mineflayer
@@ -11,7 +11,8 @@ const toolPlugin = require('mineflayer-tool').plugin
 const pvp = require('mineflayer-pvp').plugin
 const inventoryViewer = require('mineflayer-web-inventory')
 const armorManager = require('mineflayer-armor-manager')
-const collectBlock = require('mineflayer-collectblock').plugin
+const collectBlock = require('mineflayer-collectblock').plugin;
+const bloodhound = require('@miner-org/bloodhound');
 const readline = require('readline')
 const chalk = require('chalk')
 const fs = require('fs').promises
@@ -64,6 +65,8 @@ let isGuarding = false;
 let guardedPlayer = null;
 let lastFleeErrorTime = 0;
 const FLEE_ERROR_COOLDOWN = 5000; // 5 seconds
+let lastAttacker = null;
+let lastAttackTime = 0;
 
 const loggedMessages = new Map();
 const LOG_COOLDOWN = 2000; // Default cooldown for debounced logs (2 seconds)
@@ -118,12 +121,12 @@ let settings = {
 };
 
 async function runForSafety() {
-    if (!settings.autoFlee || isFleeing || bot.health >= settings.fleeHealthThreshold) {
+    if (isFleeing) {
         return;
     }
 
     isFleeing = true;
-    logAction('Low health, running for safety!');
+    logAction('Running for safety!');
 
     // Stop current actions
     bot.pvp.stop();
@@ -132,11 +135,19 @@ async function runForSafety() {
     bot.ashfinder?.stop?.();
 
     // Determine a flee goal
-    const hostileEntity = bot.nearestEntity((e) => {
-        const isHostileMob = isHostile(e);
-        const isPlayer = e.type === 'player';
-        return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 32; // Search within 32 blocks
-    });
+    let hostileEntity = null;
+    if (lastAttacker && (Date.now() - lastAttackTime) < 5000) {
+        hostileEntity = lastAttacker;
+    } else {
+        hostileEntity = bot.nearestEntity((e) => {
+            const isHostileMob = isHostile(e);
+            const isPlayer = e.type === 'player';
+            if (isPlayer && settings.whitelistedPlayers.includes(e.username)) {
+                return false;
+            }
+            return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 32;
+        });
+    }
 
     let fleeGoal;
     let fleePoint;
@@ -147,7 +158,15 @@ async function runForSafety() {
         const distanceToHostile = bot.entity.position.distanceTo(hostileEntity.position);
 
         if (distanceToHostile > 0.1) { // Ensure positions are not identical to avoid zero vector
-            const direction = bot.entity.position.minus(hostileEntity.position).normalize();
+            let direction = bot.entity.position.minus(hostileEntity.position);
+            direction.y = 0;
+
+            if (direction.length() < 0.1) {
+                const randomAngle = Math.random() * Math.PI * 2;
+                direction = new Vec3(Math.cos(randomAngle), 0, Math.sin(randomAngle));
+            }
+            
+            direction = direction.normalize();
             fleePoint = bot.entity.position.plus(direction.scaled(10)); // Move 10 blocks away
             logAction(`Fleeing from ${entityName} to ${fleePoint.x.toFixed(1)}, ${fleePoint.y.toFixed(1)}, ${fleePoint.z.toFixed(1)}`);
         } else {
@@ -777,13 +796,14 @@ async function handleBotMessage(username, message, isWhisper = false) {
             bot.removeListener('stoppedAttacking', onAttackStopped);
         };
         bot.on('stoppedAttacking', onAttackStopped);
+      }
       break;
-    }    }
+    }
     case 'chop': {
       const treeBlock = bot.findBlock({
         matching: block => block.name.includes('log'),
         maxDistance: 64
-      });
+    });
       if (!treeBlock) return logError('No trees nearby.');
 
       logAction('Chopping nearest tree...');
@@ -965,7 +985,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
     }
   }
 }
-      
+
       async function startBot() {
   isIntentionalExit = false; // Reset flag on new bot creation
   await loadSettings();
@@ -985,6 +1005,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
   bot.loadPlugin(pvp)
   bot.loadPlugin(armorManager)
   bot.loadPlugin(collectBlock)
+  bot.loadPlugin(bloodhound)
 
   // Initialize web inventory viewer only once, with port hopping
   if (!webInventoryInstance) {
@@ -1013,7 +1034,6 @@ async function handleBotMessage(username, message, isWhisper = false) {
   // --- Bot Events ---
   bot.on('health', () => {
     autoEat();
-    runForSafety();
   });
   bot.on('death', async () => {
     logSystem('Bot died. Respawning...');
@@ -1023,42 +1043,30 @@ async function handleBotMessage(username, message, isWhisper = false) {
       logError(`Error respawning: ${err.message}`)
     }
   });
-  bot.on('entityHurt', async (entity) => {
-    if (settings.autoDefend && entity === bot.entity) {
-      // Give a small delay to allow the game state to update and attacker to be more reliably identified
-      await new Promise(resolve => setTimeout(resolve, 100));
+  bot.on('entityAttack', (victim, attacker, weapon) => {
+    if (victim !== bot.entity) return;
 
-      let attacker = bot.nearestEntity((e) => {
-        // Exclude self
-        if (e.id === bot.entity.id) return false;
+    lastAttacker = attacker;
+    lastAttackTime = Date.now();
 
-        const isHostileMob = isHostile(e);
-        const isPlayer = e.type === 'player';
+    if (settings.autoFlee && bot.health < settings.fleeHealthThreshold) {
+        runForSafety();
+        return;
+    }
 
-        // If it's a player, check if they are whitelisted. If so, ignore them as an attacker.
-        if (isPlayer && settings.whitelistedPlayers.includes(e.username)) {
-          return false;
-        }
-
-        return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 16; // Within 16 blocks
-      });
-
-      if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
-        logAction(`Identified potential attacker: ${attacker.username || attacker.name || 'unknown'} (Type: ${attacker.type}, MobType: ${attacker.displayName.toString() || 'N/A'}, Distance: ${attacker.position.distanceTo(bot.entity.position).toFixed(2)})`);
-        // Check if the attacker is a whitelisted player
+    if (settings.autoDefend) {
         if (attacker.type === 'player' && settings.whitelistedPlayers.includes(attacker.username)) {
-          logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
-          return;
+            logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
+            return;
         }
 
         logAction(`Attacked by ${attacker.username || attacker.name || 'an unknown entity'}! Retaliating.`);
         const bow = bot.inventory.findInventoryItem('bow');
         if (bow) {
-          bot.hawkEye.autoAttack(attacker, 'bow');
+            bot.hawkEye.autoAttack(attacker, 'bow');
         } else {
-          bot.pvp.attack(attacker);
+            bot.pvp.attack(attacker);
         }
-      }
     }
   });
 
@@ -1252,7 +1260,7 @@ rl.on('line', async (input) => {
       bot.chat(args.join(' '))
       break
     case 'follow': {
-      const name = aiCommand?.player || args[0];
+      const name = args[0];
       if (!name) return logError('Usage: follow <player_name>');
       const target = bot.players[name]?.entity;
       if (!target) return logError(`Cannot see ${name}.`);

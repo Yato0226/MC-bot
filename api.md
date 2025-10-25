@@ -756,3 +756,39 @@ Causes the bot to collect the given block, item drop, or list of those. If the t
   * `itemFilter: ItemFilter`
 
     When transferring items to a chest, this filter is used to determine what items are allowed to be moved, and what items aren't allowed to be moved. Defaults to the item filter specified on the bot.collectBlock plugin.
+
+# bloodhound
+
+Detect entites attacking each other in mineflayer (based on [mineflayer-bloodhound](https://github.com/Nixes/mineflayer-bloodhound))
+
+## Example
+
+```js
+const mineflayer = require('mineflayer')
+const bloodhound = require('@miner-org/bloodhound')
+
+const bot = mineflayer.createBot({})
+
+bot.loadPlugin(bloodhound)
+
+bot.once('spawn', () => {
+    // Reduces false positives with multiple entities in combat
+    // But it might produce false negatives
+    // Default: true
+    bot.bloodhound.yawCorrelation = true
+
+    // Enables detection for projectiles like arrows and tridents
+    // If the latency is too high it might impact the reliablity
+    // Default: true
+    bot.bloodhound.projectileDetection = true
+})
+
+bot.on('entityAttack', (victim, attacker, weapon) => {
+    const victimName = victim.username ?? victim.displayName
+    const attackerName = attacker.username ?? attacker.displayName
+    const weaponName = weapon?.displayName
+
+    if (weapon) console.log(`${attackerName} attacked ${victimName} using ${weaponName}!`)
+    else console.log(`${attackerName} attacked ${victimName}!`)
+})
+```
