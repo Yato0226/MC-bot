@@ -375,14 +375,18 @@ async function callOllama(prompt) {
           { 
                         role: 'system',
                         content: 'You are a Minecraft bot. Your task is to convert user requests into structured JSON commands. Your response MUST be a valid JSON object and contain NOTHING else. Do NOT include any conversational text, explanations, or markdown formatting outside of the JSON object itself. \n' +
+                                 'If the users message is a clear instruction for the bot to perform an action (e.g., move, attack, collect), return the corresponding command. \n' +
+                                 'If the users message is conversational, a question, or a statement that does not require a specific bot action, use the "chat" command. \n' +
+                                 'If the users message is ambiguous or cannot be clearly mapped to a known command, use the "unknown" command. \n' +
                                  'Examples:\n' +
                                  '- User: "hunt the sheep and the zombie"\n' +
                                  '- You: { "command": "hunt", "targets": ["sheep", "zombie"] }\n' +
                                  '- User: "go to -100 64 50"\n' +
                                  '- You: { "command": "goto", "x": -100, "y": 64, "z": 50 }\n' +
-                                 '- User: "how are you?"\n' +
-                                 '- You: { "command": "chat", "message": "I am a bot, I am doing well!" }\n' +
-                                 'If the request is conversational, use the "chat" command. If a command is not recognized, respond with { "command": "unknown" }.'          },
+                                 '- User: "what is your name?"\n' +
+                                 '- You: { "command": "chat", "message": "My name is Bloop." }\n' +
+                                 '- User: "asdfghjkl"\n' +
+                                 '- You: { "command": "unknown" }' ,},
           { role: 'user', content: prompt }
         ],
         stream: false,
@@ -699,56 +703,66 @@ async function handleBotMessage(username, message, isWhisper = false) {
       break;
     default: {
       let promptForAI = message;
-      // If "bloop" is used, strip it to focus the AI on the actual command.
-      if (typeof message === 'string' && message.toLowerCase().startsWith('bloop')) {
-        promptForAI = message.substring(5).trim(); // Remove "bloop "
+      let callAI = false;
+
+      // If "bloop" is used, strip it and flag to call AI.
+      if (typeof message === 'string' && message.toLowerCase().includes('bloop')) {
+        promptForAI = message.toLowerCase().replace('bloop', '').trim(); // Remove "bloop " anywhere
+        callAI = true;
+      } else if (username === null) { // Terminal commands always go to AI if not handled
+        callAI = true;
       }
 
       // Do not send empty prompts to the AI
-      if (!promptForAI) {
+      if (!promptForAI && callAI) {
         break;
       }
 
-      logAction(`Sending prompt to Ollama: "${promptForAI}"`);
-      const aiResponse = await callOllama(promptForAI);
+      if (callAI) {
+        logAction(`Sending prompt to Ollama: "${promptForAI}"`);
+        const aiResponse = await callOllama(promptForAI);
 
-              if (aiResponse) {
-                let commandObject;
-                try {
-                  // Basic validation: check if it looks like a JSON object
-                  if (!aiResponse.startsWith('{') || !aiResponse.endsWith('}')) {
-                      throw new Error('AI response is not a valid JSON object (missing curly braces).');
-                  }
-                  commandObject = JSON.parse(aiResponse);
-                } catch (e) {
-                  logError(`AI returned a non-JSON response: ${aiResponse}. Error: ${e.message}`);
-                  respond(username, `I didn't understand that. The AI said: ${aiResponse}`, isWhisper);
-                  break;
-                }
-        if (commandObject && typeof commandObject === 'object' && commandObject.command) {
-          // Handle special cases from the new AI prompt
-          if (commandObject.command === 'chat') {
-            logAction('AI returned a chat response.');
-            respond(username, commandObject.message, isWhisper);
+        if (aiResponse) {
+          let commandObject;
+          try {
+            // Basic validation: check if it looks like a JSON object
+            if (!aiResponse.startsWith('{') || !aiResponse.endsWith('}')) {
+                throw new Error('AI response is not a valid JSON object (missing curly braces).');
+            }
+            commandObject = JSON.parse(aiResponse);
+          } catch (e) {
+            logError(`AI returned a non-JSON response: ${aiResponse}. Error: ${e.message}`);
+            respond(username, `I didn't understand that. The AI said: ${aiResponse}`, isWhisper);
             break;
           }
-          if (commandObject.command === 'unknown') {
-            logError('AI could not determine a command.');
-            respond(username, "I'm not sure how to do that.", isWhisper);
-            break;
-          }
+          if (commandObject && typeof commandObject === 'object' && commandObject.command) {
+            // Handle special cases from the new AI prompt
+            if (commandObject.command === 'chat') {
+              logAction('AI returned a chat response.');
+              respond(username, commandObject.message, isWhisper);
+              break;
+            }
+            if (commandObject.command === 'unknown') {
+              logError('AI could not determine a command.');
+              respond(username, "I'm not sure how to do that.", isWhisper);
+              break;
+            }
 
-          logAction('AI returned a valid command. Executing...');
-          // Re-run this function with the structured command.
-          // We use the AI's command object directly as the 'message'.
-          await handleBotMessage(username, commandObject, isWhisper);
+            logAction('AI returned a valid command. Executing...');
+            // Re-run this function with the structured command.
+            // We use the AI's command object directly as the 'message'.
+            await handleBotMessage(username, commandObject, isWhisper);
+          } else {
+            logError(`AI returned invalid or incomplete JSON: ${aiResponse}`);
+            respond(username, 'I received a malformed command from the AI.', isWhisper);
+          }
         } else {
-          logError(`AI returned invalid or incomplete JSON: ${aiResponse}`);
-          respond(username, 'I received a malformed command from the AI.', isWhisper);
+          logError('Ollama API call failed or returned no response. Check Ollama server and model.');
+          respond(username, 'I am unable to process AI commands right now.', isWhisper);
         }
-      } else {
-        logError('Ollama API call failed or returned no response. Check Ollama server and model.');
-        respond(username, 'I am unable to process AI commands right now.', isWhisper);
+      } else { // If not a bloop command and not a recognized command
+        logError(`Unknown command: ${cmd}`);
+        respond(username, "I don't recognize that command. Try 'bloop <your request>' for AI assistance.", isWhisper);
       }
       break;
     }
