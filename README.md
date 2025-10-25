@@ -6,7 +6,7 @@
 -   **Auto-Defend:** Automatically retaliates against any entity that damages the bot.
 -   **Auto-Sleep:** Automatically finds and uses a bed to sleep through the night, prioritizing beds in inventory.
 -   **Player Following:** Follows specified players using `mineflayer-pathfinder`.
--   **Advanced Hunting:** Hunts players or mobs using melee (`mineflayer-pvp`) or ranged attacks (`minecrafthawkeye`) if a bow is available.
+-   **Advanced Hunting:** Hunts players or mobs using melee (`mineflayer-pvp`) or ranged attacks (`minecrafthawkeye`). Automatically switches to melee if arrows are depleted during a ranged attack.
 -   **Resource Collection:** Chops trees using `mineflayer-collectblock`.
 -   **Advanced Pathfinding:** Uses `mineflayer-baritone` for smart navigation, including long-distance waypoint travel.
 -   **Location Management:** Save, load, and manage named locations.
@@ -69,7 +69,7 @@ Interact with the bot directly from the terminal where it's running. Settings ar
 -   `setspawn`: Sets the bot's spawn point to the nearest bed.
 -   `say <message>`: Makes the bot say `<message>` in-game chat.
 -   `follow <player_name>`: The bot will follow the specified player.
--   `hunt <name>` or `kill <name>`: Hunts the specified player or mob. Uses a bow for ranged attacks if available, otherwise uses melee.
+-   `hunt <name>` or `kill <name>`: Hunts the specified player or mob. Uses a bow for ranged attacks if available, otherwise uses melee. Automatically switches to melee if arrows are depleted during a ranged attack. Automatically switches to melee if arrows are depleted during a ranged attack.
 -   `chop`: The bot will find and chop the nearest tree.
 -   `stop`: Stops all current actions (pathfinding, PVP, etc.).
 -   `status`: Displays the bot's current health, food, and saturation levels.

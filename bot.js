@@ -61,6 +61,8 @@ let pathfinderListenersAttached = false;
 let isAttacking = false;
 let isFleeing = false;
 let isGuarding = false;
+let arrowCheckInterval = null;
+let isMonitoringArrows = false;
 let guardedPlayer = null;
 let lastFleeErrorTime = 0;
 const FLEE_ERROR_COOLDOWN = 5000; // 5 seconds
@@ -98,6 +100,55 @@ function debouncedLogError(key, msg, cooldown = LOG_COOLDOWN) {
 
 }
 
+function getArrowCount() {
+    const arrowItem = mcData.itemsByName.arrow;
+    if (!arrowItem) return 0;
+    return bot.inventory.count(arrowItem.id);
+}
+
+async function startArrowMonitoring(target) {
+    if (isMonitoringArrows) return;
+    isMonitoringArrows = true;
+    logAction('Starting arrow monitoring.');
+
+    arrowCheckInterval = setInterval(async () => {
+        if (!isAttacking) { // Attack stopped by other means
+            stopArrowMonitoring();
+            return;
+        }
+
+        const currentArrowCount = getArrowCount();
+        if (currentArrowCount === 0) {
+            logAction('Out of arrows! Switching to melee attack.');
+            stopArrowMonitoring();
+            bot.hawkEye.stop(); // Stop bow attack
+            
+            const bestWeapon = getBestMeleeWeapon();
+            if (bestWeapon) {
+                try {
+                    await bot.equip(bestWeapon, 'hand');
+                    bot.pvp.attack(target);
+                } catch (err) {
+                    logError(`Failed to equip ${bestWeapon.displayName} for melee: ${err.message}`);
+                    bot.pvp.attack(target); // Attack with bare hands if equip fails
+                }
+            } else {
+                logAction('No suitable melee weapon found. Attacking with bare hands.');
+                bot.pvp.attack(target);
+            }
+        }
+    }, 1000); // Check every second
+}
+
+function stopArrowMonitoring() {
+    if (arrowCheckInterval) {
+        clearInterval(arrowCheckInterval);
+        arrowCheckInterval = null;
+    }
+    isMonitoringArrows = false;
+    logAction('Stopped arrow monitoring.');
+}
+
 // Ollama Configuration
 const OLLAMA_HOST = process.env.OLLAMA_HOST || 'http://localhost';
 const OLLAMA_PORT = process.env.OLLAMA_PORT || '11434';
@@ -112,7 +163,7 @@ let settings = {
     autoEat: true,
     autoDefend: true,
     autoSleep: true,
-    autoFlee: true,
+    autoFlee: false, // Disabled by default to prevent continuous pathfinding
     fleeHealthThreshold: 8,
     whitelistedPlayers: []
 };
@@ -746,6 +797,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
           try {
             await bot.equip(bow, 'hand'); // Equip bow before attacking
             bot.hawkEye.autoAttack(target, 'bow');
+            startArrowMonitoring(target);
           } catch (err) {
             logError(`Failed to equip bow: ${err.message}`);
             logAction(`Attacking ${target.displayName} with bare hands due to equip failure.`);
@@ -771,14 +823,16 @@ async function handleBotMessage(username, message, isWhisper = false) {
 
         // Re-equip original item after attack is stopped
         const onAttackStopped = () => {
+            stopArrowMonitoring(); // Stop arrow monitoring when attack stops
             if (originalHeldItem) {
                 bot.equip(originalHeldItem, 'hand').catch(err => logError(`Failed to re-equip original item: ${err.message}`));
             }
             bot.removeListener('stoppedAttacking', onAttackStopped);
         };
         bot.on('stoppedAttacking', onAttackStopped);
+      }
       break;
-    }    }
+    }
     case 'chop': {
       const treeBlock = bot.findBlock({
         matching: block => block.name.includes('log'),
@@ -797,7 +851,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
     }
     case 'stop':
       logAction('Stopping all actions...');
-      bot.ashfinder?.stop?.();
+      bot.ashfinder.on();
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.hawkEye.stop();
@@ -1090,8 +1144,8 @@ async function handleBotMessage(username, message, isWhisper = false) {
     if (!pathfinderListenersAttached) {
       bot.ashfinder.on('goal-reach-partial', (goal) => {
         const botPos = bot.entity.position;
-        debouncedLogAction('baritone_struggling', `Baritone is struggling at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}. Switching to mineflayer-pathfinder for replanning to goal ${goal.x.toFixed(1)}, ${goal.y.toFixed(1)}, ${goal.z.toFixed(1)}.`);
         bot.ashfinder.stop();
+        bot.ashfinder.goal = null; // Explicitly clear ashfinder's goal
     
         let newGoal;
         if (goal instanceof baritoneGoals.GoalExact) {
@@ -1102,10 +1156,18 @@ async function handleBotMessage(username, message, isWhisper = false) {
             debouncedLogError('baritone_goal_translate_fail', `Cannot translate baritone goal to pathfinder goal. Goal type ${goal.constructor.name} not supported for fallback.`);
             return;
         }
-        
-        const movements = new Movements(bot, mcData);
-        bot.pathfinder.setMovements(movements);
-        bot.pathfinder.setGoal(newGoal, true);
+
+        let newGoalX = 'N/A';
+        let newGoalY = 'N/A';
+        let newGoalZ = 'N/A';
+
+        if (newGoal) {
+            if (newGoal.x !== undefined) newGoalX = newGoal.x.toFixed(1);
+            if (newGoal.y !== undefined) newGoalY = newGoal.y.toFixed(1);
+            if (newGoal.z !== undefined) newGoalZ = newGoal.z.toFixed(1);
+        }
+
+        debouncedLogAction('baritone_struggling', `Baritone is struggling at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}. Switching to mineflayer-pathfinder for replanning to goal ${newGoalX}, ${newGoalY}, ${newGoalZ}.`);
       });
 
       bot.ashfinder.on('goal-reach', (goal) => {
@@ -1120,6 +1182,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
       bot.on('goal_reached', () => {
         const botPos = bot.entity.position;
         logAction(`Mineflayer-pathfinder goal reached at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}!`);
+        bot.ashfinder?.stop?.(); // Stop ashfinder once mineflayer-pathfinder has reached its goal
       });
 
       pathfinderListenersAttached = true;
@@ -1408,6 +1471,7 @@ rl.on('line', async (input) => {
         await saveSettings();
         break;
     }
+    /*
     case 'autoflee': {
         const arg = args[0];
         if (arg === 'on') {
@@ -1422,6 +1486,7 @@ rl.on('line', async (input) => {
         await saveSettings();
         break;
     }
+    */
     case 'setfleehealth': {
         const health = parseInt(args[0]);
         if (!isNaN(health) && health > 0 && health <= 20) {

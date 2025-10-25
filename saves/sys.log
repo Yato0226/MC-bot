@@ -5,3 +5,187 @@
 [2025-10-25T03:18:05.821Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
 [2025-10-25T03:18:05.822Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
 [2025-10-25T03:18:05.823Z] ERROR: 1m[ERROR] Unknown command: follow9m
+[2025-10-25T04:22:31.339Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:22:32.449Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:22:32.451Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:22:34.749Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:22:34.752Z] 2m[ACTION] Low health, running for safety!9m
+[2025-10-25T04:22:34.754Z] 2m[ACTION] No hostile entity found or invalid position. Fleeing in a random direction to -243.6, 102.0, -89.69m
+[2025-10-25T04:22:34.755Z] [AshFinder] Direct path: NaN blocks
+[2025-10-25T04:22:34.758Z] ERROR: 1m[ERROR] Failed to reach safety point: Cannot read properties of null (reading 'name')9m
+[2025-10-25T04:22:35.243Z] 2m[ACTION] Low health, running for safety!9m
+[2025-10-25T04:22:35.244Z] 2m[ACTION] No hostile entity found or invalid position. Fleeing in a random direction to -244.3, 102.0, -69.89m
+[2025-10-25T04:22:35.244Z] [AshFinder] Direct path: NaN blocks
+[2025-10-25T04:23:05.251Z] 2m[ACTION] Baritone goal reached at -242.7, 102.0, -79.6!9m
+[2025-10-25T04:23:05.252Z] 2m[ACTION] Reached safety point.9m
+[2025-10-25T04:23:07.120Z] 2m[ACTION] Low health, running for safety!9m
+[2025-10-25T04:23:07.122Z] 2m[ACTION] No hostile entity found or invalid position. Fleeing in a random direction to -241.0, 102.0, -89.59m
+[2025-10-25T04:23:07.122Z] [AshFinder] Direct path: NaN blocks
+[2025-10-25T04:23:09.005Z] 2m[ACTION] undefined9m
+[2025-10-25T04:23:24.959Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-25T04:23:24.961Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-25T04:23:24.961Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-25T04:23:37.133Z] 2m[ACTION] Baritone goal reached at -242.7, 102.0, -79.6!9m
+[2025-10-25T04:23:37.134Z] 2m[ACTION] Reached safety point.9m
+[2025-10-25T04:28:44.651Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:28:45.697Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:28:45.698Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:28:47.990Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:29:18.936Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-25T04:29:18.938Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-25T04:29:18.938Z] ERROR: 1m[ERROR] Cannot see Luize26.9m
+[2025-10-25T04:30:02.591Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -175 105 -919m
+[2025-10-25T04:30:02.592Z] [DEBUG] Parsed command: 'goto', Arguments: ["-175","105","-91"]
+[2025-10-25T04:30:02.593Z] 2m[ACTION] Going to -175, 105, -919m
+[2025-10-25T04:30:02.594Z] [AshFinder] Long distance: 188.4 blocks
+[2025-10-25T04:30:02.770Z] Generated 5 waypoints (188.4 blocks)
+[2025-10-25T04:30:02.771Z] → Waypoint 1/5: (-50.5, 117, -29.5)
+[2025-10-25T04:30:41.775Z] 2m[ACTION] Baritone goal reached at -49.7, 118.0, -27.4!9m
+[2025-10-25T04:30:41.776Z] ✓ Reached waypoint 1
+[2025-10-25T04:30:41.776Z] → Waypoint 2/5: (-106.5, 103, -64.5)
+[2025-10-25T04:34:10.386Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:34:11.484Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:34:11.486Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:34:13.617Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:34:16.865Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -175 105 -919m
+[2025-10-25T04:34:16.867Z] [DEBUG] Parsed command: 'goto', Arguments: ["-175","105","-91"]
+[2025-10-25T04:34:16.868Z] 2m[ACTION] Going to -175, 105, -919m
+[2025-10-25T04:34:16.869Z] [AshFinder] Long distance: 80.4 blocks
+[2025-10-25T04:34:16.894Z] Generated 3 waypoints (80.4 blocks)
+[2025-10-25T04:34:16.895Z] → Waypoint 1/3: (-137.5, 113, -76.5)
+[2025-10-25T04:34:48.981Z] ✓ Reached waypoint 1
+[2025-10-25T04:34:48.979Z] 2m[ACTION] Baritone goal reached at -135.3, 113.0, -74.5!9m
+[2025-10-25T04:34:48.981Z] → Waypoint 2/3: (-159.5, 110, -79.5)
+[2025-10-25T04:34:59.185Z] 2m[ACTION] Baritone goal reached at -157.3, 111.0, -77.3!9m
+[2025-10-25T04:34:59.186Z] ✓ Reached waypoint 2
+[2025-10-25T04:34:59.186Z] → Waypoint 3/3: (-175, 105, -91)
+[2025-10-25T04:35:37.547Z] 2m[ACTION] Baritone is struggling at -175.5, 105.0, -91.4. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:35:37.673Z] 2m[ACTION] Baritone goal reached at -175.5, 105.0, -91.5!9m
+[2025-10-25T04:35:37.674Z] ✓ Reached waypoint 3
+[2025-10-25T04:35:37.674Z] ⚠ Close to goal (0.7 blocks), attempting final approach...
+[2025-10-25T04:36:06.727Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt chicken9m
+[2025-10-25T04:36:06.728Z] [DEBUG] Parsed command: 'hunt', Arguments: ["chicken"]
+[2025-10-25T04:36:06.753Z] 2m[ACTION] Chopping nearest tree...9m
+[2025-10-25T04:36:06.729Z] 2m[ACTION] Using bow to attack Chicken.9m
+[2025-10-25T04:36:06.729Z] 2m[ACTION] Found Chicken. Attacking!9m
+[2025-10-25T04:36:08.053Z] 2m[ACTION] Baritone is struggling at -174.5, 105.0, -91.5. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:36:08.100Z] ERROR: 1m[ERROR] The goal was changed before it could be completed!9m
+[2025-10-25T04:36:08.179Z] 2m[ACTION] Baritone goal reached at -174.4, 105.0, -91.5!9m
+[2025-10-25T04:36:30.311Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-25T04:36:30.311Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-25T04:36:30.312Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-25T04:36:34.495Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt chicken9m
+[2025-10-25T04:36:34.495Z] [DEBUG] Parsed command: 'hunt', Arguments: ["chicken"]
+[2025-10-25T04:36:38.821Z] 2m[ACTION] Baritone is struggling at -175.5, 105.0, -90.6. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:36:38.952Z] 2m[ACTION] Baritone goal reached at -175.5, 105.0, -90.6!9m
+[2025-10-25T04:36:42.824Z] TERMINAL COMMAND: stop
+[2025-10-25T04:36:42.825Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:36:46.741Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt chicken9m
+[2025-10-25T04:36:46.741Z] [DEBUG] Parsed command: 'hunt', Arguments: ["chicken"]
+[2025-10-25T04:37:00.473Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-25T04:37:00.473Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-25T04:37:00.479Z] 2m[ACTION] Following Luize269m
+[2025-10-25T04:37:15.933Z] 2m[ACTION] Baritone is struggling at -174.5, 105.0, -91.5. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:37:16.026Z] 2m[ACTION] Baritone goal reached at -174.5, 105.0, -91.5!9m
+[2025-10-25T04:37:46.589Z] 2m[ACTION] Baritone is struggling at -175.5, 105.0, -90.6. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:37:46.673Z] 2m[ACTION] Baritone goal reached at -175.5, 105.0, -90.5!9m
+[2025-10-25T04:38:17.290Z] 2m[ACTION] Baritone is struggling at -174.6, 105.0, -91.5. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:38:17.402Z] 2m[ACTION] Baritone goal reached at -174.5, 105.0, -91.5!9m
+[2025-10-25T04:38:47.903Z] 2m[ACTION] Baritone is struggling at -175.5, 105.0, -90.6. Switching to mineflayer-pathfinder for replanning to goal N/A, N/A, N/A.9m
+[2025-10-25T04:38:48.026Z] 2m[ACTION] Baritone goal reached at -175.5, 105.0, -90.5!9m
+[2025-10-25T04:39:05.342Z] TERMINAL COMMAND: quit
+[2025-10-25T04:45:30.832Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:45:31.847Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:45:31.849Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:45:34.207Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:46:03.285Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -175 105 -919m
+[2025-10-25T04:46:03.286Z] [DEBUG] Parsed command: 'goto', Arguments: ["-175","105","-91"]
+[2025-10-25T04:46:03.288Z] [AshFinder] Direct path: 0.8 blocks
+[2025-10-25T04:46:03.288Z] 2m[ACTION] Going to -175, 105, -919m
+[2025-10-25T04:46:28.090Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -175 105 -919m
+[2025-10-25T04:46:39.569Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:46:40.670Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:46:40.671Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:46:43.045Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:47:27.853Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -175 105 -919m
+[2025-10-25T04:47:27.855Z] [DEBUG] Parsed command: 'goto', Arguments: ["-175","105","-91"]
+[2025-10-25T04:47:27.856Z] 2m[ACTION] Going to -175, 105, -919m
+[2025-10-25T04:47:27.856Z] [AshFinder] Direct path: 2.7 blocks
+[2025-10-25T04:48:51.425Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-25T04:48:51.425Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-25T04:48:51.426Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-25T04:48:55.657Z] 2m[ACTION] Baritone is struggling at -174.7, 105.0, -91.5. Switching to mineflayer-pathfinder for replanning to goal NaN, NaN, NaN.9m
+[2025-10-25T04:48:55.736Z] 2m[ACTION] Baritone goal reached at -174.7, 105.0, -91.5!9m
+[2025-10-25T04:49:09.000Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-25T04:49:09.000Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-25T04:49:09.017Z] 2m[ACTION] Following Luize269m
+[2025-10-25T04:50:03.487Z] TERMINAL COMMAND: quit
+[2025-10-25T04:50:11.420Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:50:12.947Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:50:12.949Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:50:15.725Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:50:22.894Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-25T04:50:22.895Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-25T04:50:22.905Z] 2m[ACTION] Following Luize269m
+[2025-10-25T04:50:53.494Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt cow9m
+[2025-10-25T04:50:53.494Z] [DEBUG] Parsed command: 'hunt', Arguments: ["cow"]
+[2025-10-25T04:50:53.495Z] 2m[ACTION] Found Cow. Attacking!9m
+[2025-10-25T04:50:53.495Z] 2m[ACTION] Using bow to attack Cow.9m
+[2025-10-25T04:50:53.510Z] 2m[ACTION] Chopping nearest tree...9m
+[2025-10-25T04:51:19.999Z] TERMINAL COMMAND: stop
+[2025-10-25T04:51:20.000Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:51:20.302Z] 2m[ACTION] Finished chopping tree.9m
+[2025-10-25T04:52:22.583Z] TERMINAL COMMAND: quit
+[2025-10-25T04:52:25.134Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:52:26.182Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:52:26.184Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:52:28.585Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:52:57.335Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-25T04:52:57.337Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-25T04:52:57.344Z] 2m[ACTION] Following Luize269m
+[2025-10-25T04:53:11.724Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt chicken9m
+[2025-10-25T04:53:11.724Z] [DEBUG] Parsed command: 'hunt', Arguments: ["chicken"]
+[2025-10-25T04:53:11.725Z] 2m[ACTION] Found Chicken. Attacking!9m
+[2025-10-25T04:53:11.726Z] 2m[ACTION] Using bow to attack Chicken.9m
+[2025-10-25T04:54:02.597Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-25T04:54:02.597Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-25T04:54:02.598Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-25T04:54:05.511Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt chicken9m
+[2025-10-25T04:54:05.511Z] [DEBUG] Parsed command: 'hunt', Arguments: ["chicken"]
+[2025-10-25T04:54:12.851Z] TERMINAL COMMAND: stop
+[2025-10-25T04:54:12.851Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:54:15.737Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt chicken9m
+[2025-10-25T04:54:15.737Z] [DEBUG] Parsed command: 'hunt', Arguments: ["chicken"]
+[2025-10-25T04:55:31.153Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-25T04:55:31.153Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-25T04:55:31.161Z] 2m[ACTION] Following Luize269m
+[2025-10-25T04:56:55.858Z] TERMINAL COMMAND: goto 0 200 0
+[2025-10-25T04:56:55.859Z] 2m[ACTION] Going to 0, 200, 09m
+[2025-10-25T04:56:56.096Z] Generated 3 waypoints (254.3 blocks)
+[2025-10-25T04:56:55.859Z] [AshFinder] Long distance: 254.3 blocks
+[2025-10-25T04:56:56.096Z] → Waypoint 1/3: (-150.5, 109, -120.5)
+[2025-10-25T04:57:07.041Z] TERMINAL COMMAND: stop
+[2025-10-25T04:57:07.042Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:57:14.062Z] 2m[ACTION] undefined9m
+[2025-10-25T04:57:14.232Z] TERMINAL COMMAND: hey bloop
+[2025-10-25T04:57:18.417Z] 2m[ACTION] AI returned a chat response.9m
+[2025-10-25T04:57:18.417Z] 0m[SYSTEM] Asdfghjkl9m
+[2025-10-25T04:57:22.131Z] 2m[ACTION] Baritone goal reached at -151.4, 108.0, -121.7!9m
+[2025-10-25T04:57:22.132Z] ✓ Reached waypoint 1
+[2025-10-25T04:57:22.132Z] → Waypoint 2/3: (-120.5, 113, -96.5)
+[2025-10-25T04:57:26.011Z] TERMINAL COMMAND: stop
+[2025-10-25T04:57:26.012Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:57:27.596Z] TERMINAL COMMAND: stop
+[2025-10-25T04:57:27.596Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:58:02.384Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T04:58:04.123Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T04:58:04.124Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T04:58:06.520Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T04:58:13.057Z] TERMINAL COMMAND: goto 0 100 0
+[2025-10-25T04:58:13.058Z] 2m[ACTION] Going to 0, 100, 09m
+[2025-10-25T04:58:13.059Z] [AshFinder] Long distance: 194.3 blocks
+[2025-10-25T04:58:13.097Z] Generated 2 waypoints (194.3 blocks)
+[2025-10-25T04:58:13.097Z] → Waypoint 1/2: (-113.5, 112, -91.5)
+[2025-10-25T04:58:27.293Z] TERMINAL COMMAND: stop
+[2025-10-25T04:58:27.294Z] 2m[ACTION] Stopped.9m
+[2025-10-25T04:58:33.527Z] TERMINAL COMMAND: quit
