@@ -467,8 +467,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
   // If after parsing there's no command, do nothing.
   if (!cmd) {
     return;
-  }
-  // --- END OF FIX ---
+  }f
 
   // (The rest of your function from this point down remains exactly the same...)
   switch (cmd.toLowerCase()) {
