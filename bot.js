@@ -237,12 +237,13 @@ async function runForSafety() {
 
 function isHostile(entity) {
     if (!entity) return false;
-    // In mineflayer, hostile mobs generally have type 'mob' and are not explicitly listed as passive.
-    // A more direct way is to check if the entity is hostile based on its behavior or a property.
-    // For simplicity and robustness, we can assume entities with type 'hostile' are hostile if such a type exists.
-    // If not, we rely on mobType and exclude known passive mobs.
-    const passiveMobs = ['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer', 'Chicken', 'Cow', 'Pig', 'Sheep', 'Rabbit', 'Fox', 'Bee', 'Llama', 'Trader Llama', 'Horse', 'Donkey', 'Mule', 'Cat', 'Wolf', 'Parrot', 'Panda', 'Polar Bear', 'Goat', 'Camel'];
-    return entity.type === 'mob' && !passiveMobs.includes(entity.displayName.toString().toLowerCase());
+    const entityData = mcData.entitiesByName[entity.name];
+    if (!entityData) {
+        // If mcData doesn't have info, fall back to the old logic
+        const passiveMobs = ['Bat', 'Squid', 'Cod', 'Salmon', 'Pufferfish', 'Tropical Fish', 'Dolphin', 'Turtle', 'Strider', 'Glow Squid', 'Axolotl', 'Frog', 'Allay', 'Sniffer', 'Chicken', 'Cow', 'Pig', 'Sheep', 'Rabbit', 'Fox', 'Bee', 'Llama', 'Trader Llama', 'Horse', 'Donkey', 'Mule', 'Cat', 'Wolf', 'Parrot', 'Panda', 'Polar Bear', 'Goat', 'Camel'];
+        return entity.type === 'mob' && !passiveMobs.includes(entity.displayName.toString().toLowerCase());
+    }
+    return entityData.kind === 'Hostile mobs';
 }
 
 async function guardLoop() {
@@ -458,12 +459,23 @@ async function autoEat() {
 let isSleeping = false;
 
 async function autoSleep() {
-    if (!settings.autoSleep || isSleeping || bot.isSleeping) {
+    logAction('autoSleep called.');
+    if (!settings.autoSleep) {
+        logAction('autoSleep: Disabled in settings.');
+        return;
+    }
+    if (isSleeping) {
+        logAction('autoSleep: Already in a sleep attempt.');
+        return;
+    }
+    if (bot.isSleeping) {
+        logAction('autoSleep: Bot is already sleeping.');
         return;
     }
 
     // Check if it's night time (between 13000 and 23000 ticks)
     if (bot.time.timeOfDay < 13000 || bot.time.timeOfDay > 23000) {
+        logAction(`autoSleep: Not night time. Current time: ${bot.time.timeOfDay}`);
         return; // Not night time
     }
 
@@ -1086,7 +1098,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
         // Exclude self
         if (e.id === bot.entity.id) return false;
 
-        const isHostileMob = isHostile(e);
+        const isHostileMob = type = 'hostile' || type === 'mob' && mcData.entitiesByName[e.name]?.hostile;
         const isPlayer = e.type === 'player';
 
         // If it's a player, check if they are whitelisted. If so, ignore them as an attacker.
@@ -1105,7 +1117,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
           return;
         }
 
-        logAction(`Attacked by ${attacker.username || attacker.name || 'an unknown entity'}! Retaliating.`);
+        logAction(`Attacked by ${attacker.username || attacker.name || attacker.displayName || 'an unknown entity'}! Retaliating.`);
         const bow = bot.inventory.findInventoryItem('bow');
         if (bow) {
           bot.hawkEye.autoAttack(attacker, 'bow');

@@ -189,3 +189,150 @@
 [2025-10-25T04:58:27.293Z] TERMINAL COMMAND: stop
 [2025-10-25T04:58:27.294Z] 2m[ACTION] Stopped.9m
 [2025-10-25T04:58:33.527Z] TERMINAL COMMAND: quit
+[2025-10-25T22:41:20.433Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-25T22:41:21.689Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T22:41:21.691Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T22:41:22.709Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T22:41:22.710Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T22:41:22.712Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T22:41:22.714Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T22:41:27.727Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T22:41:27.728Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T22:41:30.281Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T22:41:47.138Z] TERMINAL COMMAND: goto 0 100 0
+[2025-10-25T22:41:47.140Z] 2m[ACTION] Going to 0, 100, 09m
+[2025-10-25T22:41:47.191Z] Generated 4 waypoints (194.3 blocks)
+[2025-10-25T22:41:47.140Z] [AshFinder] Long distance: 194.3 blocks
+[2025-10-25T22:41:47.191Z] → Waypoint 1/4: (-113.5, 112, -91.5)
+[2025-10-25T22:42:31.583Z] 2m[ACTION] Baritone is struggling at -117.5, 113.0, -96.6. Switching to mineflayer-pathfinder for replanning to goal NaN, NaN, NaN.9m
+[2025-10-25T22:42:31.665Z] 2m[ACTION] Baritone goal reached at -117.5, 113.0, -96.6!9m
+[2025-10-25T22:42:31.666Z] ✓ Reached waypoint 1
+[2025-10-25T22:42:31.666Z] → Waypoint 2/4: (-75.5, 91, -60.5)
+[2025-10-25T22:42:33.312Z] 2m[ACTION] Baritone goal reached at -115.5, 112.0, -93.6!9m
+[2025-10-25T22:44:00.361Z] 2m[ACTION] Baritone goal reached at -77.7, 91.0, -62.7!9m
+[2025-10-25T22:46:26.491Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 1.40)9m
+[2025-10-25T22:46:26.491Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:27.827Z] 2m[ACTION] undefined9m
+[2025-10-25T22:46:27.888Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 1.23)9m
+[2025-10-25T22:46:27.888Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:28.897Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 1.76)9m
+[2025-10-25T22:46:28.897Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:29.890Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:29.889Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 1.06)9m
+[2025-10-25T22:46:32.607Z] 2m[ACTION] undefined9m
+[2025-10-25T22:46:32.669Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 0.91)9m
+[2025-10-25T22:46:32.670Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:32.675Z] ERROR: (node:55108) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 physicsTick listeners added to [EventEmitter]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-10-25T22:46:33.517Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 1.35)9m
+[2025-10-25T22:46:33.518Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:34.202Z] 0m[SYSTEM] Bot died. Respawning...9m
+[2025-10-25T22:46:34.302Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 0.79)9m
+[2025-10-25T22:46:34.302Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:46:34.980Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T22:46:35.493Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-25T22:46:35.494Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-25T22:47:37.240Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 1.67)9m
+[2025-10-25T22:47:37.240Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:47:39.740Z] 2m[ACTION] Identified potential attacker: zombie (Type: hostile, MobType: Zombie, Distance: 3.20)9m
+[2025-10-25T22:47:39.740Z] 2m[ACTION] Attacked by zombie! Retaliating.9m
+[2025-10-25T22:47:59.042Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-25T22:47:59.042Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-25T22:48:39.160Z] Chunk size is 53 but only 41 was read ; partial packet : {"name":"explosion","params":{"x":-13.085391746469671,"y":129,"z":36.1838581100825,"playerKnockback":{"x":1.4490447044372559,"y":1.1343353866866033e+32,"z":1.6377079486846924},"explosionParticle":{"type":"firefly"},"sound":{"soundId":274}}}; buffer :20c02a2bb8778cdf02406020000000000040421788a99cf450013fb97a4c74b2f7713fd1a06a7193022dbfdd33bb0d81098d15e804
+[2025-10-25T22:48:39.162Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-25T22:48:39.162Z] 0m[SYSTEM] Bot died. Respawning...9m
+[2025-10-25T22:48:39.260Z] 2m[ACTION] Identified potential attacker: item (Type: other, MobType: Item, Distance: 2.49)9m
+[2025-10-25T22:48:39.261Z] 2m[ACTION] Attacked by item! Retaliating.9m
+[2025-10-25T22:48:39.546Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T22:48:40.324Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-25T22:48:40.324Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-25T22:49:28.692Z] 2m[ACTION] Attacked by spider! Retaliating.9m
+[2025-10-25T22:49:28.691Z] 2m[ACTION] Identified potential attacker: spider (Type: hostile, MobType: Spider, Distance: 1.83)9m
+[2025-10-25T22:49:34.706Z] 2m[ACTION] Identified potential attacker: spider (Type: hostile, MobType: Spider, Distance: 1.87)9m
+[2025-10-25T22:49:34.706Z] 2m[ACTION] Attacked by spider! Retaliating.9m
+[2025-10-25T22:49:37.049Z] 2m[ACTION] Identified potential attacker: spider (Type: hostile, MobType: Spider, Distance: 1.22)9m
+[2025-10-25T22:49:37.050Z] 2m[ACTION] Attacked by spider! Retaliating.9m
+[2025-10-25T22:49:38.508Z] Chunk size is 53 but only 46 was read ; partial packet : {"name":"explosion","params":{"x":11.623661415120415,"y":119,"z":17.208541584721257,"playerKnockback":{"x":0.7450647950172424,"y":-136507237626544130,"z":1.6510981321334839},"explosionParticle":{"type":"sculk_charge","data":-1.4199200926157118e-8},"sound":{"soundId":1470173}}}; buffer :2040273f508c8b7043405dc0000000000040313562fb363bdb013f3ebc91dbf27c4e3fd3572f25b273f0bfdedd59c5e670f915e804
+[2025-10-25T22:49:38.509Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-25T22:49:38.509Z] 0m[SYSTEM] Bot died. Respawning...9m
+[2025-10-25T22:49:38.609Z] 2m[ACTION] Identified potential attacker: item (Type: other, MobType: Item, Distance: 0.77)9m
+[2025-10-25T22:49:38.610Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-25T22:49:38.609Z] 2m[ACTION] Attacked by item! Retaliating.9m
+[2025-10-25T22:49:38.610Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-25T22:49:38.850Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T22:49:39.283Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-25T22:49:39.283Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-25T23:05:45.403Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T23:05:45.405Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T23:05:45.405Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T23:05:45.403Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T23:05:50.433Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T23:05:50.434Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T23:05:52.031Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T23:05:52.031Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T23:05:52.032Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T23:05:52.032Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T23:09:00.785Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T23:09:00.785Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T23:09:00.815Z] Error: getaddrinfo ENOTFOUND mykejonardsentillas.aternos.me
+    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+  errno: -3008,
+  code: 'ENOTFOUND',
+  syscall: 'getaddrinfo',
+  hostname: 'mykejonardsentillas.aternos.me'
+}
+[2025-10-25T23:09:00.816Z] ERROR: 1m[ERROR] Error: getaddrinfo ENOTFOUND mykejonardsentillas.aternos.me9m
+[2025-10-25T23:09:00.816Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T23:09:00.817Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T23:09:05.842Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T23:09:05.842Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T23:09:07.431Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T23:09:07.433Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T23:09:07.432Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T23:09:07.433Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T23:09:12.447Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T23:09:12.448Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T23:09:14.675Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T23:15:06.810Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T23:15:06.828Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T23:15:06.833Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T23:15:06.846Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-25T23:15:11.897Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T23:15:11.899Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T23:15:12.977Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-25T23:15:12.978Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-25T23:15:12.979Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-25T23:15:17.996Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-25T23:15:17.996Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-25T23:15:20.416Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-25T23:18:23.396Z] TERMINAL COMMAND:  quit
