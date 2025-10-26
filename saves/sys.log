@@ -336,3 +336,153 @@
 [2025-10-25T23:15:17.996Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
 [2025-10-25T23:15:20.416Z] 0m[SYSTEM] Bot spawned!9m
 [2025-10-25T23:18:23.396Z] TERMINAL COMMAND:  quit
+[2025-10-26T09:26:21.342Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:26:22.963Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:26:22.965Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:26:25.670Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:26:25.672Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:26:28.936Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:26:56.678Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:26:59.131Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -172 102 -1049m
+[2025-10-26T09:26:59.135Z] [DEBUG] Parsed command: 'goto', Arguments: ["-172","102","-104"]
+[2025-10-26T09:26:59.139Z] 2m[ACTION] Going to -172, 102, -1049m
+[2025-10-26T09:26:59.139Z] [AshFinder] Long distance: 193.4 blocks
+[2025-10-26T09:26:59.258Z] Generated 5 waypoints (193.4 blocks)
+[2025-10-26T09:26:59.259Z] → Waypoint 1/5: (-47.5, 117, -33.5)
+[2025-10-26T09:27:48.958Z] 2m[ACTION] Baritone goal reached at -45.3, 117.0, -33.5!9m
+[2025-10-26T09:27:48.960Z] ✓ Reached waypoint 1
+[2025-10-26T09:27:48.960Z] → Waypoint 2/5: (-98.5, 100, -65.5)
+[2025-10-26T09:28:43.140Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:29:16.612Z] Chunk size is 53 but only 42 was read ; partial packet : {"name":"explosion","params":{"x":-40.99344999407944,"y":88,"z":-37.59944241728473,"playerKnockback":{"x":0,"y":0,"z":0},"explosionParticle":{"type":"angry_villager"},"sound":{"data":{"soundName":""}}}}; buffer :20c0447f295e91642c4056000000000000c042ccba8775095b0100000000000000000000000000000000000000000000000015e804
+[2025-10-26T09:29:16.613Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:29:16.723Z] 2m[ACTION] Identified potential attacker: item (Type: other, MobType: Item, Distance: 1.09)9m
+[2025-10-26T09:29:16.723Z] 2m[ACTION] Attacked by item! Retaliating.9m
+[2025-10-26T09:29:16.950Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-26T09:29:16.952Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-26T09:29:21.989Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:29:21.990Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:29:24.617Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:29:24.618Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:30:02.034Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -172 102 -1049m
+[2025-10-26T09:30:02.037Z] 2m[ACTION] Going to -172, 102, -1049m
+[2025-10-26T09:30:02.036Z] [DEBUG] Parsed command: 'goto', Arguments: ["-172","102","-104"]
+[2025-10-26T09:30:02.039Z] Generated 4 waypoints (145.2 blocks)
+[2025-10-26T09:30:02.039Z] → Waypoint 1/4: (-85.5, 93, -60.5)
+[2025-10-26T09:30:02.037Z] [AshFinder] Long distance: 145.2 blocks
+[2025-10-26T09:30:18.344Z] ✓ Reached waypoint 1
+[2025-10-26T09:30:18.344Z] → Waypoint 2/4: (-128.5, 113, -82.5)
+[2025-10-26T09:30:35.156Z] ✓ Reached waypoint 2
+[2025-10-26T09:30:35.156Z] → Waypoint 3/4: (-171.5, 102, -103.5)
+[2025-10-26T09:30:54.296Z] ✓ Reached waypoint 3
+[2025-10-26T09:30:54.296Z] → Waypoint 4/4: (-172, 102, -104)
+[2025-10-26T09:31:11.100Z] ✓ Reached waypoint 4
+[2025-10-26T09:32:16.029Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-26T09:32:16.029Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-26T09:32:16.029Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-26T09:32:44.939Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:32:46.081Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:32:46.083Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:32:48.349Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:32:48.351Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:32:58.633Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -172 102 -1049m
+[2025-10-26T09:32:58.634Z] [DEBUG] Parsed command: 'goto', Arguments: ["-172","102","-104"]
+[2025-10-26T09:32:58.635Z] 2m[ACTION] Going to -172, 102, -1049m
+[2025-10-26T09:32:58.636Z] [AshFinder] Long distance: 145.2 blocks
+[2025-10-26T09:32:58.662Z] Generated 3 waypoints (145.2 blocks)
+[2025-10-26T09:32:58.663Z] → Waypoint 1/3: (-85.5, 93, -60.5)
+[2025-10-26T09:33:15.055Z] 2m[ACTION] Baritone goal reached at -42.7, 89.0, -39.2!9m
+[2025-10-26T09:33:15.057Z] ✓ Reached waypoint 1
+[2025-10-26T09:33:15.057Z] → Waypoint 2/3: (-127.5, 113, -79.5)
+[2025-10-26T09:33:33.772Z] 2m[ACTION] Baritone goal reached at -42.7, 89.0, -39.2!9m
+[2025-10-26T09:33:33.772Z] ✓ Reached waypoint 2
+[2025-10-26T09:33:33.772Z] → Waypoint 3/3: (-172, 102, -104)
+[2025-10-26T09:33:52.098Z] 2m[ACTION] Baritone goal reached at -42.7, 89.0, -39.2!9m
+[2025-10-26T09:33:52.099Z] ✓ Reached waypoint 3
+[2025-10-26T09:34:19.699Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T09:34:19.700Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T09:34:19.707Z] 2m[ACTION] Following Luize269m
+[2025-10-26T09:34:27.245Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:34:39.655Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:34:46.207Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:35:49.310Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:35:55.233Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T09:35:55.233Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T09:35:55.244Z] 2m[ACTION] Following Luize269m
+[2025-10-26T09:36:00.297Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:38:04.302Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:38:05.444Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:38:05.445Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:38:07.753Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:38:40.241Z] 2m[ACTION] undefined9m
+[2025-10-26T09:38:50.363Z] 2m[ACTION] undefined9m
+[2025-10-26T09:39:06.193Z] 2m[ACTION] undefined9m
+[2025-10-26T09:39:14.071Z] 2m[ACTION] undefined9m
+[2025-10-26T09:39:21.863Z] 2m[ACTION] undefined9m
+[2025-10-26T09:39:48.964Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T09:39:48.966Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T09:39:48.967Z] 2m[ACTION] Using crossbow to attack Pig.9m
+[2025-10-26T09:39:48.967Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T09:39:48.968Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T09:39:50.591Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":17,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140011002501fa090200280101db060000039201
+[2025-10-26T09:39:52.000Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":20,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140014002501fa090200280101db060000039301
+[2025-10-26T09:39:53.370Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":23,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140017002501fa090200280101db060000039401
+[2025-10-26T09:39:54.749Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":26,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14001a002501fa090200280101db060000039501
+[2025-10-26T09:39:56.167Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":29,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14001d002501fa090200280101db060000039601
+[2025-10-26T09:39:57.529Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":32,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140020002501fa090200280101db060000039701
+[2025-10-26T09:39:58.866Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":35,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140023002501fa090200280101db060000039801
+[2025-10-26T09:40:00.218Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":38,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140026002501fa090200280101db060000039901
+[2025-10-26T09:40:01.631Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":41,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140029002501fa090200280101db060000039a01
+[2025-10-26T09:40:02.973Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":44,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14002c002501fa090200280101db060000039b01
+[2025-10-26T09:40:04.406Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":47,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14002f002501fa090200280101db060000039c01
+[2025-10-26T09:40:05.753Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":50,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140032002501fa090200280101db060000039d01
+[2025-10-26T09:40:05.815Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T09:40:05.816Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T09:40:05.816Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T09:41:35.479Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-26T09:41:35.479Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-26T09:41:35.480Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-26T09:42:42.363Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:42:43.429Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:42:43.430Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:42:45.922Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:43:18.136Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T09:43:18.138Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T09:43:18.139Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T09:43:18.139Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T09:43:18.140Z] [AshFinder] Direct path: NaN blocks
+[2025-10-26T09:43:48.171Z] 2m[ACTION] Baritone goal reached at -172.3, 103.0, -98.5!9m
+[2025-10-26T09:43:48.171Z] 2m[ACTION] Using crossbow to attack Pig.9m
+[2025-10-26T09:43:48.172Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T09:43:49.842Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":5,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140005002501fa090200280101db060000039e01
+[2025-10-26T09:43:51.186Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":8,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140008002501fa090200280101db060000039f01
+[2025-10-26T09:43:52.563Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":11,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000b002501fa090200280101db06000003a001
+[2025-10-26T09:43:53.924Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":14,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000e002501fa090200280101db06000003a101
+[2025-10-26T09:43:56.701Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":19,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140013002501fa090200280101db06000003a301
+[2025-10-26T09:43:56.749Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T09:43:56.749Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T09:43:56.749Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T09:45:35.246Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:45:36.351Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:45:36.354Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:45:38.867Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:46:07.373Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T09:46:07.375Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T09:46:07.376Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T09:46:07.377Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T09:46:20.048Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -221.3, 96.0, -105.4!9m
+[2025-10-26T09:46:20.050Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T09:46:20.049Z] 2m[ACTION] Using crossbow to attack Pig.9m
+[2025-10-26T09:46:21.636Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":5,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140005002501fa090200280101db06000003a401
+[2025-10-26T09:46:22.940Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":8,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140008002501fa090200280101db06000003a501
+[2025-10-26T09:46:24.336Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":11,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000b002501fa090200280101db06000003a601
+[2025-10-26T09:46:27.083Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":16,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140010002501fa090200280101db06000003a801
+[2025-10-26T09:46:28.699Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":19,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140013002501fa090200280101db06000003a901
+[2025-10-26T09:46:30.144Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":22,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140016002501fa090200280101db06000003aa01
+[2025-10-26T09:46:32.634Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":27,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14001b002501fa090200280101db06000003ac01
+[2025-10-26T09:46:35.285Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":32,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140020002501fa090200280101db06000003ae01
+[2025-10-26T09:46:36.685Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":35,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140023002501fa090200280101db06000003af01
+[2025-10-26T09:46:38.085Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":38,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140026002501fa090200280101db06000003b001
+[2025-10-26T09:46:39.433Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":41,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140029002501fa090200280101db06000003b101
+[2025-10-26T09:46:40.175Z] 6m[CHAT] Luize26: 9m7mquit9m
+[2025-10-26T09:46:40.176Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-26T09:46:40.176Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m

@@ -527,21 +527,27 @@ async function autoSleep() {
             maxDistance: 64
         });
     }
-    try {
-        logAction('Sleeping in bed...');
-        await bot.sleep(bedBlock);
-        logAction('Woke up from sleeping.');
+    if (bedBlock) {
+        try {
+            logAction(`Pathfinding to bed at ${bedBlock.position.x.toFixed(1)}, ${bedBlock.position.y.toFixed(1)}, ${bedBlock.position.z.toFixed(1)}...`);
+            const goal = new baritoneGoals.GoalNear(bedBlock.position.x, bedBlock.position.y, bedBlock.position.z, 2);
+            await bot.ashfinder.gotoSmart(goal);
 
-        // Break and collect bed after waking
-        if (bedBlock) {
-            logAction('Breaking and collecting bed...');
+            logAction('Reached bed. Attempting to sleep...');
+            await bot.sleep(bedBlock);
+            logAction('Woke up from sleeping.');
+
+            // Break bed after waking. The global itemDrop handler should collect it.
+            logAction('Breaking bed...');
             await bot.dig(bedBlock);
-            await bot.collectBlock.collect(bedBlock);
-            logAction('Bed collected.');
+            logAction('Bed broken.');
+        } catch (err) {
+            logError(`Auto-sleep process failed: ${err.message}`);
+        } finally {
+            isSleeping = false;
         }
-    } catch (err) {
-        logError(`Could not sleep: ${err.message}`);
-    } finally {
+    } else {
+        logError('Could not find a bed to place or a nearby bed.');
         isSleeping = false;
     }
 }
@@ -802,21 +808,32 @@ async function handleBotMessage(username, message, isWhisper = false) {
         const originalHeldItem = bot.heldItem; // Store the currently held item
 
         const bow = bot.inventory.findInventoryItem('bow');
+        const crossbow = bot.inventory.findInventoryItem('crossbow');
         const arrows = bot.inventory.findInventoryItem('arrow'); // Check for arrows
 
-        if (bow && arrows) { // If bot has both bow and arrows
-          logAction(`Using bow to attack ${target.displayName}.`);
+        const rangedWeapon = bow || crossbow; // Prioritize bow
+
+        if (rangedWeapon && arrows) { // If bot has a ranged weapon and arrows
           try {
-            await bot.equip(bow, 'hand'); // Equip bow before attacking
-            bot.hawkEye.autoAttack(target, 'bow');
+            // 1. Pathfind to get within shooting range (using mineflayer-pathfinder like the 'follow' command)
+            logAction(`Pathfinding to a shooting position near ${target.displayName}...`);
+            const movements = new Movements(bot, mcData);
+            bot.pathfinder.setMovements(movements);
+            const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 15); // Get within 15 blocks
+            await bot.pathfinder.goto(goal);
+
+            // 2. Now that we are close, start the attack
+            logAction(`Using ${rangedWeapon.name} to attack ${target.displayName}.`);
+            await bot.equip(rangedWeapon, 'hand');
+            bot.hawkEye.autoAttack(target, rangedWeapon.name);
             startArrowMonitoring(target);
           } catch (err) {
-            logError(`Failed to equip bow: ${err.message}`);
-            logAction(`Attacking ${target.displayName} with bare hands due to equip failure.`);
+            logError(`Ranged attack setup failed: ${err.message}. Falling back to melee.`);
+            // Fallback to melee if pathfinding or equipping fails
             bot.pvp.attack(target);
           }
-        } else { // No bow, or no arrows
-          logAction(`No bow or no arrows found, attempting to equip best melee weapon and initiate melee attack on ${target.displayName}.`);
+        } else { // No ranged weapon or no arrows
+          logAction(`No ranged weapon or no arrows found, attempting to equip best melee weapon and initiate melee attack on ${target.displayName}.`);
           const bestWeapon = getBestMeleeWeapon();
           if (bestWeapon) {
             try {
@@ -863,7 +880,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
     }
     case 'stop':
       logAction('Stopping all actions...');
-      bot.ashfinder.on();
+      bot.ashfinder.stop();
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.hawkEye.stop();
@@ -928,9 +945,13 @@ async function handleBotMessage(username, message, isWhisper = false) {
       }
       delete locations[name];
       await saveLocations(locations);
-      respond(username, `Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`, isWhisper);
+      logAction(`Location "${name}" deleted.`);
+      respond(username, `Location "${name}" deleted.`, isWhisper);
       break;
     }
+    case 'status':
+      respond(username, `Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`, isWhisper);
+      break;
     case 'give': {
         if (args[0] === 'items' && args[1] === 'to') {
             const playerName = args[2];
@@ -1095,18 +1116,18 @@ async function handleBotMessage(username, message, isWhisper = false) {
       await new Promise(resolve => setTimeout(resolve, 100));
 
       let attacker = bot.nearestEntity((e) => {
-        // Exclude self
-        if (e.id === bot.entity.id) return false;
+        // Exclude self and items from being considered attackers
+        if (e.id === bot.entity.id || e.name === 'item') return false;
 
-        const isHostileMob = type = 'hostile' || type === 'mob' && mcData.entitiesByName[e.name]?.hostile;
         const isPlayer = e.type === 'player';
 
-        // If it's a player, check if they are whitelisted. If so, ignore them as an attacker.
+        // Do not attack whitelisted players
         if (isPlayer && settings.whitelistedPlayers.includes(e.username)) {
           return false;
         }
 
-        return (isPlayer || isHostileMob) && e.position.distanceTo(bot.entity.position) < 16; // Within 16 blocks
+        // Check if the entity is a player or a known hostile mob, and is within 16 blocks
+        return (isPlayer || isHostile(e)) && e.position.distanceTo(bot.entity.position) < 16;
       });
 
       if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
@@ -1180,6 +1201,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
         }
 
         debouncedLogAction('baritone_struggling', `Baritone is struggling at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}. Switching to mineflayer-pathfinder for replanning to goal ${newGoalX}, ${newGoalY}, ${newGoalZ}.`);
+        bot.pathfinder.setGoal(newGoal);
       });
 
       bot.ashfinder.on('goal-reach', (goal) => {
