@@ -486,3 +486,166 @@
 [2025-10-26T09:46:40.175Z] 6m[CHAT] Luize26: 9m7mquit9m
 [2025-10-26T09:46:40.176Z] [DEBUG] Parsed command: 'quit', Arguments: []
 [2025-10-26T09:46:40.176Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-26T09:48:27.983Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:48:29.105Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:48:29.107Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:48:31.632Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:48:51.464Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T09:48:51.466Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T09:48:51.467Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T09:48:51.467Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T09:48:56.145Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -246.2, 96.0, -107.5!9m
+[2025-10-26T09:48:56.147Z] 2m[ACTION] Using crossbow to attack Pig.9m
+[2025-10-26T09:48:56.147Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T09:49:06.429Z] 2m[ACTION] undefined9m
+[2025-10-26T09:49:06.484Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":6,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140006002501fa090200280101db06000003b201
+[2025-10-26T09:49:06.496Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":12,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000c002501fa090200280101db06000003b401
+[2025-10-26T09:49:06.489Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":9,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140009002501fa090200280101db06000003b301
+[2025-10-26T09:49:06.607Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":15,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000f002501fa090200280101db06000003b501
+[2025-10-26T09:49:06.610Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":18,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140012002501fa090200280101db06000003b601
+[2025-10-26T09:49:06.613Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":21,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140015002501fa090200280101db06000003b701
+[2025-10-26T09:49:06.616Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":24,"slot":37,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140018002501fa090200280101db06000003b801
+[2025-10-26T09:49:07.675Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T09:49:07.675Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T09:49:07.675Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T09:49:25.571Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-26T09:49:25.571Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-26T09:49:25.572Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-26T09:49:25.578Z] 2m[ACTION] Finished giving items.9m
+[2025-10-26T09:49:26.370Z] 2m[ACTION] Out of arrows! Switching to melee attack.9m
+[2025-10-26T09:49:26.370Z] 2m[ACTION] Stopped arrow monitoring.9m
+[2025-10-26T09:49:26.371Z] 2m[ACTION] No suitable melee weapon found. Attacking with bare hands.9m
+[2025-10-26T09:49:33.950Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T09:49:33.950Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T09:49:33.951Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T09:49:33.994Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-26T09:49:33.994Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-26T09:49:33.994Z] 2m[ACTION] Stopped arrow monitoring.9m
+[2025-10-26T09:49:56.905Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T09:49:56.906Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T09:49:56.911Z] 2m[ACTION] Following Luize269m
+[2025-10-26T09:50:01.830Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:50:11.132Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-26T09:50:27.761Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T09:50:27.761Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T09:50:27.762Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T09:50:27.762Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T09:50:30.297Z] 2m[ACTION] undefined9m
+[2025-10-26T09:50:38.547Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -234.2, 96.0, -115.5!9m
+[2025-10-26T09:50:38.556Z] 2m[ACTION] Using bow to attack Pig.9m
+[2025-10-26T09:50:38.556Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T09:53:43.898Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T09:53:43.898Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T09:53:43.909Z] 2m[ACTION] Following Luize269m
+[2025-10-26T09:53:54.798Z] 2m[ACTION] undefined9m
+[2025-10-26T09:54:03.668Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-26T09:54:03.668Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-26T09:54:03.669Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-26T09:54:03.673Z] 2m[ACTION] Finished giving items.9m
+[2025-10-26T09:54:04.281Z] 2m[ACTION] Out of arrows! Switching to melee attack.9m
+[2025-10-26T09:54:04.282Z] 2m[ACTION] Stopped arrow monitoring.9m
+[2025-10-26T09:54:04.284Z] 2m[ACTION] No suitable melee weapon found. Attacking with bare hands.9m
+[2025-10-26T09:54:09.157Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T09:54:09.157Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T09:54:09.158Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T09:54:09.340Z] 2m[ACTION] PVP attack stopped.9m
+[2025-10-26T09:54:09.340Z] 2m[ACTION] HawkEye attack stopped.9m
+[2025-10-26T09:54:09.340Z] 2m[ACTION] Stopped arrow monitoring.9m
+[2025-10-26T09:56:07.070Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-26T09:56:07.071Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-26T09:56:07.071Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-26T09:56:11.412Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T09:56:12.541Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T09:56:12.542Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T09:56:14.754Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T09:56:58.909Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T09:56:58.911Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T09:56:58.911Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T09:56:58.912Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T09:57:08.197Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -267.5, 97.0, -62.7!9m
+[2025-10-26T09:57:08.199Z] 2m[ACTION] Waiting 1s for aiming to settle...9m
+[2025-10-26T09:57:09.210Z] 2m[ACTION] Using crossbow to attack Pig.9m
+[2025-10-26T09:57:09.211Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T09:57:14.434Z] 2m[ACTION] undefined9m
+[2025-10-26T09:57:17.168Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":7,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140007002401fa090200280101db06000003ba01
+[2025-10-26T09:57:17.173Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":10,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000a002401fa090200280101db06000003bb01
+[2025-10-26T09:57:17.638Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":13,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14000d002401fa090200280101db06000003bc01
+[2025-10-26T09:57:19.037Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":16,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140010002401fa090200280101db06000003bd01
+[2025-10-26T09:57:20.444Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":19,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140013002401fa090200280101db06000003be01
+[2025-10-26T09:57:21.846Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":22,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140016002401fa090200280101db06000003bf01
+[2025-10-26T09:57:23.188Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":25,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :140019002401fa090200280101db06000003c001
+[2025-10-26T09:57:24.637Z] Chunk size is 20 but only 17 was read ; partial packet : {"name":"set_slot","params":{"windowId":0,"stateId":28,"slot":36,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}}; buffer :14001c002401fa090200280101db06000003c101
+[2025-10-26T09:57:25.596Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T09:57:25.596Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T09:57:25.598Z] 2m[ACTION] HawkEye auto-attack finished.9m
+[2025-10-26T09:57:25.597Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T09:57:25.598Z] 2m[ACTION] Stopped arrow monitoring.9m
+[2025-10-26T09:57:30.441Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-26T09:57:30.442Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-26T09:57:30.442Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-26T09:57:30.447Z] 2m[ACTION] Finished giving items.9m
+[2025-10-26T09:57:42.422Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T09:57:42.422Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T09:57:42.431Z] 2m[ACTION] Following Luize269m
+[2025-10-26T09:57:56.029Z] 2m[ACTION] undefined9m
+[2025-10-26T10:01:10.367Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-26T10:01:10.367Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-26T10:01:10.368Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-26T10:01:10.371Z] 2m[ACTION] Finished giving items.9m
+[2025-10-26T10:01:58.688Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-26T10:01:58.688Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-26T10:01:58.688Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-26T10:02:05.652Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T10:02:06.821Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T10:02:06.822Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T10:02:10.914Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T10:02:50.947Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T10:02:50.949Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T10:02:50.950Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T10:02:50.951Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T10:02:55.793Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -278.3, 95.0, -49.4!9m
+[2025-10-26T10:04:07.216Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T10:04:08.449Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T10:04:08.450Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T10:04:10.921Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T10:04:13.345Z] TERMINAL COMMAND: hunt pig
+[2025-10-26T10:04:18.147Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-26T10:04:18.149Z] [DEBUG] Parsed command: 'hunt', Arguments: []
+[2025-10-26T10:04:18.150Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T10:04:18.150Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T10:04:19.460Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -276.3, 96.0, -54.2!9m
+[2025-10-26T10:05:13.884Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T10:05:14.999Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T10:05:15.000Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T10:05:17.160Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T10:05:22.562Z] TERMINAL COMMAND: kill pig
+[2025-10-26T10:05:24.093Z] 2m[ACTION] AI returned a valid command. Executing...9m
+[2025-10-26T10:05:24.095Z] [DEBUG] Parsed command: 'hunt', Arguments: []
+[2025-10-26T10:05:24.095Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T10:05:24.096Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T10:05:28.875Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -278.5, 97.0, -78.2!9m
+[2025-10-26T10:08:34.823Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T10:08:35.950Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T10:08:35.952Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T10:08:38.288Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T10:08:52.448Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-26T10:08:53.590Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-26T10:08:53.591Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-26T10:08:55.772Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-26T10:09:17.255Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T10:09:17.256Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T10:09:17.263Z] 2m[ACTION] Following Luize269m
+[2025-10-26T10:09:42.887Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-26T10:09:42.887Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-26T10:09:42.888Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-26T10:09:42.909Z] 2m[ACTION] Finished giving items.9m
+[2025-10-26T10:10:02.510Z] 6m[CHAT] Luize26: 9m7m[WHISPER] hunt pig9m
+[2025-10-26T10:10:02.510Z] [DEBUG] Parsed command: 'hunt', Arguments: ["pig"]
+[2025-10-26T10:10:02.511Z] 2m[ACTION] Found Pig. Attacking!9m
+[2025-10-26T10:10:02.511Z] 2m[ACTION] Pathfinding to a shooting position near Pig...9m
+[2025-10-26T10:10:07.917Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -278.4, 96.0, -86.3!9m
+[2025-10-26T10:10:07.919Z] 2m[ACTION] Waiting 0.5s for aiming to settle...9m
+[2025-10-26T10:10:08.433Z] 2m[ACTION] Using bow to attack Pig.9m
+[2025-10-26T10:10:08.433Z] 2m[ACTION] Starting arrow monitoring.9m
+[2025-10-26T10:10:13.853Z] 2m[ACTION] HawkEye auto-attack finished.9m
+[2025-10-26T10:10:13.854Z] 2m[ACTION] Stopped arrow monitoring.9m

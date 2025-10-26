@@ -805,31 +805,131 @@ async function handleBotMessage(username, message, isWhisper = false) {
         logAction(`Found ${target.displayName}. Attacking!`);
         isAttacking = true; // Set flag when attack starts
 
+        // Set up a listener to collect items when the target is killed
+        const onTargetKilled = (deadEntity) => {
+          if (deadEntity.id === target.id) {
+            logAction(`Target ${target.displayName} killed. Collecting drops...`);
+
+            // Use a timeout to give items time to drop
+            setTimeout(async () => {
+              const items = [];
+              for (const id in bot.entities) {
+                const e = bot.entities[id];
+                if (e.name === 'item' && e.position.distanceTo(bot.entity.position) < 16) {
+                  items.push(e);
+                }
+              }
+
+              if (items.length > 0) {
+                logAction(`Found ${items.length} item(s) to collect.`);
+                try {
+                  await bot.collectBlock.collect(items);
+                  logAction('Finished collecting items.');
+                } catch (err) {
+                  logError(`Error collecting items: ${err.message}`);
+                }
+              } else {
+                logAction('No item drops found nearby.');
+              }
+            }, 500);
+
+            bot.removeListener('entityDead', onTargetKilled);
+          }
+        };
+        bot.on('entityDead', onTargetKilled);
+
+
         const originalHeldItem = bot.heldItem; // Store the currently held item
 
         const bow = bot.inventory.findInventoryItem('bow');
         const crossbow = bot.inventory.findInventoryItem('crossbow');
         const arrows = bot.inventory.findInventoryItem('arrow'); // Check for arrows
 
-        const rangedWeapon = bow || crossbow; // Prioritize bow
+        /* Crossbow feature is temporarily disabled due to complexity.
+           The bot will fall back to melee if only a crossbow is available. */
+        const rangedWeapon = bow;
 
         if (rangedWeapon && arrows) { // If bot has a ranged weapon and arrows
           try {
-            // 1. Pathfind to get within shooting range (using mineflayer-pathfinder like the 'follow' command)
+            // 1. Pathfind to get within shooting range
             logAction(`Pathfinding to a shooting position near ${target.displayName}...`);
             const movements = new Movements(bot, mcData);
             bot.pathfinder.setMovements(movements);
-            const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 15); // Get within 15 blocks
+            const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 15);
             await bot.pathfinder.goto(goal);
+            bot.clearControlStates();
 
-            // 2. Now that we are close, start the attack
-            logAction(`Using ${rangedWeapon.name} to attack ${target.displayName}.`);
+            // 2. Start the attack
             await bot.equip(rangedWeapon, 'hand');
-            bot.hawkEye.autoAttack(target, rangedWeapon.name);
-            startArrowMonitoring(target);
+
+            if (rangedWeapon.name === 'crossbow') {
+              logAction('Crossbow detected. Starting manual one-shot attack loop.');
+              let continueAttacking = true;
+
+              const stopCrossbowAttack = () => {
+                if (continueAttacking) {
+                  logAction('Stopping crossbow attack loop.');
+                  continueAttacking = false;
+                  bot.removeListener('stoppedAttacking', stopCrossbowAttack);
+                  bot.removeListener('entityDead', onTargetDead);
+                }
+              };
+
+              const onTargetDead = (entity) => {
+                if (entity.id === target.id) {
+                  logAction('Target died.');
+                  stopCrossbowAttack();
+                }
+              };
+
+              bot.on('stoppedAttacking', stopCrossbowAttack);
+              bot.on('entityDead', onTargetDead);
+
+              (async () => {
+                while (continueAttacking) {
+                  const currentTarget = bot.entities[target.id];
+                  if (!currentTarget) {
+                    logAction('Target is no longer visible.');
+                    stopCrossbowAttack();
+                    break;
+                  }
+                  if (getArrowCount() === 0) {
+                    logAction('Out of arrows! Switching to melee.');
+                    stopCrossbowAttack();
+                    bot.pvp.attack(target);
+                    break;
+                  }
+                  logAction('Aiming and firing one shot with crossbow...');
+                  const masterGrade = bot.hawkEye.getMasterGrade(currentTarget, currentTarget.velocity, 'crossbow');
+                  if (masterGrade) {
+                    bot.hawkEye.simplyShot(masterGrade.yaw, masterGrade.pitch);
+                  } else {
+                    logError('HawkEye could not calculate a shot for the crossbow.');
+                  }
+                  await new Promise(resolve => setTimeout(resolve, 3000));
+                }
+                isAttacking = false;
+              })();
+            } else { // It's a bow
+              const aimDelay = 10;
+              logAction(`Waiting ${aimDelay / 20}s for aiming to settle...`);
+              await bot.waitForTicks(aimDelay);
+              logAction(`Using ${rangedWeapon.name} to attack ${target.displayName}.`);
+              bot.hawkEye.autoAttack(target, rangedWeapon.name);
+              startArrowMonitoring(target);
+
+              const onHawkEyeStopped = (stoppedTarget) => {
+                if (target && stoppedTarget.id === target.id) {
+                  logAction('HawkEye auto-attack finished.');
+                  isAttacking = false;
+                  stopArrowMonitoring();
+                  bot.removeListener('auto_shot_stopped', onHawkEyeStopped);
+                }
+              };
+              bot.on('auto_shot_stopped', onHawkEyeStopped);
+            }
           } catch (err) {
             logError(`Ranged attack setup failed: ${err.message}. Falling back to melee.`);
-            // Fallback to melee if pathfinding or equipping fails
             bot.pvp.attack(target);
           }
         } else { // No ranged weapon or no arrows
@@ -1151,6 +1251,9 @@ async function handleBotMessage(username, message, isWhisper = false) {
 
   bot.on('itemDrop', async (entity) => {
     if (entity.type === 'item') {
+      // Do not collect items while in combat; post-hunt logic will handle it.
+      if (isAttacking) return;
+
       // Prioritize critical actions over item collection
       if (isFleeing) {
         debouncedLogAction('collect_item_skipped_busy', `Skipping item collection for ${entity.displayName} because bot is fleeing.`);
