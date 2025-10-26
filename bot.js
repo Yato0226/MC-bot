@@ -747,219 +747,118 @@ async function handleBotMessage(username, message, isWhisper = false) {
     case 'hunt':
     case 'kill': {
       if (isAttacking) {
-        respond(username, 'I am already attacking something!', isWhisper);
+        respond(username, 'I am already in combat!', isWhisper);
         break;
       }
 
-      let targetsToHunt = [];
-      // Handles AI commands like "kill the sheep and the zombie"
+      let targetsToHuntNames = [];
       if (aiCommand && aiCommand.targets && Array.isArray(aiCommand.targets)) {
-        targetsToHunt = aiCommand.targets;
+        targetsToHuntNames = aiCommand.targets;
       } else if (args.length > 0) {
-        targetsToHunt = args; // Handles manual chat commands like "kill sheep zombie"
+        targetsToHuntNames = args;
       }
 
-      if (targetsToHunt.length === 0) {
-        logError('Usage: hunt <name> or kill <name>');
+      if (targetsToHuntNames.length === 0) {
+        logError('Usage: hunt <name>');
         break;
       }
 
-      for (const targetName of targetsToHunt) {
-        if (!targetName) continue;
-
-        if (settings.whitelistedPlayers.includes(targetName)) {
-            logAction(`Player ${targetName} is whitelisted. Not attacking.`);
-            continue;
-        }
-
-        // This is the corrected search logic you already implemented
-                let target = bot.players[targetName]?.entity;
-                if (!target) {
-                  const lowerCaseTargetName = targetName.toLowerCase();
-                  target = bot.nearestEntity(entity => {                    if (!(entity.type === 'mob' || entity.type === 'player' || entity.type === 'animal' || entity.type === 'hostile')) return false;
-                    const displayName = entity.displayName?.toString().toLowerCase();
-                    const internalName = entity.name?.toLowerCase();
-                    return displayName === lowerCaseTargetName || internalName === lowerCaseTargetName;
-                  });
-                }
-
-        // --- THIS IS THE CRUCIAL NEW PART ---
-        if (!target) {
-          debouncedLogError(`hunt_mob_not_found_${targetName}`, `Could not find a mob named '${targetName}'.`);
-
-          // Get a list of unique mob names the bot can currently see
-          const nearbyMobs = Object.values(bot.entities)
-            .filter(e => (e.type === 'mob' || e.type === 'animal' || e.type === 'hostile') && e.displayName)
-            .map(e => e.displayName.toString())
-            .filter((name, index, self) => self.indexOf(name) === index); // Get unique names
-
-          if (nearbyMobs.length > 0) {
-            respond(username, `I can't find a '${targetName}', but I do see: ${nearbyMobs.join(', ')}.`, isWhisper);
-          } else {
-            respond(username, `I can't find a '${targetName}'. I don't see any mobs nearby. Get closer.`, isWhisper);
-          }
-          continue; // Move to the next target if there are multiple
-        }
-        // --- END OF NEW PART ---
-
-        logAction(`Found ${target.displayName}. Attacking!`);
-        isAttacking = true; // Set flag when attack starts
-
-        // Set up a listener to collect items when the target is killed
-        const onTargetKilled = (deadEntity) => {
-          if (deadEntity.id === target.id) {
-            logAction(`Target ${target.displayName} killed. Collecting drops...`);
-
-            // Use a timeout to give items time to drop
-            setTimeout(async () => {
-              const items = [];
-              for (const id in bot.entities) {
-                const e = bot.entities[id];
-                if (e.name === 'item' && e.position.distanceTo(bot.entity.position) < 16) {
-                  items.push(e);
-                }
-              }
-
-              if (items.length > 0) {
-                logAction(`Found ${items.length} item(s) to collect.`);
-                try {
-                  await bot.collectBlock.collect(items);
-                  logAction('Finished collecting items.');
-                } catch (err) {
-                  logError(`Error collecting items: ${err.message}`);
-                }
-              } else {
-                logAction('No item drops found nearby.');
-              }
-            }, 500);
-
-            bot.removeListener('entityDead', onTargetKilled);
-          }
-        };
-        bot.on('entityDead', onTargetKilled);
-
-
-        const originalHeldItem = bot.heldItem; // Store the currently held item
-
-        const bow = bot.inventory.findInventoryItem('bow');
-        const crossbow = bot.inventory.findInventoryItem('crossbow');
-        const arrows = bot.inventory.findInventoryItem('arrow'); // Check for arrows
-
-        /* Crossbow feature is temporarily disabled due to complexity.
-           The bot will fall back to melee if only a crossbow is available. */
-        const rangedWeapon = bow;
-
-        if (rangedWeapon && arrows) { // If bot has a ranged weapon and arrows
-          try {
-            // 1. Pathfind to get within shooting range
-            logAction(`Pathfinding to a shooting position near ${target.displayName}...`);
-            const movements = new Movements(bot, mcData);
-            bot.pathfinder.setMovements(movements);
-            const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 15);
-            await bot.pathfinder.goto(goal);
-            bot.clearControlStates();
-
-            // 2. Start the attack
-            await bot.equip(rangedWeapon, 'hand');
-
-            if (rangedWeapon.name === 'crossbow') {
-              logAction('Crossbow detected. Starting manual one-shot attack loop.');
-              let continueAttacking = true;
-
-              const stopCrossbowAttack = () => {
-                if (continueAttacking) {
-                  logAction('Stopping crossbow attack loop.');
-                  continueAttacking = false;
-                  bot.removeListener('stoppedAttacking', stopCrossbowAttack);
-                  bot.removeListener('entityDead', onTargetDead);
-                }
-              };
-
-              const onTargetDead = (entity) => {
-                if (entity.id === target.id) {
-                  logAction('Target died.');
-                  stopCrossbowAttack();
-                }
-              };
-
-              bot.on('stoppedAttacking', stopCrossbowAttack);
-              bot.on('entityDead', onTargetDead);
-
-              (async () => {
-                while (continueAttacking) {
-                  const currentTarget = bot.entities[target.id];
-                  if (!currentTarget) {
-                    logAction('Target is no longer visible.');
-                    stopCrossbowAttack();
-                    break;
-                  }
-                  if (getArrowCount() === 0) {
-                    logAction('Out of arrows! Switching to melee.');
-                    stopCrossbowAttack();
-                    bot.pvp.attack(target);
-                    break;
-                  }
-                  logAction('Aiming and firing one shot with crossbow...');
-                  const masterGrade = bot.hawkEye.getMasterGrade(currentTarget, currentTarget.velocity, 'crossbow');
-                  if (masterGrade) {
-                    bot.hawkEye.simplyShot(masterGrade.yaw, masterGrade.pitch);
-                  } else {
-                    logError('HawkEye could not calculate a shot for the crossbow.');
-                  }
-                  await new Promise(resolve => setTimeout(resolve, 3000));
-                }
-                isAttacking = false;
-              })();
-            } else { // It's a bow
-              const aimDelay = 10;
-              logAction(`Waiting ${aimDelay / 20}s for aiming to settle...`);
-              await bot.waitForTicks(aimDelay);
-              logAction(`Using ${rangedWeapon.name} to attack ${target.displayName}.`);
-              bot.hawkEye.autoAttack(target, rangedWeapon.name);
-              startArrowMonitoring(target);
-
-              const onHawkEyeStopped = (stoppedTarget) => {
-                if (target && stoppedTarget.id === target.id) {
-                  logAction('HawkEye auto-attack finished.');
-                  isAttacking = false;
-                  stopArrowMonitoring();
-                  bot.removeListener('auto_shot_stopped', onHawkEyeStopped);
-                }
-              };
-              bot.on('auto_shot_stopped', onHawkEyeStopped);
-            }
-          } catch (err) {
-            logError(`Ranged attack setup failed: ${err.message}. Falling back to melee.`);
-            bot.pvp.attack(target);
-          }
-        } else { // No ranged weapon or no arrows
-          logAction(`No ranged weapon or no arrows found, attempting to equip best melee weapon and initiate melee attack on ${target.displayName}.`);
-          const bestWeapon = getBestMeleeWeapon();
-          if (bestWeapon) {
-            try {
-              await bot.equip(bestWeapon, 'hand');
-              bot.pvp.attack(target);
-            } catch (err) {
-              logError(`Failed to equip ${bestWeapon.displayName}: ${err.message}`);
-              logAction(`Attacking ${target.displayName} with bare hands due to equip failure.`);
-              bot.pvp.attack(target);
-            }
-          } else {
-            logAction(`No suitable melee weapon found for ${target.displayName}. Attacking with bare hands.`);
-            bot.pvp.attack(target);
+      // --- 1. Build a list of all entities to kill ---
+      const mobsToKill = [];
+      const uniqueTargetNames = [...new Set(targetsToHuntNames)];
+      for (const name of uniqueTargetNames) {
+        const lowerCaseName = name.toLowerCase();
+        if (settings.whitelistedPlayers.includes(name)) continue;
+        for (const id in bot.entities) {
+          const entity = bot.entities[id];
+          if (entity.isDead) continue;
+          const entityName = entity.name?.toLowerCase();
+          const entityDisplayName = entity.displayName?.toString().toLowerCase();
+          if ((entityName === lowerCaseName || entityDisplayName === lowerCaseName) && entity.position.distanceTo(bot.entity.position) < 64) {
+            if (entity.type === 'player' && settings.whitelistedPlayers.includes(entity.username)) continue;
+            mobsToKill.push(entity);
           }
         }
-
-        // Re-equip original item after attack is stopped
-        const onAttackStopped = () => {
-            stopArrowMonitoring(); // Stop arrow monitoring when attack stops
-            if (originalHeldItem) {
-                bot.equip(originalHeldItem, 'hand').catch(err => logError(`Failed to re-equip original item: ${err.message}`));
-            }
-            bot.removeListener('stoppedAttacking', onAttackStopped);
-        };
-        bot.on('stoppedAttacking', onAttackStopped);
       }
+
+      if (mobsToKill.length === 0) {
+        respond(username, `I couldn't find any of the specified mobs nearby.`, isWhisper);
+        break;
+      }
+
+      // --- 2. Start Combat Session ---
+      logAction(`Found ${mobsToKill.length} mob(s) to hunt. Starting combat session...`);
+      isAttacking = true;
+
+      // This function is created to be able to use async/await in the loop
+      (async () => {
+        // --- 3. Main Combat Loop ---
+        for (const target of mobsToKill) {
+          if (target.isDead) continue;
+          logAction(`Now targeting ${target.displayName} (${mobsToKill.indexOf(target) + 1}/${mobsToKill.length})...`);
+
+          const killPromise = new Promise((resolve) => {
+            const onTargetDead = (entity) => {
+              if (entity.id === target.id) {
+                bot.removeListener('entityDead', onTargetDead);
+                resolve();
+              }
+            };
+            bot.on('entityDead', onTargetDead);
+          });
+
+          // --- Attack Logic ---
+          const bow = bot.inventory.findInventoryItem('bow');
+          const arrows = bot.inventory.findInventoryItem('arrow');
+          if (bow && arrows) { // Ranged
+            try {
+              await bot.pathfinder.goto(new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 15));
+              bot.clearControlStates();
+              await bot.equip(bow, 'hand');
+              await bot.waitForTicks(10);
+              bot.hawkEye.autoAttack(target, 'bow');
+            } catch (err) {
+              logError(`Ranged attack on ${target.displayName} failed: ${err.message}. Switching to melee.`);
+              bot.pvp.attack(target);
+            }
+          } else { // Melee
+            bot.pvp.attack(target);
+          }
+
+          await killPromise; // Wait for this target to die
+          bot.hawkEye.stop(); // Stop any lingering attacks
+          bot.pvp.stop();
+          logAction(`Killed ${target.displayName}.`);
+        }
+
+        // --- 4. End Combat and Collect Loot ---
+        logAction('All targets eliminated. Collecting drops...');
+        isAttacking = false;
+
+        setTimeout(async () => {
+          const items = [];
+          // Use the bot's current position as the center for the search
+          const centerPoint = bot.entity.position;
+          for (const id in bot.entities) {
+            const e = bot.entities[id];
+            if (e.name === 'item' && e.position.distanceTo(centerPoint) < 20) {
+              items.push(e);
+            }
+          }
+          if (items.length > 0) {
+            logAction(`Found ${items.length} item(s) to collect.`);
+            try {
+              await bot.collectBlock.collect(items);
+              logAction('Finished collecting items.');
+            } catch (err) {
+              logError(`Error collecting items: ${err.message}`);
+            }
+          } else {
+            logAction('No item drops found nearby.');
+          }
+        }, 500); // Wait 500ms for drops to appear
+      })();
+
       break;
     }
     case 'chop': {
