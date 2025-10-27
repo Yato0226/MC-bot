@@ -814,8 +814,16 @@ async function handleBotMessage(username, message, isWhisper = false) {
           const arrows = bot.inventory.findInventoryItem('arrow');
           if (bow && arrows) { // Ranged
             try {
-              await bot.pathfinder.goto(new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 15));
+              const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 30);
+              await bot.pathfinder.goto(goal);
               bot.clearControlStates();
+
+              // Wait until the bot is physically stationary to ensure aiming accuracy
+              while (bot.entity.velocity.distanceTo(new Vec3(0, 0, 0)) > 0.01) {
+                await bot.waitForTicks(1);
+              }
+
+              await bot.lookAt(target.position.plus(new Vec3(0, target.height, 0))); // Face the target's head
               await bot.equip(bow, 'hand');
               await bot.waitForTicks(10);
               bot.hawkEye.autoAttack(target, 'bow');
@@ -950,9 +958,6 @@ async function handleBotMessage(username, message, isWhisper = false) {
       respond(username, `Location "${name}" deleted.`, isWhisper);
       break;
     }
-    case 'status':
-      respond(username, `Health: ${bot.health.toFixed(1)}/20 | Food: ${bot.food.toFixed(1)}/20 | Saturation: ${bot.foodSaturation.toFixed(2)}`, isWhisper);
-      break;
     case 'give': {
         if (args[0] === 'items' && args[1] === 'to') {
             const playerName = args[2];
@@ -960,15 +965,22 @@ async function handleBotMessage(username, message, isWhisper = false) {
             const target = bot.players[playerName]?.entity;
             if (!target) return logError(`Cannot see player ${playerName}.`);
 
-            logAction(`Giving all items to ${playerName}...`);
-            for (const item of bot.inventory.items()) {
-                try {
+            try {
+                logAction(`Pathfinding to ${playerName} to give items...`);
+                const movements = new Movements(bot, mcData);
+                bot.pathfinder.setMovements(movements);
+                const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 3);
+                await bot.pathfinder.goto(goal);
+
+                await bot.lookAt(target.position.plus(new Vec3(0, target.height, 0)));
+                logAction(`Giving all items to ${playerName}...`);
+                for (const item of bot.inventory.items()) {
                     await bot.tossStack(item);
-                } catch (err) {
-                    logError(`Could not toss ${item.name}: ${err.message}`);
                 }
+                logAction('Finished giving items.');
+            } catch (err) {
+                logError(`Could not give items to ${playerName}: ${err.message}`);
             }
-            logAction('Finished giving items.');
         }
         break;
     }
@@ -1566,15 +1578,22 @@ rl.on('line', async (input) => {
             const target = bot.players[playerName]?.entity;
             if (!target) return logError(`Cannot see player ${playerName}.`);
 
-            logAction(`Giving all items to ${playerName}...`);
-            for (const item of bot.inventory.items()) {
-                try {
+            try {
+                logAction(`Pathfinding to ${playerName} to give items...`);
+                const movements = new Movements(bot, mcData);
+                bot.pathfinder.setMovements(movements);
+                const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 3);
+                await bot.pathfinder.goto(goal);
+
+                await bot.lookAt(target.position.plus(new Vec3(0, target.height, 0)));
+                logAction(`Giving all items to ${playerName}...`);
+                for (const item of bot.inventory.items()) {
                     await bot.tossStack(item);
-                } catch (err) {
-                    logError(`Could not toss ${item.name}: ${err.message}`);
                 }
+                logAction('Finished giving items.');
+            } catch (err) {
+                logError(`Could not give items to ${playerName}: ${err.message}`);
             }
-            logAction('Finished giving items.');
         }
         break;
     }
