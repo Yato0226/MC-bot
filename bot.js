@@ -530,8 +530,10 @@ async function autoSleep() {
     if (bedBlock) {
         try {
             logAction(`Pathfinding to bed at ${bedBlock.position.x.toFixed(1)}, ${bedBlock.position.y.toFixed(1)}, ${bedBlock.position.z.toFixed(1)}...`);
-            const goal = new baritoneGoals.GoalNear(bedBlock.position.x, bedBlock.position.y, bedBlock.position.z, 2);
-            await bot.ashfinder.gotoSmart(goal);
+            const movements = new Movements(bot, mcData);
+            bot.pathfinder.setMovements(movements);
+            const goal = new pathfinderGoals.GoalNear(bedBlock.position.x, bedBlock.position.y, bedBlock.position.z, 2);
+            await bot.pathfinder.goto(goal);
 
             logAction('Reached bed. Attempting to sleep...');
             await bot.sleep(bedBlock);
@@ -1071,6 +1073,14 @@ async function handleBotMessage(username, message, isWhisper = false) {
   bot.loadPlugin(pvp)
   bot.loadPlugin(armorManager)
   bot.loadPlugin(collectBlock)
+
+  // --- Baritone Settings ---
+  logSystem('Applying custom Baritone settings to enable all features...');
+  bot.ashfinder.config.parkour = true;
+  bot.ashfinder.config.breakBlocks = true;
+  bot.ashfinder.config.placeBlocks = true;
+  bot.ashfinder.config.swimming = true;
+
 
   // Initialize web inventory viewer only once, with port hopping
   if (!webInventoryInstance) {

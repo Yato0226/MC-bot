@@ -744,3 +744,43 @@
 [2025-10-26T10:26:18.905Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -188.5, 91.0, -38.5!9m
 [2025-10-26T10:26:24.885Z] 2m[ACTION] Killed Cow.9m
 [2025-10-26T10:26:24.885Z] 2m[ACTION] All targets eliminated. Loot collection will be implemented in the next step.9m
+[2025-10-26T10:27:32.943Z] 6m[CHAT] Luize26: 9m7m[WHISPER] follow Luize269m
+[2025-10-26T10:27:32.943Z] [DEBUG] Parsed command: 'follow', Arguments: ["Luize26"]
+[2025-10-26T10:27:32.957Z] 2m[ACTION] Following Luize269m
+[2025-10-26T10:27:39.703Z] 2m[ACTION] undefined9m
+[2025-10-26T10:27:42.621Z] 2m[ACTION] undefined9m
+[2025-10-26T10:27:54.205Z] 6m[CHAT] Luize26: 9m7m[WHISPER] kill pillager9m
+[2025-10-26T10:27:54.205Z] [DEBUG] Parsed command: 'kill', Arguments: ["pillager"]
+[2025-10-26T10:27:54.207Z] 2m[ACTION] Now targeting Pillager (1/4)...9m
+[2025-10-26T10:27:54.206Z] 2m[ACTION] Found 4 mob(s) to hunt. Starting combat session...9m
+[2025-10-26T10:27:59.956Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -230.3, 96.0, -98.5!9m
+[2025-10-26T10:28:04.782Z] Chunk size is 17 but only 15 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45720,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5f98e5020001fa090100280101db060000
+[2025-10-26T10:28:05.019Z] Chunk size is 17 but only 15 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45718,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5f96e5020001fa090100280101db060000
+[2025-10-26T10:28:05.023Z] Chunk size is 17 but only 15 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45719,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5f97e5020001fa090100280101db060000
+[2025-10-26T10:28:05.027Z] Chunk size is 21 but only 19 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45717,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"enchantments","data":{"enchantments":[{"id":39,"level":1}]}},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5f95e5020001fa0902000a012701280101db060000
+[2025-10-26T10:28:06.247Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45718,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f96e5020001fa090200280101db0600000301
+[2025-10-26T10:28:06.546Z] 2m[ACTION] undefined9m
+[2025-10-26T10:28:07.094Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45719,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f97e5020001fa090200280101db0600000301
+[2025-10-26T10:28:08.785Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45718,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f96e5020001fa090200280101db0600000302
+[2025-10-26T10:28:09.087Z] Chunk size is 21 but only 19 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45717,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"enchantments","data":{"enchantments":[{"id":39,"level":1}]}},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5f95e5020001fa0902000a012701280101db060000
+[2025-10-26T10:28:10.039Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45719,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f97e5020001fa090200280101db0600000302
+[2025-10-26T10:28:10.464Z] 2m[ACTION] undefined9m
+[2025-10-26T10:28:11.860Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45718,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f96e5020001fa090200280101db0600000303
+[2025-10-26T10:28:12.347Z] 2m[ACTION] Killed Pillager.9m
+[2025-10-26T10:28:12.347Z] 2m[ACTION] Now targeting Pillager (2/4)...9m
+[2025-10-26T10:28:13.036Z] Chunk size is 21 but only 19 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45717,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"enchantments","data":{"enchantments":[{"id":39,"level":1}]}},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5f95e5020001fa0902000a012701280101db060000
+[2025-10-26T10:28:13.186Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45719,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f97e5020001fa090200280101db0600000303
+[2025-10-26T10:28:13.514Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -233.3, 96.0, -98.5!9m
+[2025-10-26T10:28:14.050Z] 2m[ACTION] Killed Pillager.9m
+[2025-10-26T10:28:14.050Z] 2m[ACTION] Now targeting Pillager (3/4)...9m
+[2025-10-26T10:28:14.392Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -234.3, 96.0, -99.3!9m
+[2025-10-26T10:28:15.890Z] Chunk size is 19 but only 17 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":45719,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38},{"type":"custom_data","data":{"type":"end"}}],"removeComponents":[]}}]}}; buffer :5f97e5020001fa090200280101db0600000304
+[2025-10-26T10:28:16.751Z] 2m[ACTION] Killed Pillager.9m
+[2025-10-26T10:28:16.751Z] 2m[ACTION] Now targeting Pillager (4/4)...9m
+[2025-10-26T10:28:16.752Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -234.5, 96.0, -99.5!9m
+[2025-10-26T10:28:39.115Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-26T10:28:39.116Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-26T10:28:39.116Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-26T10:29:02.621Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-26T10:29:02.621Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-26T10:29:02.621Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
