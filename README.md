@@ -25,7 +25,7 @@ This is a sophisticated Minecraft bot built on the Mineflayer API, designed for 
     -   **Automatic Armor Management:** Equips the best available armor on spawn.
 -   **Utility & Debugging:**
     -   **Comprehensive Logging:** All actions, commands, and errors are saved to `saves/sys.log`.
-    -   **Location Management:** Save, load, and navigate to named locations.
+    -   **Location Management:** Save, load, and manage named locations.
     -   **Web Inventory:** A web-based interface to view the bot's inventory (runs on an available port starting from 3000).
 
 ## Installation
@@ -37,7 +37,7 @@ This is a sophisticated Minecraft bot built on the Mineflayer API, designed for 
     ```
 2.  **Install dependencies:**
     ```bash
-    npm install
+    npm install @miner-org/mineflayer-baritone chalk dotenv minecrafthawkeye mineflayer mineflayer-armor-manager mineflayer-collectblock mineflayer-pathfinder mineflayer-pvp mineflayer-statemachine mineflayer-tool mineflayer-web-inventory prismarine-viewer node-fetch@2
     ```
 
 ## Configuration
@@ -50,6 +50,13 @@ OLLAMA_HOST=http://localhost
 OLLAMA_PORT=11434
 OLLAMA_MODEL=gemma3:270m
 ```
+
+## Usage
+
+1.  **Start the bot:**
+    ```bash
+    node bot.js
+    ```
 
 ## Commands
 
@@ -74,3 +81,29 @@ The bot responds to commands from both the in-game chat and the terminal where i
 -   `setspawn`: Sets the bot's spawn point to the nearest bed.
 -   `whitelist <add|remove> <player_name>`: Manages players who the bot will not attack.
 -   `quit` or `exit`: Disconnects the bot.
+
+## Dependencies
+
+This project relies on several `mineflayer` plugins and other Node.js packages:
+
+-   `mineflayer`: The core library for creating Minecraft bots.
+-   `@miner-org/mineflayer-baritone`: For advanced pathfinding.
+-   `mineflayer-armor-manager`: For automatic armor management.
+-   `mineflayer-collectblock`: For collecting blocks.
+-   `mineflayer-pathfinder`: For pathfinding capabilities.
+-   `mineflayer-pvp`: For player-versus-player and player-versus-mob combat.
+-   `mineflayer-tool`: For automatic tool selection.
+-   `mineflayer-web-inventory`: For a web-based inventory viewer.
+-   `prismarine-viewer`: To view the bot's perspective in a web browser.
+-   `minecrafthawkeye`: For advanced combat targeting.
+-   `dotenv`: To manage environment variables.
+-   `chalk`: For colored console output.
+-   `node-fetch`: For making HTTP requests (used for Ollama API).
+
+## Contributing
+
+Feel free to contribute to this project by submitting issues or pull requests.
+
+## License
+
+This project is licensed under the ISC License.
