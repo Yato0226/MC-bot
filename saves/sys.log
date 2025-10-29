@@ -784,3 +784,259 @@
 [2025-10-26T10:29:02.621Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
 [2025-10-26T10:29:02.621Z] [DEBUG] Parsed command: 'quit', Arguments: []
 [2025-10-26T10:29:02.621Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-28T09:02:32.936Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-28T09:04:10.328Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-28T09:04:11.724Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-28T09:04:11.726Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-28T09:04:13.975Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-28T09:04:13.977Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m
+[2025-10-28T09:04:13.976Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-28T09:04:13.978Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-28T09:04:18.997Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-28T09:04:18.998Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-28T09:04:22.328Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-28T09:04:22.329Z] 0m[SYSTEM] Applying custom Baritone settings to enable all features...9m
+[2025-10-28T09:05:05.416Z] 2m[ACTION] undefined9m
+[2025-10-28T09:05:08.585Z] 2m[ACTION] undefined9m
+[2025-10-28T09:05:44.600Z] 2m[ACTION] undefined9m
+[2025-10-28T09:05:54.255Z] 2m[ACTION] undefined9m
+[2025-10-28T09:06:01.744Z] 2m[ACTION] undefined9m
+[2025-10-28T09:06:06.652Z] 0m[SYSTEM] Bot died. Respawning...9m
+[2025-10-28T09:06:07.015Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-28T09:06:07.015Z] 0m[SYSTEM] Applying custom Baritone settings to enable all features...9m
+[2025-10-28T09:06:40.016Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T09:06:40.145Z] 0m[SYSTEM] Bot died. Respawning...9m
+[2025-10-28T09:06:40.456Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-28T09:06:40.459Z] 0m[SYSTEM] Applying custom Baritone settings to enable all features...9m
+[2025-10-28T09:07:23.592Z] TERMINAL COMMAND: quit
+[2025-10-28T09:24:01.638Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-28T09:24:03.203Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-28T09:24:03.205Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-28T09:24:05.860Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-28T09:24:05.860Z] 0m[SYSTEM] Applying custom Baritone settings to enable all features...9m
+[2025-10-28T09:24:45.960Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -239 92 -2839m
+[2025-10-28T09:24:45.962Z] [DEBUG] Parsed command: 'goto', Arguments: ["-239","92","-283"]
+[2025-10-28T09:24:46.000Z] 2m[ACTION] Going to -239, 92, -2839m
+[2025-10-28T09:24:46.000Z] [AshFinder] Long distance: 370.1 blocks
+[2025-10-28T09:24:46.169Z] Generated 5 waypoints (370.1 blocks)
+[2025-10-28T09:24:46.170Z] → Waypoint 1/5: (-30.5, 120, -38.5)
+[2025-10-28T09:25:33.124Z] 2m[ACTION] Baritone is struggling at -26.5, 122.0, -35.8. Switching to mineflayer-pathfinder for replanning to goal NaN, NaN, NaN.9m
+[2025-10-28T09:25:33.239Z] 2m[ACTION] Baritone goal reached at -26.5, 122.0, -35.7!9m
+[2025-10-28T09:25:33.282Z] ✓ Reached waypoint 1
+[2025-10-28T09:25:33.282Z] → Waypoint 2/5: (-52.5, 106, -60.5)
+[2025-10-28T09:25:35.572Z] 2m[ACTION] Baritone goal reached at -28.3, 120.0, -38.5!9m
+[2025-10-28T09:26:53.003Z] 2m[ACTION] Baritone is struggling at -51.2, 108.0, -59.2. Switching to mineflayer-pathfinder for replanning to goal NaN, NaN, NaN.9m
+[2025-10-28T09:26:53.780Z] 2m[ACTION] Baritone goal reached at -52.8, 107.0, -59.5!9m
+[2025-10-28T09:29:12.273Z] TERMINAL COMMAND: quit
+[2025-10-28T09:29:17.801Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-28T09:29:19.008Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-28T09:29:19.009Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-28T09:29:21.611Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-28T09:29:21.611Z] 0m[SYSTEM] Applying custom Baritone settings to enable all features...9m
+[2025-10-28T09:29:58.269Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -239 92 -2839m
+[2025-10-28T09:29:58.270Z] [DEBUG] Parsed command: 'goto', Arguments: ["-239","92","-283"]
+[2025-10-28T09:29:58.292Z] 2m[ACTION] Going to -239, 92, -2839m
+[2025-10-28T09:29:58.293Z] [AshFinder] Long distance: 291.2 blocks
+[2025-10-28T09:29:58.342Z] Generated 5 waypoints (291.2 blocks)
+[2025-10-28T09:29:58.342Z] → Waypoint 1/5: (-83.5, 102, -96.5)
+[2025-10-28T09:30:43.242Z] 2m[ACTION] Baritone is struggling to find a complete path, but will continue trying.9m
+[2025-10-28T09:30:43.323Z] 2m[ACTION] Baritone goal reached at -70.5, 93.0, -83.6!9m
+[2025-10-28T09:30:43.326Z] ✓ Reached waypoint 1
+[2025-10-28T09:30:43.326Z] → Waypoint 2/5: (-114.5, 110, -134.5)
+[2025-10-28T09:30:53.160Z] 2m[ACTION] Baritone goal reached at -82.6, 101.0, -94.4!9m
+[2025-10-28T09:31:34.971Z] 2m[ACTION] Baritone is struggling to find a complete path, but will continue trying.9m
+[2025-10-28T09:31:35.040Z] 2m[ACTION] Baritone goal reached at -94.4, 112.0, -114.4!9m
+[2025-10-28T09:31:35.041Z] → Waypoint 3/5: (-145.5, 89, -171.5)
+[2025-10-28T09:31:35.041Z] ✓ Reached waypoint 2
+[2025-10-28T09:31:58.470Z] 2m[ACTION] Baritone goal reached at -113.5, 110.0, -132.8!9m
+[2025-10-28T09:33:10.503Z] 2m[ACTION] Baritone goal reached at -144.5, 90.0, -169.8!9m
+[2025-10-28T09:34:23.082Z] 6m[CHAT] Luize26: 9m7m[WHISPER] goto -239 92 -2839m
+[2025-10-28T09:34:23.082Z] [DEBUG] Parsed command: 'goto', Arguments: ["-239","92","-283"]
+[2025-10-28T09:34:23.083Z] 2m[ACTION] Going to -239, 92, -2839m
+[2025-10-28T09:34:23.085Z] Generated 4 waypoints (145.0 blocks)
+[2025-10-28T09:34:23.086Z] → Waypoint 1/4: (-177.5, 90, -208.5)
+[2025-10-28T09:34:23.084Z] [AshFinder] Long distance: 145.0 blocks
+[2025-10-28T09:34:58.844Z] 2m[ACTION] Baritone goal reached at -175.3, 90.0, -206.3!9m
+[2025-10-28T09:34:58.845Z] ✓ Reached waypoint 1
+[2025-10-28T09:34:58.845Z] → Waypoint 2/4: (-208.5, 91, -245.5)
+[2025-10-28T09:35:41.171Z] 2m[ACTION] Baritone is struggling to find a complete path, but will continue trying.9m
+[2025-10-28T09:35:41.248Z] 2m[ACTION] Baritone goal reached at -201.4, 91.0, -238.4!9m
+[2025-10-28T09:35:41.249Z] → Waypoint 3/4: (-238.5, 93, -282.5)
+[2025-10-28T09:35:41.249Z] ✓ Reached waypoint 2
+[2025-10-28T09:35:44.017Z] 2m[ACTION] Baritone goal reached at -207.3, 91.0, -243.3!9m
+[2025-10-28T09:36:25.879Z] 2m[ACTION] Baritone is struggling to find a complete path, but will continue trying.9m
+[2025-10-28T09:36:25.954Z] 2m[ACTION] Baritone goal reached at -227.4, 93.0, -270.4!9m
+[2025-10-28T09:36:25.955Z] ✓ Reached waypoint 3
+[2025-10-28T09:36:25.955Z] → Waypoint 4/4: (-239, 92, -283)
+[2025-10-28T09:36:34.135Z] 2m[ACTION] Baritone goal reached at -236.4, 92.0, -280.4!9m
+[2025-10-28T09:36:47.329Z] 6m[CHAT] Luize26: 9m7m[WHISPER] stop9m
+[2025-10-28T09:36:47.330Z] [DEBUG] Parsed command: 'stop', Arguments: []
+[2025-10-28T09:36:47.331Z] 2m[ACTION] Stopping all actions...9m
+[2025-10-28T09:36:52.947Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:36:52.947Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:36:52.999Z] 2m[ACTION] Found a Birch Log. Identifying all its log blocks...9m
+[2025-10-28T09:36:53.000Z] 2m[ACTION] Found 6 logs in the tree.9m
+[2025-10-28T09:36:53.000Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:37:08.097Z] 6m[CHAT] Luize26: 9m7m[WHISPER] quit9m
+[2025-10-28T09:37:08.097Z] [DEBUG] Parsed command: 'quit', Arguments: []
+[2025-10-28T09:37:08.098Z] 2m[ACTION] Received quit/exit command via chat/whisper. Exiting...9m
+[2025-10-28T09:37:15.186Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-28T09:37:16.297Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-28T09:37:16.299Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-28T09:37:18.534Z] 0m[SYSTEM] Bot spawned!9m
+[2025-10-28T09:37:18.534Z] 0m[SYSTEM] Applying custom Baritone settings to enable all features...9m
+[2025-10-28T09:37:50.603Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:37:50.604Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:37:50.707Z] 2m[ACTION] Found a Birch Log. Identifying all its log blocks...9m
+[2025-10-28T09:37:50.708Z] 2m[ACTION] Found 6 logs in the tree.9m
+[2025-10-28T09:37:50.709Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:37:57.795Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -251.4, 96.0, -286.6!9m
+[2025-10-28T09:37:59.777Z] Chunk size is 16 but only 14 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6733,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcd340001fa090100280101db060000
+[2025-10-28T09:38:00.867Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -253.3, 98.0, -287.5!9m
+[2025-10-28T09:38:00.982Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -253.5, 98.0, -287.5!9m
+[2025-10-28T09:38:01.738Z] Chunk size is 16 but only 14 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6735,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcf340001fa090100280101db060000
+[2025-10-28T09:38:02.627Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6733,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":1},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcd340001fa0902000301280101db060000
+[2025-10-28T09:38:03.362Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -254.3, 99.0, -287.5!9m
+[2025-10-28T09:38:04.830Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6735,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":1},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcf340001fa0902000301280101db060000
+[2025-10-28T09:38:05.889Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6733,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":2},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcd340001fa0902000302280101db060000
+[2025-10-28T09:38:09.408Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -255.5, 102.0, -287.5!9m
+[2025-10-28T09:38:10.726Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -255.5, 102.0, -287.5!9m
+[2025-10-28T09:38:10.786Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6735,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":2},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcf340001fa0902000302280101db060000
+[2025-10-28T09:38:11.448Z] Chunk size is 16 but only 14 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa090100280101db060000
+[2025-10-28T09:38:11.965Z] 2m[ACTION] Finished chopping tree.9m
+[2025-10-28T09:38:12.754Z] Chunk size is 16 but only 14 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6734,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":1,"removedComponentCount":0,"components":[{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fce340001fa090100280101db060000
+[2025-10-28T09:38:12.756Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6733,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":3},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcd340001fa0902000303280101db060000
+[2025-10-28T09:38:14.652Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6735,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":3},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fcf340001fa0902000303280101db060000
+[2025-10-28T09:38:14.654Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":1},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa0902000301280101db060000
+[2025-10-28T09:38:14.694Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":2},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa0902000302280101db060000
+[2025-10-28T09:38:14.655Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6734,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":1},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fce340001fa0902000301280101db060000
+[2025-10-28T09:38:14.697Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6734,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":2},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fce340001fa0902000302280101db060000
+[2025-10-28T09:38:15.878Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":3},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa0902000303280101db060000
+[2025-10-28T09:38:16.479Z] 2m[ACTION] undefined9m
+[2025-10-28T09:38:18.428Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6734,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":3},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fce340001fa0902000303280101db060000
+[2025-10-28T09:38:18.982Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":4},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa0902000304280101db060000
+[2025-10-28T09:38:20.781Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6734,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":4},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fce340001fa0902000304280101db060000
+[2025-10-28T09:38:21.883Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":5},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa0902000305280101db060000
+[2025-10-28T09:38:23.830Z] 2m[ACTION] undefined9m
+[2025-10-28T09:38:24.646Z] Chunk size is 18 but only 16 was read ; partial packet : {"name":"entity_equipment","params":{"entityId":6736,"equipments":[{"slot":0,"item":{"itemCount":1,"itemId":1274,"addedComponentCount":2,"removedComponentCount":0,"components":[{"type":"damage","data":6},{"type":"potion_duration_scale","data":2.385069961855112e-38}],"removeComponents":[]}}]}}; buffer :5fd0340001fa0902000306280101db060000
+[2025-10-28T09:38:31.678Z] 2m[ACTION] undefined9m
+[2025-10-28T09:38:39.531Z] 2m[ACTION] undefined9m
+[2025-10-28T09:38:47.381Z] 2m[ACTION] undefined9m
+[2025-10-28T09:38:55.230Z] 2m[ACTION] undefined9m
+[2025-10-28T09:39:03.080Z] 2m[ACTION] undefined9m
+[2025-10-28T09:39:10.931Z] 2m[ACTION] undefined9m
+[2025-10-28T09:39:11.429Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T09:39:16.929Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T09:39:21.010Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T09:40:57.713Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:40:57.714Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:40:57.788Z] 2m[ACTION] Found a Oak Log. Identifying all its log blocks...9m
+[2025-10-28T09:40:57.789Z] 2m[ACTION] Found 4 logs in the tree.9m
+[2025-10-28T09:40:57.790Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:40:59.593Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -254.5, 98.0, -291.6!9m
+[2025-10-28T09:41:00.974Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -254.5, 98.0, -291.6!9m
+[2025-10-28T09:41:02.638Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -254.5, 98.0, -291.6!9m
+[2025-10-28T09:41:04.459Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -252.3, 97.9, -291.5!9m
+[2025-10-28T09:41:04.783Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -252.3, 97.0, -291.5!9m
+[2025-10-28T09:41:07.150Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -252.3, 96.0, -291.5!9m
+[2025-10-28T09:41:07.277Z] 2m[ACTION] Finished chopping tree.9m
+[2025-10-28T09:41:11.742Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:41:11.743Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:41:11.763Z] 2m[ACTION] Found 5 logs in the tree.9m
+[2025-10-28T09:41:11.762Z] 2m[ACTION] Found a Oak Log. Identifying all its log blocks...9m
+[2025-10-28T09:41:11.763Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:41:19.934Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -243.5, 94.0, -301.3!9m
+[2025-10-28T09:41:21.231Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -243.5, 94.0, -301.3!9m
+[2025-10-28T09:41:22.771Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -243.5, 94.0, -302.4!9m
+[2025-10-28T09:41:26.507Z] 2m[ACTION] Finished chopping tree.9m
+[2025-10-28T09:43:30.102Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:43:30.102Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:43:30.132Z] 2m[ACTION] Found a Oak Log. Identifying all its log blocks...9m
+[2025-10-28T09:43:30.133Z] 2m[ACTION] Found 4 logs in the tree.9m
+[2025-10-28T09:43:30.133Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:43:33.137Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -258.4, 95.0, -302.5!9m
+[2025-10-28T09:43:35.492Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -261.3, 95.0, -303.5!9m
+[2025-10-28T09:43:35.493Z] 2m[ACTION] undefined9m
+[2025-10-28T09:43:37.442Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -262.5, 95.0, -302.8!9m
+[2025-10-28T09:43:41.964Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -262.5, 96.0, -301.7!9m
+[2025-10-28T09:44:05.283Z] 2m[ACTION] undefined9m
+[2025-10-28T09:44:07.315Z] 2m[ACTION] undefined9m
+[2025-10-28T09:44:20.136Z] 2m[ACTION] undefined9m
+[2025-10-28T09:44:20.616Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T09:44:22.716Z] 2m[ACTION] Finished chopping tree.9m
+[2025-10-28T09:45:18.399Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:45:18.399Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:45:18.418Z] 2m[ACTION] Found 6 logs in the tree.9m
+[2025-10-28T09:45:18.417Z] 2m[ACTION] Found a Oak Log. Identifying all its log blocks...9m
+[2025-10-28T09:45:18.418Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:45:20.150Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -262.5, 96.0, -300.7!9m
+[2025-10-28T09:45:21.560Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -262.5, 96.0, -300.7!9m
+[2025-10-28T09:45:22.891Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -262.5, 96.0, -300.7!9m
+[2025-10-28T09:45:25.111Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -264.2, 97.0, -298.3!9m
+[2025-10-28T09:45:31.416Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -265.6, 100.0, -298.6!9m
+[2025-10-28T09:45:32.780Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -265.6, 100.0, -298.6!9m
+[2025-10-28T09:45:34.062Z] 2m[ACTION] Finished chopping tree.9m
+[2025-10-28T09:45:48.241Z] 6m[CHAT] Luize26: 9m7m[WHISPER] chop9m
+[2025-10-28T09:45:48.241Z] [DEBUG] Parsed command: 'chop', Arguments: []
+[2025-10-28T09:45:48.292Z] 2m[ACTION] Found a Oak Log. Identifying all its log blocks...9m
+[2025-10-28T09:45:48.293Z] 2m[ACTION] Chopping entire tree...9m
+[2025-10-28T09:45:48.293Z] 2m[ACTION] Found 5 logs in the tree.9m
+[2025-10-28T09:45:53.362Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -276.3, 108.0, -293.4!9m
+[2025-10-28T09:45:55.074Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -277.2, 109.0, -293.5!9m
+[2025-10-28T09:46:00.161Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -278.3, 110.0, -292.7!9m
+[2025-10-28T09:46:02.477Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -278.5, 111.0, -291.7!9m
+[2025-10-28T09:46:05.143Z] ERROR: 1m[ERROR] Error while chopping tree: Digging aborted9m
+[2025-10-28T09:46:11.263Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -279.4, 113.0, -293.5!9m
+[2025-10-28T09:46:15.691Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T09:46:34.550Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-28T09:46:34.551Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-28T09:46:34.551Z] 2m[ACTION] Pathfinding to Luize26 to give items...9m
+[2025-10-28T09:46:36.997Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -279.5, 111.0, -287.6!9m
+[2025-10-28T09:46:37.121Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-28T09:46:37.131Z] 2m[ACTION] Finished giving items.9m
+[2025-10-28T09:47:06.593Z] PartialReadError: Read error for undefined : Unexpected buffer end while reading VarInt
+    at new ExtendableError (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\utils.js:63:13)
+    at new PartialReadError (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\utils.js:70:5)
+    at Object.readVarInt [as varint] (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\datatypes\varint.js:19:40)
+    at Object.string (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:103:61)
+    at eval (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1635:42)
+    at eval (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1638:13)
+    at Object.entityMetadataEntry (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1662:9)
+    at Object.entityMetadata (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1692:47)
+    at Object.packet_entity_metadata (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:3705:73)
+    at eval (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:4505:70)
+[2025-10-28T09:47:06.595Z] PartialReadError: Read error for undefined : Unexpected buffer end while reading VarInt
+    at new ExtendableError (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\utils.js:63:13)
+    at new PartialReadError (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\utils.js:70:5)
+    at Object.readVarInt [as varint] (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\datatypes\varint.js:19:40)
+    at Object.string (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:103:61)
+    at eval (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1635:42)
+    at eval (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1638:13)
+    at Object.entityMetadataEntry (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1662:9)
+    at Object.entityMetadata (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:1692:47)
+    at Object.packet_entity_metadata (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:3705:73)
+    at eval (eval at compile (C:\Users\louize\source\repos\minecraft java\1BOT\node_modules\protodef\src\compiler.js:262:12), <anonymous>:4505:70)
+[2025-10-28T09:48:15.744Z] 6m[CHAT] Luize26: 9m7m[WHISPER] give items to Luize269m
+[2025-10-28T09:48:15.745Z] [DEBUG] Parsed command: 'give', Arguments: ["items","to","Luize26"]
+[2025-10-28T09:48:15.745Z] 2m[ACTION] Pathfinding to Luize26 to give items...9m
+[2025-10-28T09:48:18.676Z] 2m[ACTION] Mineflayer-pathfinder goal reached at -281.5, 116.0, -278.8!9m
+[2025-10-28T09:48:19.732Z] 2m[ACTION] Giving all items to Luize26...9m
+[2025-10-28T09:48:19.736Z] 2m[ACTION] Finished giving items.9m
+[2025-10-28T09:48:20.146Z] ERROR: 1m[ERROR] No suitable food found in inventory.9m
+[2025-10-28T12:22:49.195Z] 0m[SYSTEM] Type commands below. Examples: follow <player>, chop, stop, quit9m
+[2025-10-28T12:22:50.416Z] 0m[SYSTEM] Inventory web server running on *:30009m
+[2025-10-28T12:22:50.417Z] (mineflayer-web-inventory) INFO: Inventory web server running on *:3000
+[2025-10-28T12:22:51.348Z] Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20) {
+  errno: -4077,
+  code: 'ECONNRESET',
+  syscall: 'read'
+}
+[2025-10-28T12:22:51.351Z] (mineflayer-web-inventory) INFO: Inventory web server closed
+[2025-10-28T12:22:51.349Z] ERROR: 1m[ERROR] Error: read ECONNRESET9m
+[2025-10-28T12:22:51.350Z] 0m[SYSTEM] Disconnected: socketClosed. Reconnecting in 5 seconds...9m

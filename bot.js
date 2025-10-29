@@ -65,6 +65,7 @@ let arrowCheckInterval = null;
 let isMonitoringArrows = false;
 let guardedPlayer = null;
 let lastFleeErrorTime = 0;
+let isChopping = false;
 const FLEE_ERROR_COOLDOWN = 5000; // 5 seconds
 
 const loggedMessages = new Map();
@@ -554,6 +555,44 @@ async function autoSleep() {
     }
 }
 
+function findEntireTree(startBlock) {
+    const treeBlocks = [];
+    const blocksToScan = [startBlock];
+    const scannedPositions = new Set();
+    scannedPositions.add(startBlock.position.toString());
+    const targetLogName = startBlock.name; // Get the specific log type, e.g., 'oak_log'
+
+    while (blocksToScan.length > 0) {
+        const currentBlock = blocksToScan.shift();
+        
+        // Only consider blocks of the same type as the starting log
+        if (currentBlock && currentBlock.name === targetLogName) {
+            treeBlocks.push(currentBlock);
+
+            // Check neighbors
+            for (let x = -1; x <= 1; x++) {
+                for (let y = -1; y <= 1; y++) {
+                    for (let z = -1; z <= 1; z++) {
+                        if (x === 0 && y === 0 && z === 0) continue;
+                        
+                        const neighborPos = currentBlock.position.offset(x, y, z);
+                        if (scannedPositions.has(neighborPos.toString())) continue;
+                        
+                        scannedPositions.add(neighborPos.toString());
+                        const neighborBlock = bot.blockAt(neighborPos);
+
+                        // If the neighbor is also the same type of log, add it to the scan queue
+                        if (neighborBlock && neighborBlock.name === targetLogName) {
+                            blocksToScan.push(neighborBlock);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return treeBlocks;
+}
+
 // --- Melee Weapon Management ---
 function getBestMeleeWeapon() {
     const weaponPriority = [
@@ -753,48 +792,73 @@ async function handleBotMessage(username, message, isWhisper = false) {
         break;
       }
 
+      // --- 1. Parse Arguments ---
       let targetsToHuntNames = [];
       if (aiCommand && aiCommand.targets && Array.isArray(aiCommand.targets)) {
         targetsToHuntNames = aiCommand.targets;
       } else if (args.length > 0) {
-        targetsToHuntNames = args;
+        // Improved parser to handle commas and extra whitespace
+        targetsToHuntNames = args.join(' ').split(/[\s,]+/).filter(name => name);
       }
 
       if (targetsToHuntNames.length === 0) {
-        logError('Usage: hunt <name>');
+        logError('Usage: hunt <name | hostile | food>');
         break;
       }
 
-      // --- 1. Build a list of all entities to kill ---
+      // --- 2. Build a list of all entities to kill ---
       const mobsToKill = [];
-      const uniqueTargetNames = [...new Set(targetsToHuntNames)];
-      for (const name of uniqueTargetNames) {
-        const lowerCaseName = name.toLowerCase();
-        if (settings.whitelistedPlayers.includes(name)) continue;
+      const uniqueTargetNames = [...new Set(targetsToHuntNames.map(name => name.toLowerCase()))];
+      let handledAsKeyword = false;
+
+      if (uniqueTargetNames.includes('hostile')) {
+        logAction('Keyword "hostile" detected. Targeting all hostile mobs.');
         for (const id in bot.entities) {
           const entity = bot.entities[id];
-          if (entity.isDead) continue;
-          const entityName = entity.name?.toLowerCase();
-          const entityDisplayName = entity.displayName?.toString().toLowerCase();
-          if ((entityName === lowerCaseName || entityDisplayName === lowerCaseName) && entity.position.distanceTo(bot.entity.position) < 64) {
-            if (entity.type === 'player' && settings.whitelistedPlayers.includes(entity.username)) continue;
+          if (isHostile(entity) && entity.position.distanceTo(bot.entity.position) < 64) {
             mobsToKill.push(entity);
+          }
+        }
+        handledAsKeyword = true;
+      } else if (uniqueTargetNames.includes('food')) {
+        logAction('Keyword "food" detected. Targeting all food animals.');
+        const foodAnimals = ['pig', 'cow', 'sheep', 'chicken', 'rabbit'];
+        for (const id in bot.entities) {
+          const entity = bot.entities[id];
+          if (foodAnimals.includes(entity.name?.toLowerCase()) && entity.position.distanceTo(bot.entity.position) < 64) {
+            mobsToKill.push(entity);
+          }
+        }
+        handledAsKeyword = true;
+      }
+
+      if (!handledAsKeyword) {
+        for (const name of uniqueTargetNames) {
+          if (settings.whitelistedPlayers.includes(name)) continue;
+          for (const id in bot.entities) {
+            const entity = bot.entities[id];
+            if (entity.isDead) continue;
+            const entityName = entity.name?.toLowerCase();
+            const entityDisplayName = entity.displayName?.toString().toLowerCase();
+            if ((entityName === name || entityDisplayName === name) && entity.position.distanceTo(bot.entity.position) < 64) {
+              if (entity.type === 'player' && settings.whitelistedPlayers.includes(entity.username)) continue;
+              mobsToKill.push(entity);
+            }
           }
         }
       }
 
       if (mobsToKill.length === 0) {
-        respond(username, `I couldn't find any of the specified mobs nearby.`, isWhisper);
+        respond(username, `I couldn't find any of the specified targets nearby.`, isWhisper);
         break;
       }
 
-      // --- 2. Start Combat Session ---
-      logAction(`Found ${mobsToKill.length} mob(s) to hunt. Starting combat session...`);
+      // --- 3. Start Combat Session ---
+      logAction(`Found ${mobsToKill.length} target(s) to hunt. Starting combat session...`);
       isAttacking = true;
 
-      // This function is created to be able to use async/await in the loop
       (async () => {
-        // --- 3. Main Combat Loop ---
+        // --- 4. Main Combat Loop ---
         for (const target of mobsToKill) {
           if (target.isDead) continue;
           logAction(`Now targeting ${target.displayName} (${mobsToKill.indexOf(target) + 1}/${mobsToKill.length})...`);
@@ -817,13 +881,10 @@ async function handleBotMessage(username, message, isWhisper = false) {
               const goal = new pathfinderGoals.GoalNear(target.position.x, target.position.y, target.position.z, 30);
               await bot.pathfinder.goto(goal);
               bot.clearControlStates();
-
-              // Wait until the bot is physically stationary to ensure aiming accuracy
               while (bot.entity.velocity.distanceTo(new Vec3(0, 0, 0)) > 0.01) {
                 await bot.waitForTicks(1);
               }
-
-              await bot.lookAt(target.position.plus(new Vec3(0, target.height, 0))); // Face the target's head
+              await bot.lookAt(target.position.plus(new Vec3(0, target.height, 0)));
               await bot.equip(bow, 'hand');
               await bot.waitForTicks(10);
               bot.hawkEye.autoAttack(target, 'bow');
@@ -836,18 +897,17 @@ async function handleBotMessage(username, message, isWhisper = false) {
           }
 
           await killPromise; // Wait for this target to die
-          bot.hawkEye.stop(); // Stop any lingering attacks
+          bot.hawkEye.stop();
           bot.pvp.stop();
           logAction(`Killed ${target.displayName}.`);
         }
 
-        // --- 4. End Combat and Collect Loot ---
+        // --- 5. End Combat and Collect Loot ---
         logAction('All targets eliminated. Collecting drops...');
         isAttacking = false;
 
         setTimeout(async () => {
           const items = [];
-          // Use the bot's current position as the center for the search
           const centerPoint = bot.entity.position;
           for (const id in bot.entities) {
             const e = bot.entities[id];
@@ -866,33 +926,66 @@ async function handleBotMessage(username, message, isWhisper = false) {
           } else {
             logAction('No item drops found nearby.');
           }
-        }, 500); // Wait 500ms for drops to appear
+        }, 500);
       })();
 
       break;
     }
     case 'chop': {
-      const treeBlock = bot.findBlock({
-        matching: block => block.name.includes('log'),
-        maxDistance: 64
-      });
-      if (!treeBlock) return logError('No trees nearby.');
-
-      logAction('Chopping nearest tree...');
-      try {
-        await bot.collectBlock.collect(treeBlock);
-        logAction('Finished chopping tree.');
-      } catch (err) {
-        logError(err.message);
+      if (isChopping) {
+        const message = 'Already in chopping loop.';
+        respond(username, message, isWhisper);
+        return logAction(message);
       }
+
+      logAction('Starting continuous chopping loop...');
+      isChopping = true;
+
+      (async () => {
+        while (isChopping) {
+          const treeType = args[0];
+          const searchPattern = treeType ? `${treeType.toLowerCase()}_log` : 'log';
+
+          const firstLog = bot.findBlock({
+            matching: block => block.name.includes(searchPattern),
+            maxDistance: 64
+          });
+
+          if (!firstLog) {
+            logAction('No more trees found nearby. Stopping chop loop.');
+            isChopping = false;
+            break;
+          }
+
+          logAction(`Found a ${firstLog.displayName}. Identifying all its log blocks...`);
+          const allTreeLogs = findEntireTree(firstLog);
+          logAction(`Found ${allTreeLogs.length} logs in the tree.`);
+
+          try {
+            logAction(`Chopping entire tree (${allTreeLogs.length} logs)...`);
+            await bot.collectBlock.collect(allTreeLogs);
+            logAction('Finished chopping one tree. Looking for the next...');
+          } catch (err) {
+            logError(`Error while chopping tree: ${err.message}`);
+            isChopping = false;
+            break;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+        logAction('Chopping loop has ended.');
+      })();
+
       break;
     }
     case 'stop':
       logAction('Stopping all actions...');
       bot.ashfinder.stop();
+      bot.ashfinder.goal = null; // Explicitly clear Baritone's goal
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.hawkEye.stop();
+      isChopping = false; // Stop the chopping loop
       isGuarding = false; // Disable guard mode
       guardedPlayer = null; // Clear guarded player
       break;
@@ -1086,12 +1179,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
   bot.loadPlugin(armorManager)
   bot.loadPlugin(collectBlock)
 
-  // --- Baritone Settings ---
-  logSystem('Applying custom Baritone settings to enable all features...');
-  bot.ashfinder.config.parkour = true;
-  bot.ashfinder.config.breakBlocks = true;
-  bot.ashfinder.config.placeBlocks = true;
-  bot.ashfinder.config.swimming = true;
+
 
 
   // Initialize web inventory viewer only once, with port hopping
@@ -1119,6 +1207,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
   }
 
   // --- Bot Events ---
+  bot.on('time', autoSleep); // Check for sleeping conditions when time changes
   bot.on('health', () => {
     autoEat();
     runForSafety();
@@ -1132,38 +1221,48 @@ async function handleBotMessage(username, message, isWhisper = false) {
     }
   });
   bot.on('entityHurt', async (entity) => {
+    // If we're already in combat, don't start a new retaliation sequence.
+    if (isAttacking) return;
+
     if (settings.autoDefend && entity === bot.entity) {
-      // Give a small delay to allow the game state to update and attacker to be more reliably identified
       await new Promise(resolve => setTimeout(resolve, 100));
 
-      let attacker = bot.nearestEntity((e) => {
-        // Exclude self and items from being considered attackers
+      const attacker = bot.nearestEntity((e) => {
         if (e.id === bot.entity.id || e.name === 'item') return false;
-
         const isPlayer = e.type === 'player';
-
-        // Do not attack whitelisted players
-        if (isPlayer && settings.whitelistedPlayers.includes(e.username)) {
-          return false;
-        }
-
-        // Check if the entity is a player or a known hostile mob, and is within 16 blocks
-        return (isPlayer || isHostile(e)) && e.position.distanceTo(bot.entity.position) < 16;
+        if (isPlayer && settings.whitelistedPlayers.includes(e.username)) return false;
+        // Use a 64-block radius to detect ranged attackers
+        return (isPlayer || isHostile(e)) && e.position.distanceTo(bot.entity.position) < 64;
       });
 
-      if (attacker && attacker.id !== bot.entity.id) { // Ensure attacker exists and is not self
-        logAction(`Identified potential attacker: ${attacker.username || attacker.name || 'unknown'} (Type: ${attacker.type}, MobType: ${attacker.displayName.toString() || 'N/A'}, Distance: ${attacker.position.distanceTo(bot.entity.position).toFixed(2)})`);
-        // Check if the attacker is a whitelisted player
-        if (attacker.type === 'player' && settings.whitelistedPlayers.includes(attacker.username)) {
-          logAction(`Attacked by whitelisted player ${attacker.username}. Not retaliating.`);
-          return;
-        }
+      if (attacker) {
+        // --- Stop all other actions to prioritize self-defense ---
+        logAction('Stopping current actions to defend against attacker!');
+        bot.pathfinder.stop();
+        bot.ashfinder.stop();
+        bot.pvp.stop();
+        bot.hawkEye.stop();
+        isGuarding = false;
 
-        logAction(`Attacked by ${attacker.username || attacker.name || attacker.displayName || 'an unknown entity'}! Retaliating.`);
+        isAttacking = true; // Set flag to prevent this from re-triggering
+        logAction(`Attacked by ${attacker.displayName}! Retaliating.`);
+
         const bow = bot.inventory.findInventoryItem('bow');
-        if (bow) {
+        const arrows = bot.inventory.findInventoryItem('arrow');
+
+        if (bow && arrows) {
+          logAction(`Retaliating with bow.`);
           bot.hawkEye.autoAttack(attacker, 'bow');
         } else {
+          logAction(`No bow/arrows for retaliation. Using melee.`);
+          const bestWeapon = getBestMeleeWeapon();
+          if (bestWeapon) {
+            try {
+              await bot.equip(bestWeapon, 'hand');
+            } catch (err) {
+              logError(`Failed to equip ${bestWeapon.displayName} for melee retaliation: ${err.message}`);
+            }
+          }
           bot.pvp.attack(attacker);
         }
       }
@@ -1198,34 +1297,19 @@ async function handleBotMessage(username, message, isWhisper = false) {
   });
   bot.on('spawn', () => {
     logSystem('Bot spawned!')
+
+    // --- Baritone Settings ---
+    logSystem('Applying custom Baritone settings to enable all features...');
+    bot.ashfinder.config.parkour = true;
+    bot.ashfinder.config.breakBlocks = true;
+    bot.ashfinder.config.placeBlocks = true;
+    bot.ashfinder.config.swimming = true;
+
     if (!pathfinderListenersAttached) {
       bot.ashfinder.on('goal-reach-partial', (goal) => {
-        const botPos = bot.entity.position;
-        bot.ashfinder.stop();
-        bot.ashfinder.goal = null; // Explicitly clear ashfinder's goal
-    
-        let newGoal;
-        if (goal instanceof baritoneGoals.GoalExact) {
-            newGoal = new pathfinderGoals.GoalBlock(goal.x, goal.y, goal.z);
-        } else if (goal instanceof baritoneGoals.GoalNear) {
-            newGoal = new pathfinderGoals.GoalNear(goal.x, goal.y, goal.z, goal.range);
-        } else {
-            debouncedLogError('baritone_goal_translate_fail', `Cannot translate baritone goal to pathfinder goal. Goal type ${goal.constructor.name} not supported for fallback.`);
-            return;
-        }
-
-        let newGoalX = 'N/A';
-        let newGoalY = 'N/A';
-        let newGoalZ = 'N/A';
-
-        if (newGoal) {
-            if (newGoal.x !== undefined) newGoalX = newGoal.x.toFixed(1);
-            if (newGoal.y !== undefined) newGoalY = newGoal.y.toFixed(1);
-            if (newGoal.z !== undefined) newGoalZ = newGoal.z.toFixed(1);
-        }
-
-        debouncedLogAction('baritone_struggling', `Baritone is struggling at ${botPos.x.toFixed(1)}, ${botPos.y.toFixed(1)}, ${botPos.z.toFixed(1)}. Switching to mineflayer-pathfinder for replanning to goal ${newGoalX}, ${newGoalY}, ${newGoalZ}.`);
-        bot.pathfinder.setGoal(newGoal);
+        // Fallback to mineflayer-pathfinder is disabled by user request.
+        // The bot will continue to rely on Baritone to resolve the path.
+        logAction('Baritone is struggling to find a complete path, but will continue trying.');
       });
 
       bot.ashfinder.on('goal-reach', (goal) => {
@@ -1473,16 +1557,56 @@ rl.on('line', async (input) => {
       break;
     }
     case 'chop': {
-      const tree = bot.findBlock({ matching: b => b.name.includes('log'), maxDistance: 64 });
-      if (!tree) return logError('No trees nearby.');
-      logAction('Chopping tree...');
-      await bot.collectBlock.collect(tree);
+      if (isChopping) {
+        return logAction('Already in chopping loop.');
+      }
+
+      logAction('Starting continuous chopping loop...');
+      isChopping = true;
+
+      (async () => {
+        while (isChopping) {
+          const treeType = args[0];
+          const searchPattern = treeType ? `${treeType.toLowerCase()}_log` : 'log';
+
+          const firstLog = bot.findBlock({
+            matching: block => block.name.includes(searchPattern),
+            maxDistance: 64
+          });
+
+          if (!firstLog) {
+            logAction('No more trees found nearby. Stopping chop loop.');
+            isChopping = false;
+            break;
+          }
+
+          logAction(`Found a ${firstLog.displayName}. Identifying all its log blocks...`);
+          const allTreeLogs = findEntireTree(firstLog);
+          logAction(`Found ${allTreeLogs.length} logs in the tree.`);
+
+          try {
+            logAction(`Chopping entire tree (${allTreeLogs.length} logs)...`);
+            await bot.collectBlock.collect(allTreeLogs);
+            logAction('Finished chopping one tree. Looking for the next...');
+          } catch (err) {
+            logError(`Error while chopping tree: ${err.message}`);
+            isChopping = false;
+            break;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+        logAction('Chopping loop has ended.');
+      })();
+
       break;
     }
     case 'stop':
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.ashfinder?.stop?.();
+      if (bot.ashfinder) bot.ashfinder.goal = null; // Explicitly clear Baritone's goal
+      isChopping = false; // Stop the chopping loop
       isGuarding = false; // Disable guard mode
       guardedPlayer = null; // Clear guarded player
       logAction('Stopped.');
