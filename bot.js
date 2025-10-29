@@ -66,6 +66,9 @@ let isMonitoringArrows = false;
 let guardedPlayer = null;
 let lastFleeErrorTime = 0;
 let isChopping = false;
+let isMining = false;
+let isHuntingForFood = false;
+let tickCounter = 0;
 const FLEE_ERROR_COOLDOWN = 5000; // 5 seconds
 
 const loggedMessages = new Map();
@@ -182,6 +185,8 @@ async function runForSafety() {
     bot.hawkEye.stop();
     bot.pathfinder.stop();
     bot.ashfinder?.stop?.();
+    isChopping = false; // Stop any continuous chopping
+    isMining = false; // Stop any continuous mining
 
     // Determine a flee goal
     const hostileEntity = bot.nearestEntity((e) => {
@@ -383,6 +388,24 @@ async function saveSettings() {
     await fs.writeFile(settingsFilePath, JSON.stringify(settings, null, 2));
 }
 
+async function triggerFoodHunt() {
+    if (isHuntingForFood || isAttacking) return;
+
+    const allFood = bot.inventory.items().filter(item => item.foodPoints > 0);
+    const totalFood = allFood.reduce((sum, item) => sum + item.count, 0);
+
+    if (totalFood >= 15) {
+        return; // We have enough food
+    }
+
+    isHuntingForFood = true;
+    logAction('Inventory low on food. Automatically hunting for food sources...');
+    
+    await handleBotMessage(null, 'hunt food');
+
+    isHuntingForFood = false;
+}
+
 // --- Auto-Eat Feature ---
 const EAT_THRESHOLD = 16; // Eat when food is at 8 hunger icons (16/20)
 const HEALTH_EAT_THRESHOLD = 15; // Eat when health is below 15 (7.5 hearts)
@@ -420,6 +443,7 @@ async function autoEat() {
 
     if (!bestFood) {
         debouncedLogError('No_food','No suitable food found in inventory.');
+        triggerFoodHunt();
         return;
     }
 
@@ -695,8 +719,8 @@ async function handleBotMessage(username, message, isWhisper = false) {
   // --- Comprehensive Permission System ---
 
   // Define command access levels. AI-interpreted commands will be checked against these lists.
-  const adminCommands = ['quit', 'exit', 'whitelist', 'autoeat', 'autodefend', 'autosleep', 'give'];
-  const trustedCommands = ['follow', 'hunt', 'kill', 'goto', 'save', 'delete', 'setspawn', 'chop'];
+  const adminCommands = ['quit', 'exit', 'whitelist', 'autoeat', 'autodefend', 'autosleep', 'setfleehealth', 'give', 'setspawn'];
+  const trustedCommands = ['follow', 'hunt', 'kill', 'goto', 'save', 'delete', 'list', 'chop', 'mine', 'guard'];
   // Public commands don't need to be listed; they are anything not in the lists above.
 
   // Determine the command being issued, whether it's from a string or an AI object.
@@ -931,6 +955,55 @@ async function handleBotMessage(username, message, isWhisper = false) {
 
       break;
     }
+    case 'mine': {
+      if (isMining) {
+        const message = 'Already in mining loop.';
+        respond(username, message, isWhisper);
+        return logAction(message);
+      }
+
+      const oreType = args[0];
+      if (!oreType) {
+        const message = 'Usage: mine <ore_type>';
+        respond(username, message, isWhisper);
+        return logError(message);
+      }
+
+      logAction(`Starting continuous mining loop for ${oreType}...`);
+      isMining = true;
+
+      (async () => {
+        while (isMining) {
+          const searchPattern = oreType.toLowerCase();
+          const oreBlock = bot.findBlock({
+            matching: block => block.name.includes(searchPattern) && block.name.includes('_ore'),
+            maxDistance: 64
+          });
+
+          if (!oreBlock) {
+            logAction(`No more ${oreType} ore found nearby. Stopping mine loop.`);
+            isMining = false;
+            break;
+          }
+
+          try {
+            logAction(`Found ${oreBlock.displayName}. Mining now...`);
+            await bot.collectBlock.collect(oreBlock);
+            logAction(`Finished mining one block of ${oreBlock.displayName}. Looking for the next...`);
+          } catch (err) {
+            logError(`Error while mining: ${err.message}`);
+            isMining = false;
+            break;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+        logAction('Mining loop has ended.');
+      })();
+
+      break;
+    }
+
     case 'chop': {
       if (isChopping) {
         const message = 'Already in chopping loop.';
@@ -984,7 +1057,7 @@ async function handleBotMessage(username, message, isWhisper = false) {
       bot.ashfinder.goal = null; // Explicitly clear Baritone's goal
       bot.pathfinder.stop();
       bot.pvp.stop();
-      bot.hawkEye.stop();
+      isMining = false; // Stop the mining loop
       isChopping = false; // Stop the chopping loop
       isGuarding = false; // Disable guard mode
       guardedPlayer = null; // Clear guarded player
@@ -1207,10 +1280,18 @@ async function handleBotMessage(username, message, isWhisper = false) {
   }
 
   // --- Bot Events ---
+  bot.on('physicsTick', () => {
+    // Run periodic checks roughly every 2 seconds
+    tickCounter++;
+    if (tickCounter >= 40) {
+      autoEat();
+      tickCounter = 0;
+    }
+  });
+
   bot.on('time', autoSleep); // Check for sleeping conditions when time changes
   bot.on('health', () => {
-    autoEat();
-    runForSafety();
+    runForSafety(); // autoEat is now called on tick
   });
   bot.on('death', async () => {
     logSystem('Bot died. Respawning...');
@@ -1556,6 +1637,51 @@ rl.on('line', async (input) => {
       logAction(`Location "${name}" deleted.`);
       break;
     }
+    case 'mine': {
+      if (isMining) {
+        return logAction('Already in mining loop.');
+      }
+
+      const oreType = args[0];
+      if (!oreType) {
+        return logError('Usage: mine <ore_type>');
+      }
+
+      logAction(`Starting continuous mining loop for ${oreType}...`);
+      isMining = true;
+
+      (async () => {
+        while (isMining) {
+          const searchPattern = oreType.toLowerCase();
+          const oreBlock = bot.findBlock({
+            matching: block => block.name.includes(searchPattern) && block.name.includes('_ore'),
+            maxDistance: 64
+          });
+
+          if (!oreBlock) {
+            logAction(`No more ${oreType} ore found nearby. Stopping mine loop.`);
+            isMining = false;
+            break;
+          }
+
+          try {
+            logAction(`Found ${oreBlock.displayName}. Mining now...`);
+            await bot.collectBlock.collect(oreBlock);
+            logAction(`Finished mining one block of ${oreBlock.displayName}. Looking for the next...`);
+          } catch (err) {
+            logError(`Error while mining: ${err.message}`);
+            isMining = false;
+            break;
+          }
+
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+        logAction('Mining loop has ended.');
+      })();
+
+      break;
+    }
+
     case 'chop': {
       if (isChopping) {
         return logAction('Already in chopping loop.');
@@ -1605,7 +1731,7 @@ rl.on('line', async (input) => {
       bot.pathfinder.stop();
       bot.pvp.stop();
       bot.ashfinder?.stop?.();
-      if (bot.ashfinder) bot.ashfinder.goal = null; // Explicitly clear Baritone's goal
+      isMining = false; // Stop the mining loop
       isChopping = false; // Stop the chopping loop
       isGuarding = false; // Disable guard mode
       guardedPlayer = null; // Clear guarded player
